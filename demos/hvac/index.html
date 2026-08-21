@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fictional HVAC website concept demonstrating call-first service routing.">
+  <title>Ridge &amp; River Heating | HVAC Concept Demo</title>
+  <link rel="stylesheet" href="hvac.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <script src="../../assets/site.js" defer></script>
+  <script src="../../assets/demo-fields.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the main content</a>
+
+  <div class="concept-bar">
+    <strong>Concept demo</strong>
+    <span>Ridge &amp; River Heating is fictional. No services are offered and no claims represent a real company.</span>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#main"><span class="logo-mark" aria-hidden="true">R/R</span><span class="logo-name">Ridge &amp; River<br>Heating</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#services">Find the issue</a>
+      <a href="#expect">What to expect</a>
+      <a class="nav-cta" href="#request">Start a request</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas class="field-canvas" data-field-canvas="air" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <p class="eyebrow">Heating · cooling · system planning</p>
+        <h1 id="hero-title">Start with what the system is doing.</h1>
+        <p class="lede">A call-first HVAC page should help a homeowner name the problem, understand the next step, and reach the right person without reading a wall of sales copy.</p>
+        <div class="actions">
+          <a class="primary" href="#request">Describe the issue</a>
+          <a class="quiet-link" href="#services">See service paths</a>
+        </div>
+        <div class="call-path">
+          <span>Live-site call position</span>
+          <strong>A verified client phone number goes here before launch.</strong>
+        </div>
+      </div>
+
+      <div class="air-machine" aria-hidden="true">
+        <div class="machine-disc"></div>
+        <svg viewBox="0 0 560 460" role="img">
+          <title>Line illustration of an outdoor HVAC condenser moving air</title>
+          <path class="air-line one" d="M24 96 C120 12 209 18 302 75 S470 147 538 74"/>
+          <path class="air-line two" d="M4 148 C108 72 201 91 278 143 S455 212 555 135"/>
+          <path class="air-line three" d="M38 206 C134 141 228 157 303 206 S448 269 536 222"/>
+          <rect class="unit" x="156" y="210" width="258" height="210"/>
+          <g class="louvers">
+            <line x1="168" y1="238" x2="206" y2="238"/>
+            <line x1="168" y1="254" x2="206" y2="254"/>
+            <line x1="168" y1="270" x2="206" y2="270"/>
+            <line x1="168" y1="286" x2="206" y2="286"/>
+            <line x1="168" y1="302" x2="206" y2="302"/>
+          </g>
+          <circle class="fan-ring" cx="285" cy="304" r="66"/>
+          <g class="fan-rotor">
+            <path class="fan-blade" d="M281 296 C266 288 258 272 266 256 C272 245 286 243 290 254 C294 265 291 282 285 297 Z"/>
+            <path class="fan-blade" transform="rotate(120 285 304)" d="M281 296 C266 288 258 272 266 256 C272 245 286 243 290 254 C294 265 291 282 285 297 Z"/>
+            <path class="fan-blade" transform="rotate(240 285 304)" d="M281 296 C266 288 258 272 266 256 C272 245 286 243 290 254 C294 265 291 282 285 297 Z"/>
+          </g>
+          <circle class="fan-hub" cx="285" cy="304" r="7"/>
+          <line class="unit-base" x1="178" y1="389" x2="392" y2="389"/>
+          <line class="refrigerant" x1="386" y1="228" x2="386" y2="402"/>
+          <line class="refrigerant thin" x1="397" y1="228" x2="397" y2="402"/>
+        </svg>
+        <p class="machine-caption">Comfort systems are complicated. The first website decision should not be.</p>
+      </div>
+    </section>
+
+    <section class="issue-router" id="services" aria-labelledby="services-title">
+      <div class="router-heading" data-reveal>
+        <p class="eyebrow">Service triage</p>
+        <h2 id="services-title">What brought you here?</h2>
+        <p>Choose the closest match. The choice fills the request form — no menus to hunt through.</p>
+      </div>
+      <div class="issue-lines">
+        <a href="#request" data-choice-field="issue" data-form-choice="No cooling" data-reveal>
+          <span class="issue-index" aria-hidden="true">01</span>
+          <span class="issue-body"><b>Air is not cooling</b><small>Share what the thermostat and vents are doing.</small></span>
+          <span class="issue-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#request" data-choice-field="issue" data-form-choice="Not enough heat" class="d1" data-reveal>
+          <span class="issue-index" aria-hidden="true">02</span>
+          <span class="issue-body"><b>Heat is not keeping up</b><small>Describe whether the system starts, stops, or runs continuously.</small></span>
+          <span class="issue-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#request" data-choice-field="issue" data-form-choice="Uneven rooms" class="d2" data-reveal>
+          <span class="issue-index" aria-hidden="true">03</span>
+          <span class="issue-body"><b>Rooms feel uneven</b><small>Note which spaces are affected and when it is most noticeable.</small></span>
+          <span class="issue-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#request" data-choice-field="issue" data-form-choice="Unusual sound" class="d3" data-reveal>
+          <span class="issue-index" aria-hidden="true">04</span>
+          <span class="issue-body"><b>System sounds different</b><small>Describe the sound without opening equipment or removing panels.</small></span>
+          <span class="issue-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#request" data-choice-field="issue" data-form-choice="Replacement planning" class="d4" data-reveal>
+          <span class="issue-index" aria-hidden="true">05</span>
+          <span class="issue-body"><b>Planning a replacement</b><small>Start with home size, comfort concerns, and current equipment details.</small></span>
+          <span class="issue-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="before-call" aria-labelledby="before-title">
+      <div class="before-heading" data-reveal>
+        <p class="eyebrow">Useful, safe context</p>
+        <h2 id="before-title">A few details make the first conversation better.</h2>
+      </div>
+      <ul class="before-grid">
+        <li data-reveal><span>01</span><p><strong>Thermostat display</strong> Note the mode, set temperature, and current room temperature.</p></li>
+        <li class="d1" data-reveal><span>02</span><p><strong>Airflow</strong> Say whether air is moving from the vents and which rooms feel different.</p></li>
+        <li class="d2" data-reveal><span>03</span><p><strong>System label</strong> A photo of the accessible equipment label can help identify age and model.</p></li>
+        <li class="d3" data-reveal><span>04</span><p><strong>Safety first</strong> Do not remove panels or reach into equipment. Report burning smells, smoke, or visible hazards clearly.</p></li>
+      </ul>
+    </section>
+
+    <section class="expect" id="expect" aria-labelledby="expect-title">
+      <div class="expect-heading" data-reveal>
+        <p class="eyebrow">A transparent service path</p>
+        <h2 id="expect-title">The page explains the handoff before asking for contact details.</h2>
+      </div>
+      <ol class="expect-track">
+        <li data-reveal>
+          <span class="stage">First</span>
+          <h3>Describe the symptom</h3>
+          <p>The request captures the issue in the homeowner’s own words.</p>
+        </li>
+        <li class="d1" data-reveal>
+          <span class="stage">Then</span>
+          <h3>Confirm the next step</h3>
+          <p>A live business would respond using its verified hours, service area, and availability.</p>
+        </li>
+        <li class="d2" data-reveal>
+          <span class="stage">After</span>
+          <h3>Approve any work</h3>
+          <p>Real diagnostics, scope, pricing, and authorization belong to the service company—not the demo.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="request" id="request" aria-labelledby="request-title">
+      <div class="request-copy" data-reveal>
+        <p class="eyebrow">Concept service request</p>
+        <h2 id="request-title">Show the right questions. Send nothing in staging.</h2>
+        <p>This simulated form demonstrates the handoff. It validates in the browser and does not contact a company.</p>
+        <div class="request-staging">
+          <strong>Staging behavior</strong>
+          <p>No information leaves the browser. A live build would route this to the business it belongs to.</p>
+        </div>
+      </div>
+
+      <form data-staged-form data-form-kind="demo" novalidate data-reveal class="d1">
+        <div class="field-row">
+          <div class="field">
+            <label for="hvac-name">Your name</label>
+            <input id="hvac-name" name="name" autocomplete="name" required>
+            <span class="field-error" data-error-for="name" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="hvac-email">Email</label>
+            <input id="hvac-email" name="email" type="email" autocomplete="email" required>
+            <span class="field-error" data-error-for="email" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="hvac-issue">Closest issue</label>
+          <select id="hvac-issue" name="issue">
+            <option>No cooling</option>
+            <option>Not enough heat</option>
+            <option>Uneven rooms</option>
+            <option>Unusual sound</option>
+            <option>Replacement planning</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hvac-contact">Preferred follow-up</label>
+          <select id="hvac-contact" name="contact">
+            <option>Phone call</option>
+            <option>Email</option>
+            <option>Text message</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hvac-notes">What are you noticing?</label>
+          <textarea id="hvac-notes" name="notes" rows="4"></textarea>
+        </div>
+        <button type="submit">Check this demo request</button>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Ridge &amp; River Heating</strong> · Fictional concept demo</p>
+    <a href="../../index.html#work">Return to Knox Site Factory demos</a>
+  </footer>
+</body>
+</html>

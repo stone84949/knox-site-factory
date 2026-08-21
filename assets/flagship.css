@@ -1,0 +1,719 @@
+/* ============================================================
+   FLAGSHIP SKIN — dark immersive system for body.fx
+   Layers on top of assets/site.css. The shared light system
+   stays intact for the site-review page.
+   Language: deep space green-black, glass surfaces, hairlines,
+   ember + signal glows. No gradients, no dependencies.
+   ============================================================ */
+
+.fx {
+  --fx-bg: #0c1310;
+  --fx-bg-deep: #0a100d;
+  --fx-surface: rgba(237, 244, 241, 0.045);
+  --fx-surface-raise: rgba(237, 244, 241, 0.07);
+  --fx-line: rgba(237, 244, 241, 0.13);
+  --fx-line-soft: rgba(237, 244, 241, 0.07);
+  --fx-text: #edf4f1;
+  --fx-muted: #9db4ab;
+  --fx-ember: #f17a3d;
+  --fx-ember-soft: rgba(241, 122, 61, 0.35);
+  --fx-teal: #6fd0ae;
+  --fx-yellow: #f2c84b;
+  --fx-glow: 0 0 34px rgba(241, 122, 61, 0.28);
+  --fx-lift: 0 26px 60px rgba(4, 8, 6, 0.55);
+  --display: "Archivo", "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ---------- base ---------- */
+
+.fx body,
+body.fx {
+  background: var(--fx-bg);
+  color: var(--fx-text);
+}
+
+body.fx {
+  background: var(--fx-bg);
+  color: var(--fx-text);
+}
+
+body.fx ::selection {
+  background: var(--fx-yellow);
+  color: var(--fx-bg-deep);
+}
+
+body.fx :focus-visible {
+  outline: 3px solid var(--fx-ember);
+  outline-offset: 4px;
+}
+
+/* ---------- staging bar (brand pop stays) ---------- */
+
+body.fx .staging-bar {
+  background: var(--fx-yellow);
+  color: #16201c;
+  border-bottom: 1px solid rgba(22, 32, 28, 0.6);
+}
+
+/* ---------- header: floating glass ---------- */
+
+body.fx .site-header {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100% - 3rem));
+  min-height: 76px;
+  border-bottom: 1px solid var(--fx-line-soft);
+  background: rgba(12, 19, 16, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body.fx .site-header.is-scrolled {
+  background: rgba(10, 16, 13, 0.82);
+  border-bottom-color: var(--fx-line);
+  box-shadow: none;
+}
+
+body.fx .brand {
+  color: var(--fx-text);
+}
+
+body.fx .brand-mark {
+  background: var(--fx-ember);
+  color: var(--fx-bg-deep);
+  box-shadow: 0 0 22px var(--fx-ember-soft);
+}
+
+body.fx nav a {
+  color: var(--fx-muted);
+}
+
+body.fx nav a:not(.nav-action):hover {
+  color: var(--fx-text);
+}
+
+body.fx .nav-action {
+  background: var(--fx-ember);
+  color: var(--fx-bg-deep);
+  border-radius: 999px;
+  box-shadow: 0 0 24px var(--fx-ember-soft);
+}
+
+body.fx .nav-action:hover {
+  background: var(--fx-yellow);
+  color: var(--fx-bg-deep);
+  transform: none;
+  box-shadow: 0 0 34px rgba(242, 200, 75, 0.4);
+}
+
+/* ---------- typography: grotesque display, sentence case ---------- */
+
+body.fx h1,
+body.fx h2,
+body.fx h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.032em;
+  line-height: 1.0;
+}
+
+body.fx h1 {
+  font-size: clamp(2.9rem, 6.4vw, 5.9rem);
+  max-width: 720px;
+}
+
+body.fx h2 {
+  font-size: clamp(2.1rem, 4.4vw, 3.9rem);
+}
+
+body.fx h1 .accent,
+body.fx h2 .accent {
+  color: var(--fx-ember);
+}
+
+body.fx .kicker,
+body.fx .work-type {
+  color: var(--fx-ember);
+}
+
+body.fx .kicker::before {
+  color: var(--fx-line);
+}
+
+body.fx .hero-lede,
+body.fx .plain-note {
+  color: var(--fx-muted);
+}
+
+/* ---------- buttons: pills with glow ---------- */
+
+body.fx .button {
+  min-height: 54px;
+  padding: 0.85rem 1.7rem;
+  border: 1px solid var(--fx-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fx-text);
+  box-shadow: none;
+}
+
+body.fx .button-primary {
+  background: var(--fx-ember);
+  border-color: transparent;
+  color: var(--fx-bg-deep);
+  box-shadow: 0 0 28px var(--fx-ember-soft);
+}
+
+body.fx .button:hover,
+body.fx .button:focus-visible {
+  background: var(--fx-yellow);
+  border-color: transparent;
+  color: var(--fx-bg-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 0 38px rgba(242, 200, 75, 0.42);
+  outline-offset: 4px;
+}
+
+body.fx .button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 18px var(--fx-ember-soft);
+}
+
+body.fx .text-link {
+  color: var(--fx-text);
+}
+
+body.fx .text-link:hover {
+  color: var(--fx-ember);
+}
+
+/* ---------- hero: full-viewport canvas stage ---------- */
+
+body.fx .hero {
+  position: relative;
+  display: block;
+  min-height: max(92vh, 640px);
+  padding: 0;
+  overflow: hidden;
+}
+
+body.fx .hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+body.fx .hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: max(92vh, 640px);
+  max-width: 660px;
+  padding-block: clamp(7rem, 16vh, 10rem) clamp(4rem, 9vh, 6rem);
+  text-shadow: 0 2px 30px rgba(10, 16, 13, 0.85);
+}
+
+body.fx .hero-actions {
+  margin: 2.4rem 0 1.4rem;
+}
+
+body.fx .status-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1.6rem;
+  color: var(--fx-muted);
+  font-family: var(--utility);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+body.fx .pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fx-ember);
+  box-shadow: 0 0 12px var(--fx-ember-soft);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.75); }
+}
+
+body.fx .hero-foot {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-inline: max(calc((100% - min(1180px, calc(100% - 3rem))) / 2), 1.5rem);
+  color: var(--fx-muted);
+  font-family: var(--utility);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+body.fx .scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+body.fx .scroll-cue i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: var(--fx-line);
+  position: relative;
+  overflow: hidden;
+}
+
+body.fx .scroll-cue i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -50%;
+  width: 100%;
+  height: 50%;
+  background: var(--fx-ember);
+  animation: cue-drop 2.2s cubic-bezier(0.61, 0.22, 0.2, 1) infinite;
+}
+
+@keyframes cue-drop {
+  0% { top: -50%; }
+  100% { top: 110%; }
+}
+
+/* ---------- ticker ---------- */
+
+body.fx .ticker {
+  border-block: 1px solid var(--fx-line-soft);
+  background: transparent;
+}
+
+body.fx .ticker-track span {
+  color: rgba(237, 244, 241, 0.5);
+}
+
+/* ---------- shared section rhythm ---------- */
+
+body.fx .proof,
+body.fx .process,
+body.fx .faq,
+body.fx .work,
+body.fx .contact {
+  border-top: 1px solid var(--fx-line-soft);
+}
+
+body.fx .section-label > span {
+  color: var(--fx-ember);
+}
+
+body.fx .proof-lines p {
+  border-bottom: 1px solid var(--fx-line-soft);
+  color: var(--fx-muted);
+}
+
+body.fx .proof-lines strong {
+  color: var(--fx-text);
+}
+
+/* ---------- compare slider: glass frame ---------- */
+
+body.fx .compare {
+  border: 1px solid var(--fx-line);
+  background: var(--fx-surface);
+  box-shadow: var(--fx-lift);
+}
+
+body.fx .compare-badges span {
+  background: rgba(10, 16, 13, 0.85);
+  border: 1px solid var(--fx-line);
+}
+
+body.fx .compare-badges .badge-after {
+  background: var(--fx-ember);
+  border-color: transparent;
+  color: var(--fx-bg-deep);
+}
+
+body.fx .compare-divider {
+  width: 2px;
+  background: var(--fx-text);
+}
+
+body.fx .compare-handle {
+  border: 2px solid var(--fx-bg-deep);
+  background: var(--fx-yellow);
+  color: var(--fx-bg-deep);
+  box-shadow: 0 0 26px rgba(242, 200, 75, 0.45);
+}
+
+body.fx .compare-range::-webkit-slider-thumb {
+  border: 2px solid var(--fx-bg-deep);
+  background: var(--fx-yellow);
+  box-shadow: 0 0 26px rgba(242, 200, 75, 0.45);
+}
+
+body.fx .compare-range::-moz-range-thumb {
+  border: 2px solid var(--fx-bg-deep);
+  background: var(--fx-yellow);
+  box-shadow: 0 0 26px rgba(242, 200, 75, 0.45);
+}
+
+body.fx .compare-range:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--fx-ember);
+}
+
+body.fx .compare-note {
+  color: var(--fx-muted);
+}
+
+body.fx .site-new {
+  border: 1px solid var(--fx-line-soft);
+}
+
+/* ---------- work: glass device frames ---------- */
+
+body.fx .work-row {
+  border-top: 1px solid var(--fx-line-soft);
+  padding-block: clamp(2.6rem, 5vw, 4rem);
+}
+
+body.fx .work-row:last-child {
+  border-bottom: 1px solid var(--fx-line-soft);
+}
+
+body.fx .work-number {
+  color: var(--fx-ember);
+}
+
+body.fx .work-copy p:not(.work-type) {
+  color: var(--fx-muted);
+}
+
+body.fx .work-link {
+  color: var(--fx-text);
+}
+
+body.fx .work-link:hover {
+  color: var(--fx-ember);
+}
+
+body.fx .frame-browser,
+body.fx .frame-phone,
+body.fx .card-phone {
+  background: var(--fx-surface);
+  border: 1px solid var(--fx-line);
+  box-shadow: var(--fx-lift);
+}
+
+body.fx .frame-phone {
+  border-radius: 26px;
+}
+
+body.fx .card-phone {
+  border-radius: 22px;
+}
+
+body.fx .frame-browser .card-bar,
+body.fx .card-browser .card-bar {
+  background: rgba(10, 16, 13, 0.9);
+  border-bottom: 1px solid var(--fx-line-soft);
+}
+
+body.fx .card-url {
+  background: rgba(237, 244, 241, 0.06);
+  border: 1px solid var(--fx-line-soft);
+  color: var(--fx-muted);
+}
+
+body.fx .phone-speaker {
+  background: var(--fx-line);
+}
+
+/* ---------- process ---------- */
+
+body.fx .process-list li::before {
+  color: var(--fx-ember);
+  font-family: var(--display);
+  font-weight: 700;
+}
+
+body.fx .process-step {
+  color: var(--fx-muted);
+}
+
+body.fx .process-list p {
+  color: var(--fx-muted);
+}
+
+/* ---------- offer: elevated glass ---------- */
+
+body.fx .offer {
+  border: 1px solid var(--fx-line);
+  background: var(--fx-surface);
+  box-shadow: var(--fx-lift);
+}
+
+body.fx .offer .kicker {
+  color: var(--fx-yellow);
+}
+
+body.fx .offer .kicker::before {
+  color: var(--fx-line);
+}
+
+body.fx .offer-main {
+  border-right: 1px solid var(--fx-line);
+}
+
+body.fx .offer-main h2,
+body.fx .offer-main > p:not(.offer-price) {
+  color: var(--fx-text);
+}
+
+body.fx .offer-price span {
+  color: var(--fx-yellow);
+  text-shadow: 0 0 44px rgba(242, 200, 75, 0.35);
+}
+
+body.fx .offer-list li {
+  border-bottom: 1px solid var(--fx-line-soft);
+  color: var(--fx-muted);
+}
+
+body.fx .offer-list li::before {
+  color: var(--fx-ember);
+}
+
+body.fx .offer-side {
+  background: rgba(10, 16, 13, 0.5);
+}
+
+body.fx .offer-line {
+  border-bottom: 1px solid var(--fx-line-soft);
+}
+
+body.fx .offer-line p {
+  color: var(--fx-yellow);
+}
+
+body.fx .offer-line strong {
+  color: var(--fx-text);
+}
+
+body.fx .offer-line span {
+  color: var(--fx-muted);
+}
+
+body.fx .offer-side .button {
+  border-color: var(--fx-line);
+}
+
+/* ---------- about ---------- */
+
+body.fx .about-mark {
+  background: var(--fx-surface);
+  border-left: 10px solid var(--fx-ember);
+  box-shadow: var(--fx-lift);
+}
+
+body.fx .about-mark span {
+  color: var(--fx-muted);
+}
+
+body.fx .about-mark strong {
+  color: var(--fx-text);
+}
+
+body.fx .about p:not(.kicker) {
+  color: var(--fx-muted);
+}
+
+/* ---------- faq ---------- */
+
+body.fx .faq-list details {
+  border-top: 1px solid var(--fx-line-soft);
+}
+
+body.fx .faq-list details:last-child {
+  border-bottom: 1px solid var(--fx-line-soft);
+}
+
+body.fx .faq-list summary {
+  color: var(--fx-text);
+}
+
+body.fx .faq-list summary::after {
+  color: var(--fx-ember);
+}
+
+body.fx .faq-list details p {
+  color: var(--fx-muted);
+}
+
+/* ---------- contact: glass form ---------- */
+
+body.fx .contact {
+  border-top: 1px solid var(--fx-line);
+}
+
+body.fx .contact-copy > p:not(.kicker) {
+  color: var(--fx-muted);
+}
+
+body.fx .contact-staging {
+  background: var(--fx-surface);
+  border-left: 6px solid var(--fx-yellow);
+  color: var(--fx-muted);
+  box-shadow: none;
+}
+
+body.fx .contact-staging strong {
+  color: var(--fx-text);
+}
+
+body.fx form[data-staged-form] {
+  background: var(--fx-surface);
+  border: 1px solid var(--fx-line);
+  box-shadow: var(--fx-lift);
+}
+
+body.fx label {
+  color: var(--fx-muted);
+}
+
+body.fx label span {
+  color: rgba(157, 180, 171, 0.7);
+}
+
+body.fx input,
+body.fx select,
+body.fx textarea {
+  background: rgba(10, 16, 13, 0.65);
+  border: 1px solid var(--fx-line);
+  color: var(--fx-text);
+}
+
+body.fx input::placeholder,
+body.fx textarea::placeholder {
+  color: rgba(157, 180, 171, 0.55);
+}
+
+body.fx input:hover,
+body.fx select:hover,
+body.fx textarea:hover {
+  border-color: rgba(237, 244, 241, 0.4);
+}
+
+body.fx input:focus-visible,
+body.fx select:focus-visible,
+body.fx textarea:focus-visible {
+  border-color: var(--fx-ember);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(241, 122, 61, 0.22);
+}
+
+body.fx .field-error {
+  color: #ff9d76;
+}
+
+body.fx .form-status {
+  color: var(--fx-teal);
+}
+
+/* ---------- footer ---------- */
+
+body.fx footer {
+  border-top: 1px solid var(--fx-line-soft);
+  background: var(--fx-bg-deep);
+  color: var(--fx-muted);
+}
+
+body.fx footer .brand {
+  color: var(--fx-text);
+}
+
+body.fx footer a {
+  color: var(--fx-muted);
+}
+
+body.fx footer a:hover {
+  color: var(--fx-yellow);
+}
+
+/* ---------- reveals (same grammar, dark-safe) ---------- */
+
+body.fx .js [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.2, 1);
+}
+
+body.fx .js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  body.fx .offer-main {
+    border-right: 0;
+    border-bottom: 1px solid var(--fx-line);
+  }
+
+  body.fx .site-header {
+    align-items: flex-start;
+    padding-block: 1rem;
+  }
+
+  body.fx .hero-copy {
+    justify-content: flex-start;
+    padding-top: clamp(8rem, 22vh, 12rem);
+  }
+
+  body.fx .hero-foot {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  body.fx .hero-copy {
+    min-height: 0;
+    padding-block: 8.5rem 5rem;
+  }
+
+  body.fx .hero {
+    min-height: 0;
+  }
+
+  body.fx .hero-canvas {
+    min-height: 620px;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body.fx .pulse-dot,
+  body.fx .scroll-cue i::after {
+    animation: none;
+  }
+}

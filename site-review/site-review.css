@@ -1,0 +1,342 @@
+/* ============================================================
+   Site-review page — layers on assets/site.css
+   Character: inspection notes. White tickets on cloud, pine data.
+   ============================================================ */
+
+.review-page {
+  background: var(--cloud);
+}
+
+.review-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  width: min(1180px, calc(100% - 3rem));
+  margin-inline: auto;
+  min-height: 84px;
+  border-bottom: var(--rule);
+  background: var(--cloud);
+}
+
+.quiet-link {
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.quiet-link:hover {
+  color: var(--orange);
+}
+
+.review-page main {
+  width: min(1180px, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.review-page main > section > * {
+  min-width: 0;
+}
+
+/* ---------- hero ---------- */
+
+.review-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3.5rem, 8vh, 6.5rem);
+}
+
+.review-lede {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.8vw, 1.25rem);
+}
+
+.review-hero .button {
+  margin-top: 1.6rem;
+}
+
+.scope-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.72rem;
+}
+
+/* ---------- inspection ticket ---------- */
+
+.inspection-ticket {
+  background: var(--white);
+  border: 3px solid var(--carbon);
+  box-shadow: var(--hard-shadow);
+}
+
+.inspection-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 2px solid var(--carbon);
+  background: var(--pine);
+  color: var(--white);
+  font-family: var(--utility);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.inspection-head strong {
+  color: var(--yellow);
+  font-size: 0.95rem;
+}
+
+.inspection-ticket ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inspection-ticket li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 0.8rem;
+  align-items: start;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--mist);
+}
+
+.inspection-ticket li:last-of-type {
+  border-bottom: 0;
+}
+
+.inspection-ticket li > span {
+  color: var(--orange);
+  font-family: var(--utility);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inspection-ticket li strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.inspection-ticket li small {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.inspection-ticket > p {
+  margin: 0;
+  padding: 0.8rem 1.2rem;
+  border-top: 2px solid var(--carbon);
+  background: var(--cloud);
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- method ---------- */
+
+.review-method {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding-block: clamp(3.5rem, 7vh, 5.5rem);
+  border-top: var(--rule);
+}
+
+.method-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: method;
+}
+
+.method-steps li {
+  counter-increment: method;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.4rem;
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.method-steps li::before {
+  content: "0" counter(method);
+  color: var(--orange);
+  font: 400 1.9rem/1 var(--display);
+}
+
+.method-steps strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.method-steps span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- concept proof ---------- */
+
+.concept-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3.5rem, 7vh, 5.5rem);
+  border-top: var(--rule);
+}
+
+.concept-copy p:not(.kicker) {
+  color: var(--muted);
+}
+
+.concept-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.concept-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.05rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  border-left: 6px solid transparent;
+  transition: border-left-color 0.15s ease, background 0.15s ease, padding 0.15s ease;
+}
+
+.concept-links a:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.concept-links a:hover,
+.concept-links a:focus-visible {
+  border-left-color: var(--orange);
+  background: var(--white);
+  padding-left: 0.9rem;
+}
+
+.concept-links span {
+  color: var(--orange);
+  font-family: var(--utility);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.concept-links strong {
+  font-size: 0.98rem;
+}
+
+/* ---------- request ---------- */
+
+.review-request {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding-block: clamp(3.5rem, 8vh, 6rem);
+  border-top: 3px solid var(--carbon);
+}
+
+.request-copy h2 {
+  margin-bottom: 1.2rem;
+}
+
+.request-copy > p:not(.kicker) {
+  color: var(--muted);
+}
+
+.consent-note {
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-family: var(--utility);
+  font-size: 0.7rem;
+}
+
+/* ---------- footer ---------- */
+
+.review-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: auto;
+  padding: 1.4rem max(calc((100% - min(1180px, calc(100% - 3rem))) / 2), 1.5rem) 2rem;
+  border-top: var(--rule);
+  background: var(--carbon);
+  color: var(--mist);
+  font-size: 0.74rem;
+}
+
+.review-footer p {
+  margin: 0;
+}
+
+.review-footer a {
+  color: var(--mist);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.review-footer a:hover {
+  color: var(--yellow);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .review-hero,
+  .review-method,
+  .concept-proof,
+  .review-request {
+    grid-template-columns: 1fr;
+  }
+
+  .inspection-ticket {
+    max-width: 480px;
+  }
+
+  .method-steps li {
+    grid-template-columns: 44px 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 1rem;
+  }
+
+  .review-page main,
+  .review-header {
+    width: min(100% - 1.5rem, 1180px);
+  }
+
+  .method-steps li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knox Site Factory — customer intake</title>
+<style>
+  :root { --bg:#14130f; --ink:#efe8d8; --muted:#9a917e; --line:#3a362c; --accent:#c45c26; --paper:#1c1b16; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.45 system-ui,sans-serif; }
+  main { max-width:720px; padding:24px; }
+  h1 { font:600 24px/1.2 Georgia,serif; }
+  label { display:block; margin:12px 0 4px; color:var(--muted); font-size:13px; }
+  input, select, textarea { width:100%; background:var(--paper); color:var(--ink); border:1px solid var(--line); padding:8px; font:inherit; }
+  textarea { min-height:72px; }
+  button { margin-top:16px; background:var(--accent); color:#fff; border:0; padding:10px 16px; font:inherit; cursor:pointer; }
+  pre { background:var(--paper); border:1px solid var(--line); padding:12px; overflow:auto; white-space:pre-wrap; }
+  .note { color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Customer intake</h1>
+  <p class="note">Facts only. The factory stamps HVAC / septic / garage templates from this JSON. You proof-check before anything goes live. No passwords.</p>
+  <form id="f">
+    <label>Public business name</label><input name="name" required>
+    <label>Trade template</label>
+    <select name="trade">
+      <option value="hvac">HVAC</option>
+      <option value="septic">Septic</option>
+      <option value="garage">Garage door</option>
+    </select>
+    <label>Phone (click-to-call)</label><input name="phone" required>
+    <label>Public email</label><input name="email" type="email">
+    <label>Address</label><input name="address">
+    <label>Hours</label><input name="hours" placeholder="Mon–Fri 8–5">
+    <label>Cities / ZIPs you cover (comma separated)</label><input name="cities" placeholder="Powell, Knoxville, Farragut">
+    <label>Services you do (comma separated)</label><textarea name="services"></textarea>
+    <label>Jobs you will not take</label><textarea name="wont"></textarea>
+    <label>License / insurance claims you can prove</label><textarea name="claims"></textarea>
+    <button type="submit">Generate JSON</button>
+  </form>
+  <h2>Output</h2>
+  <pre id="out">Submit to preview JSON. Copy this into the client folder. Do not invent missing fields.</pre>
+</main>
+<script>
+document.getElementById('f').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const split = (s) => String(s || '').split(',').map((x) => x.trim()).filter(Boolean);
+  const data = {
+    name: fd.get('name'),
+    trade: fd.get('trade'),
+    phone: fd.get('phone'),
+    email: fd.get('email'),
+    address: fd.get('address'),
+    hours: fd.get('hours'),
+    cities: split(fd.get('cities')),
+    services: split(fd.get('services')),
+    wont: split(fd.get('wont')),
+    claims: fd.get('claims'),
+    generatedAt: new Date().toISOString(),
+    status: 'draft-awaiting-customer-proof'
+  };
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+});
+</script>
+</body>
+</html>
