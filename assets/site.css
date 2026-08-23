@@ -1412,6 +1412,25 @@ footer,
   color: var(--yellow);
 }
 
+.pay-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
+  min-width: 0;
+}
+
+.pay-note {
+  max-width: 28rem;
+  color: var(--mist);
+  font-size: 0.9rem;
+}
+
+.offer .text-link {
+  color: var(--yellow);
+}
+
 .offer-side {
   display: flex;
   flex-direction: column;
