@@ -1,0 +1,6 @@
+# Staging on the live domain. Do not index until Josh approves publication.
+# Sitemap file exists as a package artifact; crawlers stay out until then.
+User-agent: *
+Disallow: /
+
+Sitemap: https://knoxsitefactory.com/sitemap.xml
