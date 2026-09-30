@@ -30,6 +30,8 @@ function validateInquiry(inquiry, requirements = {}) {
 
   if (requirements.requireWebsite && !isCompleteWebsite(website)) {
     errors.website = 'Enter a complete website address, including https://.';
+  } else if (!requirements.requireWebsite && website && !isCompleteWebsite(website)) {
+    errors.website = 'Enter a complete website address, including https://.';
   }
 
   return {

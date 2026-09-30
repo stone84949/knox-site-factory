@@ -6,39 +6,53 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Knox Site Factory — customer intake</title>
 <style>
-  :root { --bg:#14130f; --ink:#efe8d8; --muted:#9a917e; --line:#3a362c; --accent:#c45c26; --paper:#1c1b16; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.45 system-ui,sans-serif; }
+  :root { --bg:#f7f4ec; --ink:#1a1f23; --muted:#555c62; --line:#ddd6c4; --accent:#b53c0a; --paper:#ffffff; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 "Segoe UI",system-ui,sans-serif; }
   main { max-width:720px; padding:24px; }
-  h1 { font:600 24px/1.2 Georgia,serif; }
-  label { display:block; margin:12px 0 4px; color:var(--muted); font-size:13px; }
-  input, select, textarea { width:100%; background:var(--paper); color:var(--ink); border:1px solid var(--line); padding:8px; font:inherit; }
+  h1 { font:700 32px/1.1 system-ui,sans-serif; letter-spacing:-0.03em; }
+  label { display:block; margin:14px 0 4px; color:var(--ink); font-weight:600; font-size:14px; }
+  input, select, textarea { width:100%; background:var(--paper); color:var(--ink); border:2px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; box-sizing:border-box; }
   textarea { min-height:72px; }
-  button { margin-top:16px; background:var(--accent); color:#fff; border:0; padding:10px 16px; font:inherit; cursor:pointer; }
-  pre { background:var(--paper); border:1px solid var(--line); padding:12px; overflow:auto; white-space:pre-wrap; }
+  button { margin-top:18px; background:var(--accent); color:#fff; border:0; border-radius:999px; padding:14px 26px; font:inherit; font-weight:700; cursor:pointer; }
+  button:hover { background:#8f2e08; }
+  pre { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px; overflow:auto; white-space:pre-wrap; }
   .note { color:var(--muted); }
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--paper);
+    color: var(--ink);
+    transform: translateY(-120%);
+  }
+  .skip-link:focus { transform: translateY(0); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 </style>
 </head>
 <body>
-<a class="skip-link" href="#intake-main" style="position:absolute;left:-999px">Skip to the main content</a>
+<a class="skip-link" href="#intake-main">Skip to the main content</a>
 <main id="intake-main">
+  <p style="font:600 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">Knox Site Factory · internal tool</p>
   <h1>Customer intake</h1>
   <p class="note">Local factory tool. Not a public lead form. Facts only. The factory stamps HVAC / septic / garage templates from this JSON. You proof-check before anything goes live. No passwords.</p>
   <form id="f">
-    <label>Public business name</label><input name="name" required>
-    <label>Trade template</label>
-    <select name="trade">
+    <label for="name">Public business name</label><input id="name" name="name" autocomplete="organization" required>
+    <label for="trade">Trade template</label>
+    <select id="trade" name="trade">
       <option value="hvac">HVAC</option>
       <option value="septic">Septic</option>
       <option value="garage">Garage door</option>
     </select>
-    <label>Phone (click-to-call)</label><input name="phone" required>
-    <label>Public email</label><input name="email" type="email">
-    <label>Address</label><input name="address">
-    <label>Hours</label><input name="hours" placeholder="Mon–Fri 8–5">
-    <label>Cities / ZIPs you cover (comma separated)</label><input name="cities" placeholder="Powell, Knoxville, Farragut">
-    <label>Services you do (comma separated)</label><textarea name="services"></textarea>
-    <label>Jobs you will not take</label><textarea name="wont"></textarea>
-    <label>License / insurance claims you can prove</label><textarea name="claims"></textarea>
+    <label for="phone">Phone (click-to-call)</label><input id="phone" name="phone" autocomplete="tel" required>
+    <label for="email">Public email</label><input id="email" name="email" type="email" autocomplete="email">
+    <label for="address">Address</label><input id="address" name="address" autocomplete="street-address">
+    <label for="hours">Hours</label><input id="hours" name="hours" placeholder="Mon–Fri 8–5">
+    <label for="cities">Cities / ZIPs you cover (comma separated)</label><input id="cities" name="cities" placeholder="Powell, Knoxville, Farragut">
+    <label for="services">Services you do (comma separated)</label><textarea id="services" name="services"></textarea>
+    <label for="wont">Jobs you will not take</label><textarea id="wont" name="wont"></textarea>
+    <label for="claims">License / insurance claims you can prove</label><textarea id="claims" name="claims"></textarea>
     <button type="submit">Generate JSON</button>
   </form>
   <h2>Output</h2>

@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="That Knox Site Factory page was not found. The public site is still staging.">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="That Knox Site Factory page was not found. The public site is still staging.">
   <title>Page not found | Knox Site Factory</title>
-  <link rel="stylesheet" href="https://knoxsitefactory.com/assets/site.css">
+  <link rel="stylesheet" href="https://knoxsitefactory.com/assets/home.css">
+  <style>
+    .skip-link { position: fixed; top: 0; left: 1rem; z-index: 200; padding: 0.75rem 1rem; background: #1a1f23; color: #f7f4ec; transform: translateY(-120%); }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 3px solid #b53c0a; outline-offset: 3px; }
+  </style>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main">Skip to the main content</a>
 
   <div class="staging-bar" role="status">
-    <span>Staging</span>
-    <p>This site is not published. The inquiry form still does not send.</p>
+    <div class="wrap">
+      <span>Staging</span>
+      <p>This site is not published. The inquiry form still does not send.</p>
+    </div>
   </div>
 
-  <header class="site-header">
-    <a class="brand" href="https://knoxsitefactory.com/">
-      <span class="brand-mark" aria-hidden="true">KSF</span>
-      <span>Knox Site Factory</span>
-    </a>
+  <header class="simple-header">
+    <div class="wrap header-row">
+      <a class="brand" href="https://knoxsitefactory.com/">
+        <span class="brand-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><path d="M3 14l7 7"></path></svg></span>
+        <span class="brand-name">Knox<span>Site Factory</span></span>
+      </a>
+    </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="missing-title">
-      <div class="hero-copy">
+    <section class="message-hero" aria-labelledby="missing-title">
+      <div class="wrap">
+        <p class="eyebrow">Knox Site Factory</p>
         <h1 id="missing-title">That page is not here.</h1>
-        <p class="hero-lede">The public Knox Site Factory site is still staging. Use the home page for the offer and the three concept demos.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://knoxsitefactory.com/">Back to Knox Site Factory</a>
-        </div>
+        <p class="lede">The public Knox Site Factory site is still staging. Use the home page for the offer and the three concept demos.</p>
+        <a class="btn btn-primary" href="https://knoxsitefactory.com/">Back to Knox Site Factory</a>
       </div>
     </section>
   </main>
