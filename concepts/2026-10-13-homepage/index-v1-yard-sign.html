@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Knox Site Factory — Websites that make it easier to call you</title>
+<meta name="description" content="Knox Site Factory builds focused five-page websites for Knoxville-area home-service businesses: clear services, a local presence, and a phone-friendly quote path.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yellow:#FFD21F;
+  --yellow-deep:#F2C200;
+  --navy:#14213D;
+  --navy-2:#1C2D52;
+  --navy-ink:#0E1830;
+  --ink-soft:#3B4660;
+  --red:#D7261E;
+  --red-dark:#B01C15;
+  --coro:#F7F8F5;
+  --sky:#E6ECEE;
+  --steel:#8E979C;
+  --steel-hi:#C9D0D3;
+  --grass:#3A7329;
+  --grass-dark:#2C5E1F;
+  --peg:#8A5F3A;
+  --peg-hole:#5E3E22;
+  --hvac:#1E5AA8;
+  --septic:#2E6A3B;
+  --garage:#E3701B;
+  --sign:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --body:"Barlow", system-ui, sans-serif;
+  --gutter:clamp(16px, 4vw, 48px);
+  --flutes:repeating-linear-gradient(90deg, rgba(20,33,61,.035) 0 1px, transparent 1px 7px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-color:var(--navy) var(--yellow);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--sky);color:var(--navy);font:400 1.0625rem/1.6 var(--body);caret-color:var(--red);overflow-x:hidden}
+::selection{background:var(--yellow);color:var(--navy)}
+.on-yellow ::selection,.on-yellow::selection{background:var(--navy);color:var(--yellow)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--yellow)}
+::-webkit-scrollbar-thumb{background:var(--navy);border:3px solid var(--yellow);border-radius:8px}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.btn:focus-visible{outline-color:var(--navy)}
+.dark :focus-visible{outline-color:var(--yellow)}
+h1,h2,h3{font-family:var(--sign);line-height:.95;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h2{font-size:clamp(2.4rem, 5.2vw, 4.25rem);font-weight:800;text-transform:uppercase}
+h3{font-size:1.6rem;font-weight:700;text-transform:uppercase}
+p{margin:0}
+.wrap{width:min(1200px, 100% - 2*var(--gutter));margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--navy);color:var(--yellow);padding:10px 16px;z-index:10;border-radius:6px;font-weight:600}
+.skip:focus{top:12px}
+svg.i{width:1.1em;height:1.1em;flex:none;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Buttons — sign-shop vocabulary */
+.btn{display:inline-flex;align-items:center;gap:.55em;font:700 1.2rem/1 var(--sign);text-transform:uppercase;letter-spacing:.02em;text-decoration:none;padding:.95em 1.35em;border-radius:6px;border:0;cursor:pointer;transition:background-color .18s ease, transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s ease}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 6px 14px -6px rgba(176,28,21,.55)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-red:active{transform:translateY(1px)}
+.btn-line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2.5px var(--navy)}
+.btn-line:hover{background:var(--navy);color:var(--yellow)}
+
+/* Staging + nav */
+.staging{background:var(--navy-ink);color:#E9EDF5;font-size:.875rem;padding:.5rem var(--gutter);text-align:center}
+.staging strong{color:var(--yellow);font-weight:600}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:14px var(--gutter);max-width:1296px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:800 1.35rem/1 var(--sign);text-transform:uppercase;letter-spacing:.01em}
+.brand-mark{display:grid;place-items:center;width:44px;height:30px;background:var(--yellow);color:var(--navy);border-radius:3px;font-size:1.05rem;box-shadow:inset 0 0 0 2px var(--navy);position:relative}
+.brand-mark::after{content:"";position:absolute;left:12px;right:12px;bottom:-9px;height:9px;border-left:2px solid var(--steel);border-right:2px solid var(--steel)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;align-items:center}
+.nav ul a{font:600 1.08rem/1 var(--sign);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;padding:.4em 0;border-bottom:2.5px solid transparent}
+.nav ul a:hover{border-color:var(--red)}
+.nav .btn{font-size:1rem;padding:.7em 1em;white-space:nowrap}
+@media (max-width:420px){.nav .brand{font-size:1.1rem}.nav .btn{font-size:.92rem;padding:.65em .8em}}
+@media (max-width:820px){.nav ul li:not(:last-child){display:none}}
+
+/* HERO — the yard sign */
+.hero{position:relative;padding-top:clamp(8px, 2vw, 24px);background:
+  linear-gradient(180deg, var(--sky) 0 70%, #DCE4E3 100%);overflow:hidden}
+.yard{position:relative;width:min(1120px, 100% - 2*var(--gutter));margin:0 auto;z-index:1}
+.sign{position:relative;background:var(--flutes), var(--yellow);border-radius:6px;padding:0 0 clamp(20px,3vw,34px);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 -2px 0 rgba(20,33,61,.08) inset, 0 30px 50px -34px rgba(20,33,61,.55)}
+.sign-band{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--flutes), var(--navy);color:var(--yellow);
+  border-radius:6px 6px 0 0;padding:.7rem clamp(18px,3.4vw,44px);font:800 clamp(1.15rem,2.2vw,1.6rem)/1 var(--sign);text-transform:uppercase;letter-spacing:.04em}
+.sign-band span:last-child{font-weight:600;letter-spacing:.06em;font-size:.72em;color:#F6E7A6}
+.sign-body{padding:clamp(18px,3vw,36px) clamp(18px,3.4vw,44px) 0}
+.sign h1{font-size:clamp(2.6rem, 7.4vw, 6rem);font-weight:800;text-transform:uppercase;line-height:.9;max-width:21ch}
+.sign-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.2rem 2.4rem;align-items:end;margin-top:clamp(14px,2vw,24px)}
+.sign-row .sign-sub,.sign-row .sign-actions{margin-top:0}
+.sign-row .sign-actions{justify-content:flex-end}
+@media (max-width:1000px){.sign-row{grid-template-columns:1fr}.sign-row .sign-actions{justify-content:flex-start}}
+.sign h1 em{font-style:normal;color:var(--red)}
+.sign-sub{margin-top:clamp(14px,2vw,22px);font-size:clamp(1.05rem,1.5vw,1.3rem);font-weight:500;max-width:44ch;color:var(--navy-ink)}
+.sign-actions{display:flex;flex-wrap:wrap;gap:.8rem 1rem;margin-top:clamp(18px,2.4vw,28px);align-items:center}
+.sign-fine{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin-top:clamp(18px,2.4vw,26px);padding-top:.9rem;border-top:2px solid rgba(20,33,61,.18);font:600 1rem/1.2 var(--sign);text-transform:uppercase;letter-spacing:.05em}
+.sign-fine span{display:inline-flex;align-items:center;gap:.4em}
+.stakes{position:relative;height:clamp(64px,11vw,120px);margin:0 auto;width:min(560px,58%);z-index:-1}
+.stakes::before,.stakes::after{content:"";position:absolute;top:-6px;bottom:-30px;width:5px;border-radius:2px;background:linear-gradient(90deg,var(--steel) 0 40%,var(--steel-hi) 40% 60%,var(--steel) 60%)}
+.stakes::before{left:0}.stakes::after{right:0}
+.stakes i{position:absolute;left:0;right:0;bottom:22%;height:4px;background:linear-gradient(180deg,var(--steel-hi),var(--steel));border-radius:2px}
+.grass{position:relative;height:clamp(54px,7vw,80px);margin-top:-26px;z-index:2;
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'%3E%3Cpath d='M0 40 4 12 7 40ZM6 40 11 4 14 40ZM13 40 16 16 19 40ZM18 40 24 6 26 40ZM25 40 28 14 31 40ZM30 40 35 2 38 40ZM37 40 40 18 43 40ZM42 40 47 8 50 40ZM49 40 52 15 55 40ZM54 40 58 5 60 40Z' fill='%234C8A37'/%3E%3C/svg%3E") repeat-x 0 0/60px 40px,
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='36' viewBox='0 0 52 36'%3E%3Cpath d='M0 36 5 8 8 36ZM9 36 13 14 16 36ZM17 36 22 3 25 36ZM27 36 31 12 34 36ZM36 36 40 6 43 36ZM44 36 48 16 52 36Z' fill='%233A7329'/%3E%3C/svg%3E") repeat-x 21px 8px/52px 36px,
+   linear-gradient(180deg,var(--grass) 0,var(--grass-dark) 100%) 0 38px/100% 100% no-repeat}
+.grass::before{content:"";position:absolute;left:50%;top:4px;width:min(760px,80%);height:22px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(14,24,48,.32),transparent);z-index:-1}
+
+/* Trades + road (dark region) */
+.dark{background:var(--navy);color:#E9EDF5}
+.trades{padding:22px 0 0}
+.trades p{font:600 1.05rem/1.4 var(--sign);text-transform:uppercase;letter-spacing:.06em;color:#B9C3D8}
+.trades ul{list-style:none;margin:.5rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem .5rem}
+.trades li{font:700 1.15rem/1 var(--sign);text-transform:uppercase;letter-spacing:.04em;color:var(--navy);background:var(--yellow);padding:.45em .7em;border-radius:3px}
+
+.drive{padding:clamp(56px,8vw,104px) 0 clamp(56px,7vw,88px)}
+.drive-head{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 4rem;align-items:end}
+.drive h2{color:#fff}
+.drive h2 span{color:var(--yellow)}
+.drive-head p{color:#C9D2E4;max-width:46ch;font-size:1.1rem}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem 2rem;margin-top:clamp(28px,4vw,44px)}
+.limit{display:grid;place-items:center;width:104px;height:128px;background:#fff;color:var(--navy-ink);border-radius:8px;box-shadow:inset 0 0 0 4px #fff, inset 0 0 0 7px var(--navy-ink);text-align:center;flex:none}
+.limit small{display:block;font:700 .95rem/1 var(--sign);letter-spacing:.06em;margin-top:14px}
+.limit output{display:block;font:800 3.6rem/1 var(--sign);font-variant-numeric:tabular-nums;margin-bottom:10px}
+.speed{flex:1 1 320px;max-width:560px}
+.speed label{display:block;font:700 1.15rem/1 var(--sign);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.8rem}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--yellow) 0 var(--p,0%),#33466E var(--p,0%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-10px;border-radius:50%;background:#fff;border:5px solid var(--yellow);box-shadow:0 3px 8px rgba(0,0,0,.35)}
+input[type=range]::-moz-range-track{height:10px;border-radius:5px;background:#33466E}
+input[type=range]::-moz-range-progress{height:10px;border-radius:5px;background:var(--yellow)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--yellow)}
+.ticks{display:flex;justify-content:space-between;font:600 .9rem/1 var(--sign);color:#9AA7C2;margin-top:.3rem;font-variant-numeric:tabular-nums}
+.drive .btn-line{color:var(--yellow);box-shadow:inset 0 0 0 2.5px var(--yellow)}
+.drive .btn-line:hover{background:var(--yellow);color:var(--navy)}
+.road{position:relative;margin-top:clamp(28px,4vw,44px);padding:clamp(18px,3vw,34px) clamp(14px,2.4vw,30px);background:#101A31;border-radius:10px;overflow:hidden}
+.road::before{content:"";position:absolute;left:0;right:0;top:50%;height:6px;margin-top:-3px;background:repeating-linear-gradient(90deg,var(--yellow) 0 70px,transparent 70px 140px);background-position-x:var(--dash,0px);opacity:.85}
+.panels{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,40px)}
+.panel figure{margin:0}
+.panel figcaption{display:flex;justify-content:space-between;gap:1rem;margin-top:.7rem;font:600 1rem/1.25 var(--sign);text-transform:uppercase;letter-spacing:.04em;color:#C9D2E4}
+.panel figcaption b{color:#fff;font-weight:700}
+.mini{container-type:inline-size;aspect-ratio:16/10.5;border-radius:6px;overflow:hidden;box-shadow:0 18px 30px -18px rgba(0,0,0,.7)}
+.mini-in{width:100%;height:100%;will-change:filter}
+
+/* "Before" pattern — deliberately dated, system fonts on purpose */
+.old{background:#E8E4D8;color:#222;font-family:"Times New Roman",Times,serif;display:flex;flex-direction:column}
+.old .o-top{background:linear-gradient(#5874A8,#2D4A80);color:#FFFBD0;padding:2cqw 2.4cqw;font:bold 4.2cqw/1 "Times New Roman",serif;letter-spacing:.06em;text-shadow:1px 1px 0 #000;text-align:center}
+.old .o-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.4cqw 1.3cqw;background:#C6C0AC;padding:1cqw;font:1.75cqw/1.2 Verdana,sans-serif;color:#0000CC;text-decoration:underline}
+.old .o-body{display:grid;grid-template-columns:30% 1fr;gap:2cqw;padding:2cqw;flex:1}
+.old .o-side{background:#D8D2BE;border:1px solid #999;padding:1.4cqw;font:1.6cqw/1.35 Verdana,sans-serif}
+.old .o-side b{display:block;color:#900;margin-bottom:.6cqw}
+.old h4{margin:0 0 1cqw;font:italic bold 3.3cqw/1.1 "Times New Roman",serif;color:#7A0000}
+.old .o-p{font:1.7cqw/1.45 Verdana,sans-serif;margin-bottom:1.2cqw}
+.old .o-foot{display:flex;justify-content:space-between;padding:1cqw 2cqw;background:#C6C0AC;font:1.5cqw/1.2 Verdana,sans-serif}
+.old .o-count{font-family:"Courier New",monospace;background:#000;color:#3F3;padding:0 .8cqw}
+
+/* "After" — built like a sign */
+.new{background:var(--flutes),#fff;color:var(--navy);font-family:var(--body);display:flex;flex-direction:column}
+.new .n-top{display:flex;justify-content:space-between;align-items:center;background:var(--hvac);color:#fff;padding:2.4cqw 3.6cqw;font:800 4.4cqw/1 var(--sign);text-transform:uppercase;letter-spacing:.02em}
+.new .n-top span{font:700 2.4cqw/1 var(--sign);letter-spacing:.06em;opacity:.9}
+.new .n-body{padding:4cqw 3.6cqw;display:flex;flex-direction:column;gap:2.2cqw;flex:1;justify-content:center}
+.new .n-what{font:800 6.4cqw/.95 var(--sign);text-transform:uppercase}
+.new .n-phone{display:flex;align-items:center;gap:2cqw;font:800 12.6cqw/1 var(--sign);color:var(--red);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.new .n-phone svg{width:9cqw;height:9cqw;stroke:var(--red)}
+.new .n-acts{display:flex;gap:2cqw}
+.new .n-acts span{font:700 3cqw/1 var(--sign);text-transform:uppercase;padding:2cqw 3cqw;border-radius:1cqw;background:var(--red);color:#fff}
+.new .n-acts span+span{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 .5cqw var(--navy)}
+.caption{margin-top:1.4rem;min-height:3.4em;font:600 clamp(1.15rem,1.7vw,1.4rem)/1.3 var(--sign);color:#fff;letter-spacing:.01em;max-width:70ch}
+.caption mark{background:var(--yellow);color:var(--navy);padding:0 .25em;border-radius:2px}
+.fineprint{margin-top:.6rem;font-size:.9rem;color:#9AA7C2}
+
+/* DEMOS — three signs in a lawn */
+.lawn{background:var(--flutes),var(--coro);position:relative}
+.demos{padding:clamp(64px,8vw,110px) 0 0}
+.section-intro{display:grid;grid-template-columns:1fr 1fr;gap:1rem 4rem;align-items:end}
+.section-intro p{max-width:48ch;color:var(--ink-soft);font-size:1.1rem}
+.signs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);margin-top:clamp(36px,5vw,60px);align-items:end}
+.demo{display:flex;flex-direction:column}
+.demo-sign{border-radius:5px;overflow:hidden;box-shadow:0 22px 36px -26px rgba(20,33,61,.6);display:flex;flex-direction:column;min-height:330px}
+.demo-sign .band{padding:.6rem 1.2rem;font:800 1.35rem/1 var(--sign);text-transform:uppercase;letter-spacing:.05em}
+.demo-sign .face{flex:1;padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.8rem;background:var(--flutes)}
+.demo-sign h3{font-size:clamp(2rem,3.3vw,2.75rem);font-weight:800}
+.demo-sign p{font-size:1rem;line-height:1.45}
+.demo-sign .go{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.demo-sign .go a{font:700 1.08rem/1 var(--sign);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;display:inline-flex;align-items:center;gap:.4em;padding:.7em .9em;border-radius:4px}
+.demo-sign .tag{font:600 .82rem/1.1 var(--sign);text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+.d-hvac .band{background:var(--hvac);color:#fff}.d-hvac .face{background-color:#fff;color:var(--navy)}.d-hvac .go a{background:var(--hvac);color:#fff}
+.d-septic .band{background:#fff;color:var(--septic)}.d-septic .face{background-color:var(--septic);color:#fff}.d-septic .go a{background:#fff;color:var(--septic)}
+.d-garage .band{background:var(--navy);color:var(--garage)}.d-garage .face{background-color:var(--garage);color:var(--navy-ink)}.d-garage .go a{background:var(--navy);color:#fff}
+.demo-sign .go a:hover{filter:brightness(1.12)}
+.demo .legs{height:70px;position:relative;width:56%;margin:0 auto -24px}
+.demo .legs::before,.demo .legs::after{content:"";position:absolute;top:0;bottom:0;width:4px;background:linear-gradient(90deg,var(--steel) 0 40%,var(--steel-hi) 40% 60%,var(--steel) 60%)}
+.demo .legs::before{left:0}.demo .legs::after{right:0}
+.lawn .grass{margin-top:0}
+
+/* PROCESS — yellow field */
+.field{background:var(--flutes),var(--yellow);color:var(--navy)}
+.process{padding:clamp(64px,8vw,110px) 0}
+.process-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.5rem 4rem;align-items:start}
+.process-grid > div > p{margin-top:1.1rem;font-size:1.15rem;max-width:40ch;color:var(--navy-ink)}
+.ticket{background:#fff;border-radius:6px;box-shadow:0 24px 40px -30px rgba(20,33,61,.6);position:relative;overflow:hidden}
+.ticket::before{content:"";display:block;height:14px;background:radial-gradient(circle at 7px 0,var(--yellow) 5px,transparent 5.5px) 0 0/14px 14px repeat-x}
+.ticket-head{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 1.4rem 1rem;border-bottom:2px solid var(--navy);font:700 1.15rem/1 var(--sign);text-transform:uppercase;letter-spacing:.05em}
+.ticket-head span:last-child{color:var(--ink-soft);font-weight:600}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:auto 7.5rem 1fr;gap:1rem;align-items:start;padding:1.15rem 1.4rem;border-bottom:1px dashed #B8BFCC}
+.steps li:last-child{border-bottom:0}
+.box{width:26px;height:26px;border:2.5px solid var(--navy);border-radius:3px;display:grid;place-items:center;margin-top:2px}
+.box svg{width:18px;height:18px;stroke:var(--red);stroke-width:3.2}
+.steps h3{font-size:1.75rem;font-weight:800}
+.steps p{color:var(--ink-soft)}
+.approve{display:flex;gap:.8rem;align-items:flex-start;margin:1.4rem 1.4rem 1.4rem;padding:1rem 1.1rem;background:#FFF6CC;border-radius:4px;color:var(--navy-ink)}
+.approve svg{margin-top:3px}
+.promises{display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;margin-top:2rem;list-style:none;padding:0;font:700 1.2rem/1.2 var(--sign);text-transform:uppercase;letter-spacing:.03em}
+.promises li{display:flex;align-items:center;gap:.5em}
+.promises svg{stroke:var(--red);stroke-width:3}
+
+/* PRICING — pegboard */
+.peg{background:
+  radial-gradient(circle,rgba(70,44,22,.55) 2.2px,transparent 2.8px) 0 0/28px 28px,
+  linear-gradient(180deg,#936641,var(--peg));color:#fff}
+.pricing{padding:clamp(64px,8vw,110px) 0}
+.pricing .section-intro p{color:#F3E5D3}
+.boards{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,64px);align-items:start}
+.price{position:relative;background:var(--flutes),var(--yellow);color:var(--navy);border-radius:6px;padding:2.2rem clamp(20px,3vw,36px) 2rem;box-shadow:0 26px 40px -24px rgba(30,15,0,.7)}
+.price::before,.price::after{content:"";position:absolute;top:-16px;width:14px;height:28px;border:4px solid var(--steel-hi);border-bottom:0;border-radius:10px 10px 0 0}
+.price::before{left:22%}.price::after{right:22%}
+.price h3{font-size:1.9rem}
+.amount{display:flex;align-items:baseline;gap:.4rem;margin-top:.4rem;font:800 clamp(4.2rem,8vw,6rem)/.9 var(--sign);color:var(--red);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.amount small{font:700 1.4rem/1 var(--sign);color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
+.split{margin-top:.8rem;font-weight:600;font-size:1.08rem}
+.incl{list-style:none;margin:1.3rem 0 0;padding:1.1rem 0 0;border-top:2px solid rgba(20,33,61,.2);display:grid;gap:.55rem}
+.incl li{display:flex;gap:.6rem;align-items:flex-start;line-height:1.4}
+.incl svg{margin-top:3px;stroke:var(--navy);stroke-width:3}
+.price.white{background:var(--flutes),#fff}
+.side{display:grid;gap:clamp(28px,3vw,40px)}
+.founding{background:#fff;color:var(--navy);border-radius:6px;padding:1.6rem clamp(20px,3vw,32px);box-shadow:0 26px 40px -24px rgba(30,15,0,.7);position:relative}
+.founding .amount{font-size:clamp(3.2rem,5.4vw,4.4rem)}
+.founding p{margin-top:.6rem}
+.pricing .after{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center}
+.pricing .after p{color:#F3E5D3;max-width:56ch}
+
+/* OWN + FAQ */
+.plain{background:var(--flutes),var(--coro)}
+.own{padding:clamp(64px,8vw,110px) 0}
+.own-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem 5rem;align-items:start}
+.owns{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.1rem}
+.owns li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;padding:.9rem 0;border-bottom:2px solid #DDE1E6;align-items:baseline}
+.owns b{font:800 1.5rem/1 var(--sign);text-transform:uppercase;color:var(--navy)}
+.owns span{color:var(--ink-soft)}
+.owns svg{stroke:var(--red);stroke-width:3;position:relative;top:3px}
+.faq h3{font-size:2rem;margin-bottom:.8rem}
+details{border-top:2px solid var(--navy)}
+details:last-of-type{border-bottom:2px solid var(--navy)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 0;font:700 1.4rem/1.15 var(--sign);text-transform:uppercase;letter-spacing:.01em}
+summary::-webkit-details-marker{display:none}
+summary svg{transition:transform .25s cubic-bezier(.16,1,.3,1);stroke-width:3}
+details[open] summary svg{transform:rotate(45deg)}
+summary:hover{color:var(--red)}
+details p{padding:0 0 1.2rem;color:var(--ink-soft);max-width:62ch}
+
+/* FORM */
+.review{padding:clamp(64px,8vw,110px) 0}
+.review-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:2.5rem 4rem;align-items:start}
+.review h2{color:#fff}
+.review h2 span{color:var(--yellow)}
+.review-grid > div > p{margin-top:1rem;color:#C9D2E4;max-width:40ch;font-size:1.1rem}
+.review-grid > div > p a{color:var(--yellow)}
+.form-sign{background:var(--flutes),var(--yellow);color:var(--navy);border-radius:6px;padding:clamp(20px,3vw,36px);box-shadow:0 30px 50px -30px rgba(0,0,0,.8)}
+.form-sign ::selection{background:var(--navy);color:var(--yellow)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem}
+.f{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.f label{font:700 1.12rem/1.1 var(--sign);text-transform:uppercase;letter-spacing:.04em}
+.f label small{font:500 .95rem/1 var(--body);text-transform:none;letter-spacing:0;color:var(--navy-ink)}
+.f input,.f select,.f textarea{font:500 1.05rem/1.3 var(--body);color:var(--navy);background:#fff;border:2.5px solid var(--navy);border-radius:5px;padding:.75em .85em;width:100%}
+.f textarea{min-height:110px;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:#5D677C}
+.f input:focus,.f select:focus,.f textarea:focus{outline:3px solid var(--red);outline-offset:1px}
+.f [aria-invalid="true"]{border-color:var(--red);background:#FFF1EF}
+.err{font-weight:600;color:#9E150F;font-size:.95rem;min-height:0}
+.err:empty{display:none}
+.form-foot{display:flex;flex-wrap:wrap;gap:1rem 1.4rem;align-items:center;margin-top:.4rem}
+.form-foot p{font-size:.95rem;max-width:44ch;color:var(--navy-ink)}
+.status{margin-top:1rem;padding:1rem 1.1rem;border-radius:5px;background:var(--navy);color:#fff;font-weight:500}
+.status a{color:var(--yellow)}
+.status[hidden]{display:none}
+
+footer{background:var(--navy-ink);color:#B9C3D8;padding:40px 0 48px;font-size:.98rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem 2rem;align-items:flex-start}
+.foot .brand{color:#fff}
+footer a{color:var(--yellow)}
+footer p+p{margin-top:.35rem}
+
+@media (max-width:900px){
+  .drive-head,.section-intro,.process-grid,.own-grid,.review-grid,.boards{grid-template-columns:1fr}
+  .signs{grid-template-columns:1fr;gap:0}
+  .demo + .demo{margin-top:8px}
+  .demo .legs{height:40px;margin-bottom:0}
+  .demo:last-child .legs{height:56px;margin-bottom:-24px}
+  .demo-sign{min-height:0}
+}
+@media (max-width:640px){
+  .panels{grid-template-columns:1fr}
+  .road::before{top:50%}
+  .row{grid-template-columns:1fr}
+  .steps li{grid-template-columns:auto 1fr}
+  .steps li p{grid-column:2}
+  .sign-band span:last-child{display:none}
+  .stakes{width:62%}
+  .limit{width:88px;height:108px}
+  .limit output{font-size:3rem}
+  .btn{font-size:1.1rem}
+  .sign-actions .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="smear" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="smearBlur" stdDeviation="0 0" edgeMode="duplicate"/>
+    </filter>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16v-3l2-5h14l2 5v3M3 16h18M6.5 19.5a1.5 1.5 0 1 0 0-.01M17.5 19.5a1.5 1.5 0 1 0 0-.01M5 13h14"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l2 2M15 8l2 2"/></symbol>
+  </defs>
+</svg>
+
+<div class="staging" role="note"><strong>Staging concept.</strong> This page is in early launch: the site-review form checks your answers but isn't connected to an inbox yet.</div>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Knox Site Factory, home"><span class="brand-mark" aria-hidden="true">KSF</span>Knox Site Factory</a>
+    <ul>
+      <li><a href="#demos">Demo work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a class="btn btn-red" href="#review">Request a site review</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="yard">
+      <div class="sign on-yellow">
+        <div class="sign-band"><span>Knox Site Factory</span><span>Home-service websites · Knoxville, TN</span></div>
+        <div class="sign-body">
+          <h1 id="hero-title">A website that makes it easier to <em>call you.</em></h1>
+          <div class="sign-row">
+          <p class="sign-sub">Clear services, a local presence, and a phone-friendly quote path for Knoxville-area home-service businesses.</p>
+          <div class="sign-actions">
+            <a class="btn btn-red" href="#review">Request a 15-minute site review <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-line" href="#demos">See the three concept sites</a>
+          </div>
+          </div>
+          <div class="sign-fine" aria-label="Commitments">
+            <span><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No ranking promises</span>
+            <span><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No unclear ownership</span>
+            <span><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No automatic filler</span>
+          </div>
+        </div>
+      </div>
+      <div class="stakes" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="grass" aria-hidden="true"></div>
+  </section>
+
+  <div class="dark">
+    <div class="wrap trades">
+      <p>Built for the trades people call when something breaks</p>
+      <ul aria-label="Trades served">
+        <li>HVAC</li><li>Septic</li><li>Garage door</li><li>Plumbing</li><li>Electrical</li><li>Roofing</li><li>Landscaping</li><li>Tree service</li><li>Painting</li><li>Fencing</li>
+      </ul>
+    </div>
+
+    <section class="drive" aria-labelledby="drive-title">
+      <div class="wrap">
+        <div class="drive-head">
+          <h2 id="drive-title">The drive-by <span>test</span></h2>
+          <p>A good yard sign works at 35 mph: one name, one job, one number. Your customers read your website the same way: on a phone, in a hurry, with something leaking. Turn up the speed and see what's left.</p>
+        </div>
+
+        <div class="controls">
+          <div class="limit" aria-hidden="true"><div><small>SPEED<br>LIMIT</small><output id="mphSign">0</output></div></div>
+          <div class="speed">
+            <label for="mph">Drive past at <span id="mphText">0</span> mph</label>
+            <input id="mph" type="range" min="0" max="45" step="5" value="0" aria-describedby="caption" aria-valuetext="0 miles per hour">
+            <div class="ticks" aria-hidden="true"><span>0</span><span>15</span><span>25</span><span>35</span><span>45</span></div>
+          </div>
+          <button class="btn btn-line" id="drivePast" type="button"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg>Drive past at 35</button>
+        </div>
+
+        <div class="road">
+          <div class="panels">
+            <div class="panel">
+              <figure>
+                <div class="mini" role="img" aria-label="A cluttered, dated home-service homepage with small text and the phone number buried in a paragraph.">
+                  <div class="mini-in old" aria-hidden="true">
+                    <div class="o-top">~ BOB'S HEATING &amp; AIR ~</div>
+                    <div class="o-nav"><span>Home</span><span>About Us</span><span>Our History</span><span>Services</span><span>Specials!!</span><span>Coupons</span><span>Links</span><span>Guestbook</span><span>Contact</span></div>
+                    <div class="o-body">
+                      <div class="o-side"><b>NEWS &amp; UPDATES</b>Ask about our seasonal specials and maintenance agreements. Serving the area with pride. Please see our coupons page for current offers and details.</div>
+                      <div>
+                        <h4>Welcome to our Website!</h4>
+                        <p class="o-p">We are a full service heating and cooling company providing installation, repair, and maintenance for residential and light commercial customers. Our technicians are trained on most major brands.</p>
+                        <p class="o-p">For service please call our office at 865-555-0142 during normal business hours or fill out the form on our Contact page and someone will get back to you.</p>
+                      </div>
+                    </div>
+                    <div class="o-foot"><span>Best viewed in 1024x768</span><span>Visitors: <span class="o-count">004217</span></span></div>
+                  </div>
+                </div>
+                <figcaption><b>A common pattern</b><span>Not a real business</span></figcaption>
+              </figure>
+            </div>
+            <div class="panel">
+              <figure>
+                <div class="mini" role="img" aria-label="A clear home-service homepage: Valley Air Co., AC repair and installs, and a large phone number with Call now and Get a quote buttons.">
+                  <div class="mini-in new" aria-hidden="true">
+                    <div class="n-top">Valley Air Co.<span>Knox County</span></div>
+                    <div class="n-body">
+                      <div class="n-what">AC repair &amp; installs</div>
+                      <div class="n-phone"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>865-555-0100</div>
+                      <div class="n-acts"><span>Call now</span><span>Get a quote</span></div>
+                    </div>
+                  </div>
+                </div>
+                <figcaption><b>Built like a sign</b><span>Sample: fictional company and number</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <p class="caption" id="caption" aria-live="polite">Parked. Lean in close and you can read both pages.</p>
+        <p class="fineprint">A simple blur simulation for illustration, not a lab test. Both pages are made up; 555 numbers are fictional.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="lawn" id="demos" aria-labelledby="demos-title">
+    <div class="wrap demos">
+      <div class="section-intro">
+        <h2 id="demos-title">Three signs. Three working sites.</h2>
+        <p>Before any sales talk, here's the standard. Each concept is a complete, clickable site built around the one question that trade's customers actually ask. All three are fictional concepts, not client work.</p>
+      </div>
+      <div class="signs">
+        <article class="demo d-hvac">
+          <div class="demo-sign">
+            <div class="band">HVAC</div>
+            <div class="face">
+              <h3>Cool call. Clear plan.</h3>
+              <p>Call conversion and service triage: the phone number stays in reach while visitors sort a repair from a tune-up.</p>
+              <div class="go"><a href="demos/hvac/index.html">Open the HVAC concept <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="tag">Fictional concept</span></div>
+            </div>
+          </div>
+          <div class="legs" aria-hidden="true"></div>
+        </article>
+        <article class="demo d-septic">
+          <div class="demo-sign">
+            <div class="band">Septic</div>
+            <div class="face">
+              <h3>Know your system.</h3>
+              <p>Quote qualification and symptom-based routing, so the request that arrives already says what's going on.</p>
+              <div class="go"><a href="demos/septic/index.html">Open the septic concept <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="tag">Fictional concept</span></div>
+            </div>
+          </div>
+          <div class="legs" aria-hidden="true"></div>
+        </article>
+        <article class="demo d-garage">
+          <div class="demo-sign">
+            <div class="band">Garage door</div>
+            <div class="face">
+              <h3>Doors that behave.</h3>
+              <p>Repair-or-replace guidance with an issue selector that points each visitor to the right next step.</p>
+              <div class="go"><a href="demos/garage/index.html">Open the garage concept <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="tag">Fictional concept</span></div>
+            </div>
+          </div>
+          <div class="legs" aria-hidden="true"></div>
+        </article>
+      </div>
+    </div>
+    <div class="grass" aria-hidden="true"></div>
+  </section>
+
+  <section class="field on-yellow" id="process" aria-labelledby="process-title">
+    <div class="wrap process">
+      <div class="process-grid">
+        <div>
+          <h2 id="process-title">One job ticket. Three checks.</h2>
+          <p>No mystery phases. You see a working site in your browser early, and nothing launches until it has been checked line by line.</p>
+          <ul class="promises" aria-label="Commitments">
+            <li><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No ranking promises</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No unclear ownership</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-x"/></svg>No automatic filler</li>
+          </ul>
+        </div>
+        <div class="ticket">
+          <div class="ticket-head"><span>Work order: Website Launch</span><span>Knoxville area</span></div>
+          <ol class="steps">
+            <li><span class="box" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><h3>Fit</h3><p>A short call covers your services, area, customer questions, existing assets, and what a good inquiry looks like.</p></li>
+            <li><span class="box" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><h3>Build</h3><p>The first review happens in a working browser site, not a picture of one.</p></li>
+            <li><span class="box" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><h3>Check</h3><p>Claims, forms, links, mobile layout, accessibility basics, metadata, and ownership are verified before launch.</p></li>
+          </ol>
+          <div class="approve"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg><p><strong>You approve the facts.</strong> Service details, credentials, offers, and testimonials need your review before anything goes live.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="peg" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap pricing">
+      <div class="section-intro">
+        <h2 id="pricing-title">Priced like a hardware store: posted, plain, no haggling.</h2>
+        <p>One website package, one optional care plan. You keep the domain, the content, and every account either way.</p>
+      </div>
+      <div class="boards">
+        <article class="price on-yellow" aria-labelledby="p-launch">
+          <h3 id="p-launch">Website Launch</h3>
+          <div class="amount">$1,500 <small>one time</small></div>
+          <p class="split">$750 starts the project. The other $750 is due after you approve the site, before launch.</p>
+          <ul class="incl">
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Five pages: Home, Services, About, Service Area, Contact/Quote</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Mobile-first design and plain-language copy editing</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Click-to-call and quote-request paths</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Basic technical search setup: sitemap, titles, indexability checks</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Analytics and Search Console in accounts you own</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Accessibility and performance review</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Two revision rounds and 30 days of bug support</li>
+          </ul>
+        </article>
+        <div class="side">
+          <article class="price white" aria-labelledby="p-care">
+            <h3 id="p-care">Care Plan <span style="font-weight:600;font-size:.7em;letter-spacing:.04em">· optional</span></h3>
+            <div class="amount">$99 <small>/ month</small></div>
+            <p class="split">Month to month. Cancel and you still own everything.</p>
+            <ul class="incl">
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Hosting, SSL, backups, monitoring, and security updates</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Up to 30 minutes of small content edits each month</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>A quarterly website-health review</li>
+            </ul>
+          </article>
+          <article class="founding" aria-labelledby="p-found">
+            <h3 id="p-found">Founding clients</h3>
+            <div class="amount">$1,000</div>
+            <p>The launch price for the first three suitable businesses that give written permission for a truthful case study after delivery. The discount isn't tied to a positive testimonial.</p>
+          </article>
+        </div>
+      </div>
+      <div class="after">
+        <a class="btn btn-red" href="#review">Request a 15-minute site review <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p>Ongoing SEO isn't part of the launch. New pages, campaigns, photography, and large revisions are separate work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain" aria-labelledby="own-title">
+    <div class="wrap own">
+      <div class="own-grid">
+        <div>
+          <h2 id="own-title">Your sign. Your yard.</h2>
+          <ul class="owns">
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><div><b>Domain</b><br><span>Registered to you, not to us.</span></div></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><div><b>Content</b><br><span>The approved words and pages are yours.</span></div></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><div><b>Analytics</b><br><span>Set up in accounts you control.</span></div></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><div><b>Business profiles</b><br><span>Stay in your name.</span></div></li>
+          </ul>
+        </div>
+        <div class="faq">
+          <h3>Plain answers</h3>
+          <details>
+            <summary>Who owns the site?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>You own the domain, the approved content, the analytics, and your business accounts. Some third-party media, like licensed stock photos, may stay licensed rather than owned.</p>
+          </details>
+          <details>
+            <summary>Is ongoing SEO included?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>No. The launch includes a technical foundation: crawlable pages, titles and descriptions, business data, a sitemap, and indexability checks. Nobody here will promise you a ranking.</p>
+          </details>
+          <details>
+            <summary>What does the care plan cover?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Hosting, backups, monitoring, security updates, up to 30 minutes of small edits a month, and a quarterly health review. New pages, campaigns, photography, and large revisions are separate work.</p>
+          </details>
+          <details>
+            <summary>Are the demo sites real businesses?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>No. All three demos are labeled concepts. They carry no real testimonials, ratings, licenses, customer counts, or results.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="review" aria-labelledby="review-title">
+    <div class="wrap review">
+      <div class="review-grid">
+        <div>
+          <h2 id="review-title">Request a 15-minute <span>site review</span></h2>
+          <p>Tell me what your website should help a customer do. I'll look at what you have now and tell you plainly whether a launch makes sense.</p>
+          <p>Prefer email? <a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a></p>
+        </div>
+        <form class="form-sign" id="reviewForm" novalidate>
+          <div class="row">
+            <div class="f">
+              <label for="fname">Name</label>
+              <input id="fname" name="name" autocomplete="name" required aria-describedby="fname-err">
+              <span class="err" id="fname-err"></span>
+            </div>
+            <div class="f">
+              <label for="femail">Email</label>
+              <input id="femail" name="email" type="email" autocomplete="email" required aria-describedby="femail-err">
+              <span class="err" id="femail-err"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="f">
+              <label for="fsite">Current website <small>(optional)</small></label>
+              <input id="fsite" name="website" type="url" inputmode="url" placeholder="https://" aria-describedby="fsite-err">
+              <span class="err" id="fsite-err" aria-live="polite"></span>
+            </div>
+            <div class="f">
+              <label for="ftype">Business type</label>
+              <select id="ftype" name="type" required aria-describedby="ftype-err">
+                <option value="">Choose one</option>
+                <option>HVAC or mechanical</option>
+                <option>Septic or excavation</option>
+                <option>Garage door</option>
+                <option>Another home service</option>
+              </select>
+              <span class="err" id="ftype-err"></span>
+            </div>
+          </div>
+          <div class="f">
+            <label for="fgoal">What should the website help a customer do?</label>
+            <textarea id="fgoal" name="goal" required placeholder="Example: call us for a same-week repair, or ask for a replacement quote" aria-describedby="fgoal-err"></textarea>
+            <span class="err" id="fgoal-err"></span>
+          </div>
+          <div class="form-foot">
+            <button class="btn btn-red" type="submit">Check my request <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p>This form isn't connected to an inbox yet. It checks your answers here; nothing leaves your browser.</p>
+          </div>
+          <div class="status" id="formStatus" role="status" hidden></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">KSF</span>Knox Site Factory</a>
+      <p style="margin-top:1rem">Built by Josh Stone in Powell, Tennessee.</p>
+      <p><a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a></p>
+    </div>
+    <div style="max-width:46ch">
+      <p>Staging concept for the Knoxville area. No public business claims or client results are represented on this page.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const range = document.getElementById('mph');
+  const sign = document.getElementById('mphSign');
+  const text = document.getElementById('mphText');
+  const caption = document.getElementById('caption');
+  const blur = document.getElementById('smearBlur');
+  const minis = [...document.querySelectorAll('.mini-in')];
+  const road = document.querySelector('.road');
+  const btn = document.getElementById('drivePast');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let mph = 0, band = -1, dash = 0, last = 0, raf = 0, ramp = 0;
+
+  const lines = [
+    'Parked. Lean in close and you can read both pages.',
+    'Rolling. The small print on the left is already going soft.',
+    'Getting there. The left page is a blur; the right still shows the name and the number.',
+    n => `At ${n} mph the left page is a smear. Still readable on the right: <mark>Valley Air Co.</mark>, <mark>AC repair</mark>, and <mark>865-555-0100</mark>.`
+  ];
+  const bandOf = n => n === 0 ? 0 : n < 15 ? 1 : n < 30 ? 2 : 3;
+
+  function apply(n) {
+    mph = n;
+    range.value = Math.round(n / 5) * 5;
+    const shown = Math.round(n);
+    sign.textContent = shown; text.textContent = shown;
+    range.setAttribute('aria-valuetext', shown + ' miles per hour');
+    range.style.setProperty('--p', (n / 45 * 100) + '%');
+    const scale = (minis[0].getBoundingClientRect().width || 560) / 560;
+    blur.setAttribute('stdDeviation', `${(n * 0.13 * scale).toFixed(2)} ${(n * 0.012 * scale).toFixed(2)}`);
+    minis.forEach(m => m.style.filter = n > 0 ? 'url(#smear)' : 'none');
+    const b = bandOf(shown);
+    if (b !== band || b === 3) {
+      const l = lines[b];
+      const html = typeof l === 'function' ? l(shown) : l;
+      if (caption.innerHTML !== html) caption.innerHTML = html;
+      band = b;
+    }
+    if (!reduce && n > 0 && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+  }
+  function tick(t) {
+    const dt = (t - last) / 1000; last = t;
+    dash -= mph * 26 * dt;
+    road.style.setProperty('--dash', (dash % 140) + 'px');
+    raf = mph > 0 ? requestAnimationFrame(tick) : 0;
+  }
+  range.addEventListener('input', () => { cancelAnimationFrame(ramp); apply(+range.value); });
+  btn.addEventListener('click', () => {
+    cancelAnimationFrame(ramp);
+    if (reduce) return apply(35);
+    const start = performance.now(), from = mph, to = 35, dur = 2200;
+    const step = t => {
+      const k = Math.min(1, (t - start) / dur), e = 1 - Math.pow(2, -10 * k);
+      apply(from + (to - from) * (k === 1 ? 1 : e));
+      if (k < 1) ramp = requestAnimationFrame(step);
+    };
+    ramp = requestAnimationFrame(step);
+  });
+  addEventListener('resize', () => apply(mph));
+  const q = new URLSearchParams(location.search).get('mph');
+  apply(q !== null ? Math.max(0, Math.min(45, +q || 0)) : 0);
+
+  // Site-review form: validates locally, sends nothing.
+  const form = document.getElementById('reviewForm');
+  const status = document.getElementById('formStatus');
+  const rules = {
+    fname: v => v.trim() ? '' : 'Add your name so I know who to reply to.',
+    femail: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Enter an email like name@yourbusiness.com.',
+    fsite: v => { if (!v.trim()) return ''; try { const u = new URL(v.trim()); return /^https?:$/.test(u.protocol) && u.hostname.includes('.') ? '' : 'That address doesn’t look right. Try https://yourbusiness.com, or leave it blank.'; } catch { return 'That address doesn’t look right. Try https://yourbusiness.com, or leave it blank.'; } },
+    ftype: v => v ? '' : 'Pick the closest business type.',
+    fgoal: v => v.trim().length >= 5 ? '' : 'Tell me in a sentence what a customer should be able to do.'
+  };
+  function check(id) {
+    const el = document.getElementById(id), msg = rules[id](el.value);
+    el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    document.getElementById(id + '-err').textContent = msg;
+    return !msg;
+  }
+  Object.keys(rules).forEach(id => document.getElementById(id).addEventListener('blur', () => { if (document.getElementById(id).value) check(id); }));
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = Object.keys(rules).filter(id => !check(id));
+    if (bad.length) { status.hidden = true; document.getElementById(bad[0]).focus(); return; }
+    status.hidden = false;
+    status.innerHTML = 'Looks good. This form isn’t connected yet, so nothing was sent. To request the review now, email <a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a>.';
+  });
+})();
+</script>
+</body>
+</html>
