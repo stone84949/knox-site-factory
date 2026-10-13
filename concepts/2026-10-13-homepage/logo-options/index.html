@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KSF Logo Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #F3F5F2;
+    --paper: #FFFFFF;
+    --ink: #0F2A24;
+    --ink-soft: #3E5650;
+    --line: #D6DDD8;
+    --ember: #E2622B;
+    --ember-deep: #C24E1C;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 1rem/1.55 "Archivo", system-ui, sans-serif;
+  }
+  ::selection { background: var(--ember); color: #fff; }
+  a { color: var(--ember-deep); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  header.top { padding: 56px 0 24px; }
+  h1 {
+    font-variation-settings: "wdth" 118;
+    font-weight: 850;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .lede { max-width: 66ch; color: var(--ink-soft); margin: 0; font-size: 1.08rem; }
+  .notes { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 20px 0 0; padding: 0; list-style: none; color: var(--ink-soft); font-size: .95rem; }
+  .notes li::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ember); margin-right: 8px; vertical-align: 1px; }
+
+  .opt {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    margin: 40px 0;
+    overflow: hidden;
+  }
+  .opt-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+    padding: 28px 32px 0;
+  }
+  .opt-head h2 {
+    margin: 0;
+    font-variation-settings: "wdth" 112;
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+  }
+  .opt-head p { margin: 0; color: var(--ink-soft); max-width: 60ch; }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 0;
+    margin-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-light, .hero-dark {
+    display: grid; place-items: center; min-height: 300px; padding: 32px;
+  }
+  .hero-light { background: var(--ground); }
+  .hero-dark { background: var(--ink); }
+  .hero-light svg.mark, .hero-dark svg.mark { width: 168px; height: 168px; }
+  .uses { display: grid; grid-template-rows: auto auto 1fr; border-left: 1px solid var(--line); }
+  .use { padding: 22px 28px; border-bottom: 1px solid var(--line); }
+  .use:last-child { border-bottom: 0; }
+  .use-label { font-size: .8rem; font-weight: 600; color: var(--ink-soft); margin: 0 0 12px; }
+
+  /* lockup = mark + wordmark */
+  .lockup { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+  .lockup svg { width: 40px; height: 40px; flex: none; }
+  .wm {
+    font-variation-settings: "wdth" 115;
+    font-weight: 820;
+    font-size: 1.32rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .wm .site { color: var(--ember-deep); }
+  .wm-stack { display: grid; line-height: .95; }
+  .wm-stack .l1 { white-space: nowrap; font-variation-settings: "wdth" 120; font-weight: 880; font-size: 1.45rem; letter-spacing: -0.015em; }
+  .wm-stack .l2 { font-variation-settings: "wdth" 100; font-weight: 600; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+  .on-dark .lockup { color: #fff; }
+  .on-dark .wm .site { color: #FF8A57; }
+  .on-dark .wm-stack .l2 { color: #B9CBC4; }
+
+  .mini-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px;
+  }
+  .mini-header nav { display: flex; gap: 16px; font-size: .85rem; color: var(--ink-soft); white-space: nowrap; }
+  .mini-header nav { display: none; }
+  .uses { min-width: 0; } .use { min-width: 0; }
+  .mini-header .cta { background: var(--ember-deep); color: #fff; font-weight: 700; font-size: .8rem; padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
+  .dark-bar { background: var(--ink); border-radius: 12px; padding: 14px 16px; }
+
+  .sizes { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .size { display: grid; justify-items: center; gap: 6px; font-size: .75rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .tab {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #E4E9E5; border-radius: 10px 10px 0 0; padding: 8px 14px 8px 10px; font-size: .8rem; color: var(--ink);
+  }
+  .tab svg { width: 16px; height: 16px; }
+  .verdict { margin: 0; font-size: .92rem; color: var(--ink-soft); }
+  .verdict strong { color: var(--ink); }
+
+  footer { padding: 24px 0 64px; color: var(--ink-soft); font-size: .9rem; }
+
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr; }
+    .uses { border-left: 0; border-top: 1px solid var(--line); }
+    .hero-light, .hero-dark { min-height: 220px; }
+    .mini-header nav { display: none; }
+    .opt-head { padding: 24px 20px 0; }
+    .use { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable marks (pure paths, no fonts: these export as final SVG files) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- A: Sawtooth -->
+    <symbol id="m-saw" viewBox="0 0 64 64">
+      <path fill="#0F2A24" d="M6 57V23L23 12.5V23L40 12.5V23L58 12.5V57Z"/>
+      <rect x="13" y="30" width="38" height="20" rx="2.5" fill="#F3F5F2"/>
+      <rect x="19" y="36.5" width="26" height="7" rx="3.5" fill="#E2622B"/>
+    </symbol>
+    <symbol id="m-saw-rev" viewBox="0 0 64 64">
+      <path fill="#FFFFFF" d="M6 57V23L23 12.5V23L40 12.5V23L58 12.5V57Z"/>
+      <rect x="13" y="30" width="38" height="20" rx="2.5" fill="#0F2A24"/>
+      <rect x="19" y="36.5" width="26" height="7" rx="3.5" fill="#E2622B"/>
+    </symbol>
+    <!-- B: Call K -->
+    <symbol id="m-callk" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="28" fill="#E2622B"/>
+      <g fill="#FFFFFF">
+        <rect x="21.5" y="18" width="7" height="28"/>
+        <path d="M28.5 28.5L38 18H46.5L28.5 37Z"/>
+        <path d="M31.5 28L46.5 46H38L28.5 35Z"/>
+      </g>
+    </symbol>
+    <!-- C: Knox pin -->
+    <symbol id="m-pin" viewBox="0 0 64 64">
+      <path fill="#0F2A24" d="M32 4C19.8 4 10.5 13.3 10.5 25.2 10.5 40.6 32 60 32 60S53.5 40.6 53.5 25.2C53.5 13.3 44.2 4 32 4Z"/>
+      <g fill="#FFFFFF">
+        <rect x="23.5" y="15" width="6" height="21"/>
+        <path d="M29.5 23.8L36.6 15H43.2L29.5 31Z"/>
+        <path d="M32 23.4L43.2 36H36.6L29.5 29Z"/>
+      </g>
+      <circle cx="44.5" cy="12.5" r="5" fill="#E2622B"/>
+    </symbol>
+    <symbol id="m-pin-rev" viewBox="0 0 64 64">
+      <path fill="#FFFFFF" d="M32 4C19.8 4 10.5 13.3 10.5 25.2 10.5 40.6 32 60 32 60S53.5 40.6 53.5 25.2C53.5 13.3 44.2 4 32 4Z"/>
+      <g fill="#0F2A24">
+        <rect x="23.5" y="15" width="6" height="21"/>
+        <path d="M29.5 23.8L36.6 15H43.2L29.5 31Z"/>
+        <path d="M32 23.4L43.2 36H36.6L29.5 29Z"/>
+      </g>
+      <circle cx="44.5" cy="12.5" r="5" fill="#E2622B"/>
+    </symbol>
+    <!-- D: App-icon K -->
+    <symbol id="m-app" viewBox="0 0 64 64">
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="#0F2A24"/>
+      <g fill="#FFFFFF">
+        <rect x="18.5" y="13" width="8.5" height="30"/>
+        <path d="M27 25.5L38.5 13H48.5L27 35.5Z"/>
+        <path d="M31.5 27.5L48.5 43H38.5L27 33Z"/>
+      </g>
+      <rect x="18.5" y="49" width="27" height="4.5" rx="2.25" fill="#E2622B"/>
+    </symbol>
+    <symbol id="m-app-rev" viewBox="0 0 64 64">
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="#FFFFFF"/>
+      <g fill="#0F2A24">
+        <rect x="18.5" y="13" width="8.5" height="30"/>
+        <path d="M27 25.5L38.5 13H48.5L27 35.5Z"/>
+        <path d="M31.5 27.5L48.5 43H38.5L27 33Z"/>
+      </g>
+      <rect x="18.5" y="49" width="27" height="4.5" rx="2.25" fill="#E2622B"/>
+    </symbol>
+    <!-- E: Ring -->
+    <symbol id="m-ring" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="9" fill="#E2622B"/>
+      <circle cx="32" cy="32" r="17" fill="none" stroke="#E2622B" stroke-width="4.5" opacity=".75"/>
+      <circle cx="32" cy="32" r="26" fill="none" stroke="#E2622B" stroke-width="4.5" opacity=".4"/>
+    </symbol>
+    <symbol id="m-ring-tile" viewBox="0 0 64 64">
+      <rect x="2" y="2" width="60" height="60" rx="14" fill="#0F2A24"/>
+      <circle cx="32" cy="32" r="9.5" fill="#E2622B"/>
+      <circle cx="32" cy="32" r="18.5" fill="none" stroke="#E2622B" stroke-width="5" opacity=".8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top wrap">
+  <h1>Knox Site Factory logo options</h1>
+  <p class="lede">Five starting directions for Josh to react to. Each one is shown large, in a site header, on the dark green, and at real browser-tab size. Most logos fail at tab size, so judge that row hardest.</p>
+  <ul class="notes">
+    <li>Colors match the new homepage: spruce #0F2A24, ember #E2622B</li>
+    <li>Marks are pure vector shapes, ready to export</li>
+    <li>Wordmarks use Archivo for now; the final logo gets outlined</li>
+  </ul>
+</header>
+
+<main class="wrap">
+
+  <!-- A -->
+  <section class="opt" aria-labelledby="a-t">
+    <div class="opt-head">
+      <h2 id="a-t">A — Sawtooth</h2>
+      <p>A factory's sawtooth roof becomes the top of a browser window, and the only thing on the screen is a call button. Says "Site Factory" and "built for calls" in one shape.</p>
+    </div>
+    <div class="grid">
+      <div class="hero-light"><svg class="mark" role="img" aria-label="Sawtooth mark"><use href="#m-saw"/></svg></div>
+      <div class="uses">
+        <div class="use">
+          <p class="use-label">Site header</p>
+          <div class="mini-header">
+            <span class="lockup"><svg aria-hidden="true"><use href="#m-saw"/></svg><span class="wm">Knox <span class="site">Site</span> Factory</span></span>
+            <nav><span>Sample sites</span><span>Pricing</span></nav>
+            <span class="cta">Site review</span>
+          </div>
+        </div>
+        <div class="use on-dark">
+          <p class="use-label">On dark</p>
+          <div class="dark-bar"><span class="lockup"><svg aria-hidden="true"><use href="#m-saw-rev"/></svg><span class="wm">Knox <span class="site">Site</span> Factory</span></span></div>
+        </div>
+        <div class="use">
+          <p class="use-label">Browser tab · 32px · 16px</p>
+          <div class="sizes">
+            <span class="tab"><svg aria-hidden="true"><use href="#m-saw"/></svg>Knox Site Factory</span>
+            <span class="size"><svg width="32" height="32" aria-hidden="true"><use href="#m-saw"/></svg>32</span>
+            <span class="size"><svg width="16" height="16" aria-hidden="true"><use href="#m-saw"/></svg>16</span>
+          </div>
+          <p class="verdict" style="margin-top:14px"><strong>Strongest idea.</strong> Unique to KSF and holds up at 32px; the roof teeth get tight at 16px.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="opt" aria-labelledby="b-t">
+    <div class="opt-head">
+      <h2 id="b-t">B — Call K</h2>
+      <p>The K set inside a round orange button, the same shape a customer taps to call. Simple, loud, instantly a favicon.</p>
+    </div>
+    <div class="grid">
+      <div class="hero-light"><svg class="mark" role="img" aria-label="Call K mark"><use href="#m-callk"/></svg></div>
+      <div class="uses">
+        <div class="use">
+          <p class="use-label">Site header</p>
+          <div class="mini-header">
+            <span class="lockup"><svg aria-hidden="true"><use href="#m-callk"/></svg><span class="wm">Knox Site Factory</span></span>
+            <nav><span>Sample sites</span><span>Pricing</span></nav>
+            <span class="cta">Site review</span>
+          </div>
+        </div>
+        <div class="use on-dark">
+          <p class="use-label">On dark</p>
+          <div class="dark-bar"><span class="lockup"><svg aria-hidden="true"><use href="#m-callk"/></svg><span class="wm">Knox Site Factory</span></span></div>
+        </div>
+        <div class="use">
+          <p class="use-label">Browser tab · 32px · 16px</p>
+          <div class="sizes">
+            <span class="tab"><svg aria-hidden="true"><use href="#m-callk"/></svg>Knox Site Factory</span>
+            <span class="size"><svg width="32" height="32" aria-hidden="true"><use href="#m-callk"/></svg>32</span>
+            <span class="size"><svg width="16" height="16" aria-hidden="true"><use href="#m-callk"/></svg>16</span>
+          </div>
+          <p class="verdict" style="margin-top:14px"><strong>Best at tiny sizes.</strong> The trade-off: a letter in a circle is common, so it leans on color to be remembered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="opt" aria-labelledby="c-t">
+    <div class="opt-head">
+      <h2 id="c-t">C — Knox Pin</h2>
+      <p>A map pin with the K cut in and an orange notification dot: local business, found on a map, getting a call.</p>
+    </div>
+    <div class="grid">
+      <div class="hero-light"><svg class="mark" role="img" aria-label="Knox pin mark"><use href="#m-pin"/></svg></div>
+      <div class="uses">
+        <div class="use">
+          <p class="use-label">Site header</p>
+          <div class="mini-header">
+            <span class="lockup"><svg aria-hidden="true"><use href="#m-pin"/></svg><span class="wm-stack"><span class="l1">Knox Site Factory</span><span class="l2">Powell, Tennessee</span></span></span>
+            <nav><span>Sample sites</span><span>Pricing</span></nav>
+            <span class="cta">Site review</span>
+          </div>
+        </div>
+        <div class="use on-dark">
+          <p class="use-label">On dark</p>
+          <div class="dark-bar"><span class="lockup"><svg aria-hidden="true"><use href="#m-pin-rev"/></svg><span class="wm-stack"><span class="l1">Knox Site Factory</span><span class="l2">Powell, Tennessee</span></span></span></div>
+        </div>
+        <div class="use">
+          <p class="use-label">Browser tab · 32px · 16px</p>
+          <div class="sizes">
+            <span class="tab"><svg aria-hidden="true"><use href="#m-pin"/></svg>Knox Site Factory</span>
+            <span class="size"><svg width="32" height="32" aria-hidden="true"><use href="#m-pin"/></svg>32</span>
+            <span class="size"><svg width="16" height="16" aria-hidden="true"><use href="#m-pin"/></svg>16</span>
+          </div>
+          <p class="verdict" style="margin-top:14px"><strong>Most "local".</strong> Pins are everywhere in local marketing, so it's the least distinctive of the five.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section class="opt" aria-labelledby="d-t">
+    <div class="opt-head">
+      <h2 id="d-t">D — App Icon K</h2>
+      <p>A heavy K on a phone-app tile, with an orange bar like a phone's home indicator. Feels like a product, not a freelancer.</p>
+    </div>
+    <div class="grid">
+      <div class="hero-light"><svg class="mark" role="img" aria-label="App icon K mark"><use href="#m-app"/></svg></div>
+      <div class="uses">
+        <div class="use">
+          <p class="use-label">Site header</p>
+          <div class="mini-header">
+            <span class="lockup"><svg aria-hidden="true"><use href="#m-app"/></svg><span class="wm">Knox Site Factory</span></span>
+            <nav><span>Sample sites</span><span>Pricing</span></nav>
+            <span class="cta">Site review</span>
+          </div>
+        </div>
+        <div class="use on-dark">
+          <p class="use-label">On dark</p>
+          <div class="dark-bar"><span class="lockup"><svg aria-hidden="true"><use href="#m-app-rev"/></svg><span class="wm">Knox Site Factory</span></span></div>
+        </div>
+        <div class="use">
+          <p class="use-label">Browser tab · 32px · 16px</p>
+          <div class="sizes">
+            <span class="tab"><svg aria-hidden="true"><use href="#m-app"/></svg>Knox Site Factory</span>
+            <span class="size"><svg width="32" height="32" aria-hidden="true"><use href="#m-app"/></svg>32</span>
+            <span class="size"><svg width="16" height="16" aria-hidden="true"><use href="#m-app"/></svg>16</span>
+          </div>
+          <p class="verdict" style="margin-top:14px"><strong>Cleanest system.</strong> Closest to the current page header; works everywhere, but it's the safest choice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E -->
+  <section class="opt" aria-labelledby="e-t">
+    <div class="opt-head">
+      <h2 id="e-t">E — The Ring</h2>
+      <p>An orange dot with ripples: a phone ringing. Used alone, or as the "o" in Knox. Pairs naturally with the homepage's "Your phone rings" idea.</p>
+    </div>
+    <div class="grid">
+      <div class="hero-dark"><svg class="mark" role="img" aria-label="Ring mark"><use href="#m-ring"/></svg></div>
+      <div class="uses">
+        <div class="use">
+          <p class="use-label">Site header</p>
+          <div class="mini-header">
+            <span class="lockup" aria-label="Knox Site Factory">
+              <span class="wm" aria-hidden="true">Kn<svg style="width:.92em;height:.92em;vertical-align:-.12em;margin:0 .02em" viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="#E2622B"/><circle cx="32" cy="32" r="24" fill="none" stroke="#E2622B" stroke-width="7" opacity=".55"/></svg>x Site Factory</span>
+            </span>
+            <nav><span>Sample sites</span><span>Pricing</span></nav>
+            <span class="cta">Site review</span>
+          </div>
+        </div>
+        <div class="use on-dark">
+          <p class="use-label">On dark</p>
+          <div class="dark-bar"><span class="lockup"><svg aria-hidden="true"><use href="#m-ring"/></svg><span class="wm">Knox Site Factory</span></span></div>
+        </div>
+        <div class="use">
+          <p class="use-label">Browser tab · 32px · 16px (tile version)</p>
+          <div class="sizes">
+            <span class="tab"><svg aria-hidden="true"><use href="#m-ring-tile"/></svg>Knox Site Factory</span>
+            <span class="size"><svg width="32" height="32" aria-hidden="true"><use href="#m-ring-tile"/></svg>32</span>
+            <span class="size"><svg width="16" height="16" aria-hidden="true"><use href="#m-ring-tile"/></svg>16</span>
+          </div>
+          <p class="verdict" style="margin-top:14px"><strong>Most on-message.</strong> Needs the tile version to survive small sizes; on its own it can read as a target.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  Draft options, 2026-10-13. Nothing here is trademark-checked. Pick one or two to refine, or mix (for example, A's idea with D's tile).
+</footer>
+
+</body>
+</html>

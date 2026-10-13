@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KSF Logo Kit</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<style>
+  :root { --ground:#F3F5F2; --paper:#fff; --ink:#0F2A24; --soft:#3E5650; --line:#D6DDD8; --ember:#E2622B; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink); font:400 1rem/1.5 system-ui, "Segoe UI", sans-serif; }
+  ::selection { background: var(--ember); color:#fff; }
+  .wrap { max-width:1120px; margin:0 auto; padding:48px 24px 72px; }
+  .hero { display:grid; place-items:center; background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:72px 24px; }
+  .hero img { width:min(720px, 100%); height:auto; }
+  h1 { font-size:1.9rem; margin:0 0 6px; letter-spacing:-.01em; }
+  p.lede { color:var(--soft); margin:0 0 28px; max-width:70ch; }
+  h2 { font-size:1.05rem; margin:40px 0 14px; }
+  .row { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
+  .tile { border:1px solid var(--line); border-radius:16px; padding:28px; display:grid; place-items:center; gap:14px; background:var(--paper); min-height:180px; }
+  .tile.dark { background:var(--ink); border-color:var(--ink); color:#C9D8D2; }
+  .tile small { font-size:.8rem; color:var(--soft); text-align:center; }
+  .tile.dark small { color:#B9CBC4; }
+  .tile img.lg { width:100%; max-width:320px; height:auto; }
+  .tile img.mk { width:112px; height:112px; }
+  .px { display:flex; align-items:flex-end; gap:28px; flex-wrap:wrap; }
+  .px figure { margin:0; display:grid; justify-items:center; gap:8px; font-size:.8rem; color:var(--soft); }
+  .px .zoom { image-rendering: pixelated; background:
+      conic-gradient(#e6ebe7 25%, #fff 0 50%, #e6ebe7 0 75%, #fff 0) 0 0/16px 16px; border:1px solid var(--line); }
+  .tab { display:inline-flex; align-items:center; gap:8px; background:#DEE4E0; border-radius:10px 10px 0 0; padding:9px 16px 9px 12px; font-size:.85rem; }
+  .tab img { width:16px; height:16px; }
+  table { width:100%; border-collapse:collapse; background:var(--paper); border:1px solid var(--line); border-radius:12px; overflow:hidden; font-size:.92rem; }
+  th, td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-weight:600; background:#EEF2EF; }
+  td code { font-size:.86rem; }
+  .sw { display:inline-block; width:14px; height:14px; border-radius:4px; vertical-align:-2px; margin-right:6px; border:1px solid rgba(0,0,0,.12); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Knox Site Factory logo kit — Sawtooth</h1>
+  <p class="lede">A factory's sawtooth roof as the top of a browser window, with a call button as the only thing on screen. Wordmark set in Archivo (wdth 115, wght 820) and converted to outlines, so it renders the same everywhere without the font.</p>
+
+  <div class="hero"><img src="ksf-logo-horizontal.svg" alt="Knox Site Factory"></div>
+
+  <h2>Versions</h2>
+  <div class="row">
+    <div class="tile"><img class="lg" src="ksf-logo-horizontal.svg" alt=""><small>ksf-logo-horizontal.svg — light backgrounds</small></div>
+    <div class="tile dark"><img class="lg" src="ksf-logo-horizontal-reverse.svg" alt=""><small>ksf-logo-horizontal-reverse.svg — dark backgrounds</small></div>
+    <div class="tile"><img class="lg" src="ksf-logo-horizontal-mono.svg" alt=""><small>ksf-logo-horizontal-mono.svg — one color (stamps, invoices, vinyl)</small></div>
+  </div>
+  <div class="row" style="margin-top:16px">
+    <div class="tile"><img class="mk" src="ksf-mark.svg" alt=""><small>ksf-mark.svg</small></div>
+    <div class="tile dark"><img class="mk" src="ksf-mark-reverse.svg" alt=""><small>ksf-mark-reverse.svg</small></div>
+    <div class="tile"><img class="mk" src="ksf-app-tile.svg" alt=""><small>ksf-app-tile.svg — social avatar, phone home screen</small></div>
+  </div>
+
+  <h2>Small sizes (shown actual size, then zoomed 8x)</h2>
+  <div class="px">
+    <span class="tab"><img src="favicon.svg" alt="">Knox Site Factory</span>
+    <figure><img src="png/favicon-16.png" width="16" height="16" alt="">16</figure>
+    <figure><img src="png/favicon-32.png" width="32" height="32" alt="">32</figure>
+    <figure><img src="png/favicon-48.png" width="48" height="48" alt="">48</figure>
+    <figure><img class="zoom" src="png/favicon-16.png" width="128" height="128" alt="">16px, two-tooth version</figure>
+    <figure><img class="zoom" src="png/favicon-32.png" width="256" height="256" alt="">32px, full mark</figure>
+  </div>
+
+  <h2>Colors</h2>
+  <table>
+    <tr><th>Role</th><th>Hex</th><th>Use</th></tr>
+    <tr><td><span class="sw" style="background:#0F2A24"></span>Spruce</td><td><code>#0F2A24</code></td><td>Mark body, wordmark, dark backgrounds</td></tr>
+    <tr><td><span class="sw" style="background:#E2622B"></span>Ember</td><td><code>#E2622B</code></td><td>Call button and "Site". Never for small body text on white (3.4:1)</td></tr>
+    <tr><td><span class="sw" style="background:#F3F5F2"></span>Ground</td><td><code>#F3F5F2</code></td><td>Screen inside the mark, page background</td></tr>
+  </table>
+
+  <h2>Files and where they go</h2>
+  <table>
+    <tr><th>File</th><th>Use</th></tr>
+    <tr><td><code>favicon.svg</code></td><td>Browser tab (modern browsers). Two-tooth design drawn on a 16px grid; switches to white in dark mode.</td></tr>
+    <tr><td><code>favicon.ico</code></td><td>Browser tab fallback (16, 32, 48 inside one file)</td></tr>
+    <tr><td><code>png/apple-touch-icon.png</code></td><td>iPhone home screen (180px)</td></tr>
+    <tr><td><code>png/ksf-app-tile-512.png</code></td><td>Google Business Profile, Facebook, social avatars</td></tr>
+    <tr><td><code>png/ksf-logo-horizontal@2x.png</code> + reverse</td><td>Email signature, documents, anywhere that won't take SVG</td></tr>
+    <tr><td><code>ksf-mark-16.svg</code></td><td>Source for the 16px version</td></tr>
+  </table>
+  <p class="lede" style="margin-top:20px">Clear space: keep at least the height of one roof tooth empty around the logo. Minimum size: full logo 120px wide; under that, use the mark alone. Not trademark-checked yet.</p>
+</div>
+</body>
+</html>

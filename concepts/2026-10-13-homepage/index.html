@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="logo/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="logo/png/apple-touch-icon.png">
 <title>Knox Site Factory — Websites for Knoxville home-service businesses</title>
 <meta name="description" content="A fixed-price, five-page website for Knoxville-area home-service businesses, built so customers can understand your services and call you from their phone. You own the domain and accounts.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,6 +82,9 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(243,245,242,.97);bo
 .brand:hover{color:var(--ink)}
 .mark{width:34px;height:34px;border-radius:10px;background:var(--ink);display:grid;place-items:center;color:var(--ground)}
 .mark svg{width:20px;height:20px}
+.brand .logo{display:block;height:36px;width:auto}
+footer .brand .logo{height:32px}
+@media (max-width:600px){.brand .logo{height:28px}}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:28px}
 nav.main a{text-decoration:none;font-weight:600;font-size:.96875rem;color:var(--ink-2)}
 nav.main a:hover{color:var(--ember)}
@@ -385,8 +391,7 @@ footer p{margin:10px 0 0;max-width:62ch}
 <header class="site">
   <div class="wrap head">
     <a class="brand" href="#top" aria-label="Knox Site Factory home">
-      <span class="mark"><svg class="icon"><use href="#i-site"/></svg></span>
-      Knox Site Factory
+      <img class="logo" src="logo/ksf-logo-horizontal.svg" width="314" height="36" alt="Knox Site Factory">
     </a>
     <nav class="main" aria-label="Main">
       <a href="#samples">Sample sites</a>
@@ -687,7 +692,7 @@ footer p{margin:10px 0 0;max-width:62ch}
 <footer>
   <div class="wrap foot">
     <div>
-      <a class="brand" href="#top"><span class="mark"><svg class="icon"><use href="#i-site"/></svg></span>Knox Site Factory</a>
+      <a class="brand" href="#top"><img class="logo" src="logo/ksf-logo-horizontal-reverse.svg" width="279" height="32" alt="Knox Site Factory"></a>
       <p>Five-page websites for Knoxville-area home-service businesses. Built by Josh Stone in Powell, Tennessee.</p>
       <p>Early launch. Sample sites show fictional businesses with 555 numbers; no client results are represented on this page.</p>
     </div>
