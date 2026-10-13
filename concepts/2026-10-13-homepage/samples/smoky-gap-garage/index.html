@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Smoky Gap Garage Doors is a fictional Knoxville garage-door company. Sample site built by Knox Site Factory.">
+<title>Smoky Gap Garage Doors | Sample Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#33388A; --indigo-dk:#1F2366; --indigo-ink:#161941;
+  --ground:#F3F4F8; --paper:#FFFFFF; --ink:#15172E; --soft:#474B68; --line:#D9DBE7; --line-dk:#B9BCD2;
+  --amber:#F2A53A; --amber-dk:#B76A12; --amber-soft:#FCE9C8;
+  --ok:#1E6B45; --err:#B3261E;
+  --display:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --body:"Barlow", "Segoe UI", sans-serif;
+  --lift:0 2px 4px rgba(22,25,65,.10), 0 8px 18px rgba(22,25,65,.14);
+  --lift-hi:0 4px 8px rgba(22,25,65,.12), 0 14px 28px rgba(22,25,65,.20);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --focus:var(--indigo);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:96px;scrollbar-color:var(--indigo) var(--ground)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 1.0625rem/1.6 var(--body);caret-color:var(--indigo);overflow-x:hidden}
+::selection{background:var(--amber);color:var(--indigo-ink)}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:var(--ground)}
+::-webkit-scrollbar-thumb{background:var(--indigo);border-radius:8px;border:3px solid var(--ground)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.dark{--focus:var(--amber)}
+a{color:var(--indigo);text-underline-offset:3px;text-decoration-thickness:1.5px}
+img,svg{max-width:100%}
+.tnum,.phone-num{font-variant-numeric:tabular-nums lining-nums}
+.icon{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(2.2rem,4.4vw,3.4rem);text-transform:uppercase;letter-spacing:.005em}
+h3{font-size:1.6rem;text-transform:uppercase;letter-spacing:.01em}
+p{margin:0 0 1em}
+.lead{font-size:1.2rem;color:var(--soft);max-width:60ch}
+section{padding:96px 0}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:760px}
+.sec-head p{margin:0}
+
+/* buttons */
+.btn{--bg:var(--indigo);--fg:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border-radius:10px;border:0;background:var(--bg);color:var(--fg);font:700 1.05rem/1 var(--body);text-decoration:none;cursor:pointer;box-shadow:var(--lift);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background-color .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--lift-hi)}
+.btn:active{transform:translateY(1px);box-shadow:0 1px 2px rgba(22,25,65,.2)}
+.btn-white{--bg:#fff;--fg:var(--indigo)}
+.btn-amber{--bg:var(--amber);--fg:var(--indigo-ink)}
+.btn-ghost{--bg:transparent;--fg:var(--indigo);box-shadow:inset 0 0 0 2px var(--indigo)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--indigo),var(--lift)}
+.btn-big{min-height:64px;padding:16px 28px;font-size:1.3rem;border-radius:12px}
+.btn-big .icon{width:1.3em;height:1.3em}
+.text-link{font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.text-link .icon{transition:transform .2s var(--ease)}
+.text-link:hover .icon{transform:translateX(3px)}
+
+/* concept bar */
+.concept{background:var(--indigo-ink);color:#D7D9EE;font-size:.85rem;padding:7px 0}
+.concept .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.concept a{color:#fff;font-weight:600}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(22,25,65,.06)}
+header.top .wrap{display:flex;align-items:center;gap:24px;min-height:76px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--indigo-dk);flex:none}
+.brand svg{width:46px;height:42px}
+.brand b{display:block;font:800 1.55rem/0.9 var(--display);letter-spacing:.02em;text-transform:uppercase}
+.brand small{display:block;font:700 .78rem/1 var(--display);letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+nav.main{display:flex;gap:4px;margin-left:auto}
+nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.98rem;padding:8px 11px;border-radius:8px;transition:background-color .15s,color .15s}
+nav.main a:hover{background:var(--ground);color:var(--indigo)}
+.head-call{display:flex;align-items:center;gap:10px;text-decoration:none;background:var(--indigo);color:#fff;border-radius:10px;padding:9px 16px 9px 12px;box-shadow:var(--lift);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.head-call:hover{transform:translateY(-2px);box-shadow:var(--lift-hi)}
+.head-call .icon{width:22px;height:22px;color:var(--amber)}
+.head-call span{display:grid;line-height:1.1}
+.head-call small{font-size:.74rem;font-weight:600;color:#C9CCEB}
+.head-call b{font:800 1.3rem/1 var(--display);letter-spacing:.03em}
+
+/* hero */
+.hero{background:var(--indigo-dk);color:#fff;padding:64px 0 0;overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:end}
+.hero-copy{padding-bottom:72px}
+.hero h1{font-size:clamp(3.6rem,8vw,6rem);text-transform:uppercase;line-height:.88;letter-spacing:0}
+.hero h1 span{color:var(--amber)}
+.hero .sub{font-size:1.4rem;color:#E1E3F5;margin:22px 0 30px;max-width:30ch}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.hero-actions .text-link{color:#fff;font-size:1.08rem}
+.hero-facts{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:10px;color:#D2D5EF;font-size:1rem}
+.hero-facts li{display:flex;gap:10px;align-items:flex-start}
+.hero-facts .icon{color:var(--amber);margin-top:3px}
+.hero-facts b{color:#fff;font-weight:600}
+.scene-wrap{position:relative;align-self:end}
+.scene{display:block;width:100%;height:auto}
+.door-toggle{position:absolute;right:12px;bottom:18px;background:rgba(22,25,65,.85);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 14px;font:600 .85rem/1 var(--body);cursor:pointer;display:inline-flex;gap:7px;align-items:center;transition:background-color .2s,transform .2s var(--ease)}
+.door-toggle:hover{background:var(--indigo);transform:translateY(-1px)}
+.door-toggle .icon{width:15px;height:15px}
+/* the one motion moment: the door rolls up */
+.door{transform:translateY(0);transition:transform 1.9s var(--ease)}
+.scene.open .door{transform:translateY(-212px)}
+.glow{opacity:.12;transition:opacity 1.6s var(--ease) .25s}
+.scene.open .glow{opacity:1}
+@media (prefers-reduced-motion:reduce){.door,.glow{transition:none}}
+
+/* problem chooser */
+.chooser{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
+.choices{display:grid;gap:8px}
+.choice{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 18px;font:600 1.12rem/1.2 var(--body);color:var(--ink);cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s,background-color .18s}
+.choice svg.lead-i{width:30px;height:30px;color:var(--indigo);flex:none}
+.choice .chev{margin-left:auto;color:var(--line-dk);transition:transform .2s var(--ease),color .2s}
+.choice:hover{transform:translateY(-1px);box-shadow:var(--lift);border-color:var(--line-dk)}
+.choice:hover .chev{transform:translateX(3px);color:var(--indigo)}
+.choice[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff;box-shadow:var(--lift)}
+.choice[aria-pressed="true"] svg.lead-i,.choice[aria-pressed="true"] .chev{color:var(--amber)}
+.guide{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px;box-shadow:var(--lift);position:sticky;top:100px}
+.guide h3{font-size:2rem;color:var(--indigo-dk);margin-bottom:6px}
+.guide .urgency{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;border-radius:999px;padding:5px 12px;margin:6px 0 18px}
+.urg-stop{background:#FBE4E2;color:#8C1D16}
+.urg-check{background:#E5E8F7;color:var(--indigo-dk)}
+.urg-plan{background:var(--amber-soft);color:#6F3F06}
+.guide h4{font:800 1.05rem/1 var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin:18px 0 10px}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;align-items:flex-start}
+.steps li .icon{color:var(--indigo);margin-top:4px}
+.guide .call-line{border-top:1px solid var(--line);margin-top:22px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.guide .call-line p{margin:0;flex:1 1 220px;font-weight:600}
+.fade-in{animation:fadeUp .35s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade-in{animation:none}}
+
+/* spring band */
+.spring{background:var(--indigo-ink);color:#E4E6F7;padding:64px 0}
+.spring .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:40px;align-items:center}
+.spring svg.coil{width:180px;height:auto}
+.spring h2{color:#fff;font-size:clamp(2rem,3.6vw,2.8rem)}
+.spring p{margin:12px 0 0;max-width:62ch;color:#D3D6EE}
+.spring p b{color:#fff}
+
+/* repair or replace */
+.rr{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px;align-items:stretch}
+.rr-q{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px}
+fieldset{border:0;padding:0;margin:0 0 26px;min-width:0}
+fieldset:last-child{margin-bottom:0}
+legend{font:800 1.35rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--indigo-dk);margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:46px;padding:10px 18px;border-radius:10px;border:1.5px solid var(--line-dk);background:var(--paper);font-weight:600;transition:all .18s var(--ease)}
+.chip input:hover+span{border-color:var(--indigo);transform:translateY(-1px)}
+.chip input:checked+span{background:var(--indigo);border-color:var(--indigo);color:#fff;box-shadow:var(--lift)}
+.chip input:focus-visible+span{outline:3px solid var(--indigo);outline-offset:3px}
+.rr-out{background:var(--indigo-dk);color:#fff;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.meter{position:relative;height:64px;margin:6px 0 4px}
+.meter .track{position:absolute;left:0;right:0;top:20px;height:14px;border-radius:7px;background:linear-gradient(90deg,#5E64C2,#9C83B8 55%,var(--amber))}
+.meter .ticks{position:absolute;left:0;right:0;top:40px;display:flex;justify-content:space-between;font:700 .85rem/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#C9CCEB}
+.meter .marker{position:absolute;top:8px;width:6px;height:38px;margin-left:-3px;background:#fff;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.4);left:50%;transition:left .6s var(--ease)}
+@media (prefers-reduced-motion:reduce){.meter .marker{transition:none}}
+.rr-out h3{font-size:2.3rem;color:var(--amber)}
+.rr-out p{margin:0;color:#E1E3F5}
+.rr-out .why{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:#E1E3F5}
+.rr-out .why li{display:flex;gap:10px}
+.rr-out .why .icon{color:var(--amber);margin-top:4px}
+.rr-out .btn{margin-top:auto;align-self:flex-start}
+.rr-empty{color:#C9CCEB}
+
+/* style picker */
+.picker{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:center}
+.house{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--lift)}
+.house svg{display:block;width:100%;height:auto}
+.house svg .door-fill{transition:fill .35s var(--ease)}
+.pick-panel{display:grid;gap:26px}
+.pick-panel h3{font-size:1.25rem;color:var(--soft);letter-spacing:.08em;margin-bottom:12px}
+.styles{display:grid;gap:8px}
+.style-btn{display:flex;align-items:center;gap:14px;text-align:left;border:1.5px solid var(--line-dk);background:var(--paper);border-radius:12px;padding:10px 14px;font:600 1.05rem/1.2 var(--body);color:var(--ink);cursor:pointer;transition:all .18s var(--ease)}
+.style-btn svg{width:56px;height:40px;flex:none}
+.style-btn:hover{border-color:var(--indigo);transform:translateY(-1px)}
+.style-btn[aria-pressed="true"]{border-color:var(--indigo);box-shadow:inset 0 0 0 1.5px var(--indigo),var(--lift)}
+.style-btn small{display:block;color:var(--soft);font-weight:500;font-size:.9rem}
+.swatches{display:flex;flex-wrap:wrap;gap:12px}
+.swatch{width:52px;height:52px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line-dk),0 2px 6px rgba(22,25,65,.15);cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s}
+.swatch:hover{transform:translateY(-2px)}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 3px var(--indigo),0 4px 10px rgba(22,25,65,.22)}
+.pick-name{font:800 1.6rem/1.05 var(--display);text-transform:uppercase;color:var(--indigo-dk);margin:0}
+.pick-note{font-size:.95rem;color:var(--soft);margin:6px 0 0}
+
+/* services */
+.svc-list{border-top:2px solid var(--indigo-dk)}
+.svc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr) 190px;gap:32px;padding:30px 0;border-bottom:1px solid var(--line-dk);align-items:start}
+.svc h3{font-size:2rem;color:var(--indigo-dk);display:flex;gap:12px;align-items:center}
+.svc h3 .icon{width:34px;height:34px;color:var(--amber-dk)}
+.svc p{margin:0 0 10px;color:var(--soft)}
+.svc ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.svc ul li{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:600;font-size:.95rem}
+.svc .text-link{white-space:nowrap;margin-top:6px;justify-self:end}
+.svc.feature{grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px;margin:30px 0 8px;box-shadow:var(--lift)}
+.diagram{display:block;width:100%;height:auto}
+.diagram text{font:700 13px var(--body);fill:var(--ink)}
+.parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;margin-top:18px}
+.parts div b{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:1.25rem;text-transform:uppercase;color:var(--indigo-dk)}
+.parts div b i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--indigo);color:#fff;font-size:.85rem;font-family:var(--body)}
+.parts div p{margin:4px 0 0;font-size:.98rem}
+
+/* about */
+.about{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:56px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:18px;background:repeating-linear-gradient(0deg,#E6E8F2 0 22px,#EDEEF5 22px 44px);border:2px dashed var(--line-dk);display:grid;place-content:center;justify-items:center;gap:10px;color:var(--soft);font-weight:600;text-align:center;padding:20px;position:relative}
+.photo svg{width:52px;height:52px;color:var(--indigo)}
+.photo small{font-weight:500;font-size:.9rem;max-width:24ch}
+.about h2{margin-bottom:22px}
+.about .sig{font:800 1.5rem/1 var(--display);text-transform:uppercase;color:var(--indigo-dk);margin-top:6px}
+.visit{margin:28px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.visit li{padding:20px 18px;border-right:1px solid var(--line);background:var(--ground);position:relative}
+.visit li:nth-child(2n){border-right:0}
+.visit li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.visit b{display:block;font:800 1.25rem/1.05 var(--display);text-transform:uppercase;color:var(--indigo-dk);margin-bottom:6px}
+.visit span{font-size:.97rem;color:var(--soft)}
+.visit li:nth-child(odd)::after{content:"";position:absolute;right:-9px;top:24px;width:16px;height:16px;background:var(--ground);border-top:1px solid var(--line);border-right:1px solid var(--line);transform:rotate(45deg);z-index:1}
+.reviews{margin-top:56px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center;background:var(--ground);border:2px dashed var(--line-dk);border-radius:18px;padding:30px 32px}
+.reviews svg{width:60px;height:60px;color:var(--indigo)}
+.reviews b{display:block;font:800 1.5rem/1.1 var(--display);text-transform:uppercase;color:var(--indigo-dk)}
+.reviews p{margin:6px 0 0;color:var(--soft)}
+
+/* area */
+.area-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:32px;align-items:center}
+.map{background:var(--indigo-dk);border-radius:18px;padding:12px;box-shadow:var(--lift)}
+.map svg{display:block;width:100%;height:auto}
+.map .town circle.dot{fill:#fff;transition:r .2s var(--ease),fill .2s}
+.map .town circle.ring{fill:none;stroke:var(--amber);stroke-width:2;opacity:0;transition:opacity .2s}
+.map .town text{font:700 15px var(--body);fill:#E1E3F5;transition:fill .2s}
+.map .town.on circle.dot{fill:var(--amber);r:8}
+.map .town.on circle.ring{opacity:1}
+.map .town.on text{fill:#fff}
+.towns{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.towns button{width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:600 1rem/1.2 var(--body);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .18s var(--ease)}
+.towns button .icon{color:var(--indigo);width:16px;height:16px}
+.towns button:hover,.towns button.on{border-color:var(--indigo);transform:translateY(-1px);box-shadow:var(--lift)}
+.area-note{margin-top:18px;color:var(--soft);font-size:1rem}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:56px;align-items:start}
+.faq-side{position:sticky;top:110px;display:grid;gap:16px}
+.faq-side p{margin:0;color:var(--soft)}
+.faq-side .btn{justify-self:start}
+.faq details{border-bottom:1px solid var(--line-dk)}
+.faq details:first-of-type{border-top:2px solid var(--indigo-dk)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 4px;font:700 1.55rem/1.15 var(--display);text-transform:uppercase;color:var(--indigo-dk);border-radius:6px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{flex:none;width:34px;height:34px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line-dk);display:grid;place-items:center;transition:transform .3s var(--ease),background-color .2s,border-color .2s}
+.faq summary .pm .icon{width:16px;height:16px;color:var(--indigo)}
+.faq summary:hover .pm{border-color:var(--indigo)}
+.faq details[open] .pm{transform:rotate(45deg);background:var(--indigo);border-color:var(--indigo)}
+.faq details[open] .pm .icon{color:#fff}
+.faq .ans{padding:0 4px 24px;max-width:68ch;color:var(--soft)}
+.faq details[open] .ans{animation:fadeUp .35s var(--ease)}
+@media (prefers-reduced-motion:reduce){.faq details[open] .ans{animation:none}}
+
+/* quote */
+.quote{background:var(--indigo-dk);color:#fff}
+.quote h2{color:#fff}
+.quote .lead{color:#D7D9EF}
+.quote-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:start}
+form.q{background:var(--paper);color:var(--ink);border-radius:18px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.25);--focus:var(--indigo)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-weight:700;font-size:1rem}
+.field label small{font-weight:500;color:var(--soft)}
+.field input,.field select,.field textarea{font:500 1.05rem/1.4 var(--body);color:var(--ink);background:#fff;border:1.5px solid var(--line-dk);border-radius:10px;padding:12px 14px;min-height:50px;width:100%;transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:110px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#5F6382}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(51,56,138,.22)}
+.field.bad input{border-color:var(--err);box-shadow:0 0 0 3px rgba(179,38,30,.14)}
+.err{color:var(--err);font-weight:600;font-size:.95rem;min-height:0}
+.err:empty{display:none}
+.radios{display:flex;gap:8px;flex-wrap:wrap}
+form.q .btn{width:100%;margin-top:6px}
+form.q .btn[disabled]{opacity:.65;cursor:progress;transform:none}
+.status{margin:14px 0 0;font-weight:600}
+.status.ok{background:#E3F2EA;color:var(--ok);border-radius:10px;padding:14px 16px;display:flex;gap:10px}
+.status.ok .icon{margin-top:3px}
+.call-card{border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:30px;display:grid;gap:14px}
+.call-card b.big{font:800 2.5rem/1 var(--display);letter-spacing:.02em;color:#fff}
+.call-card p{margin:0;color:#D7D9EF}
+.call-card .hrs{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:1rem;color:#E1E3F5;margin:4px 0}
+.call-card .hrs dt{font-weight:700}
+.call-card .hrs dd{margin:0}
+
+/* footer */
+footer{background:var(--indigo-ink);color:#C9CCEB;padding:56px 0 40px;font-size:.98rem}
+.foot{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:32px}
+footer .brand{color:#fff}
+footer .brand small{color:#B5B9E0}
+footer h3{font-size:1.1rem;letter-spacing:.12em;color:#fff;margin-bottom:10px}
+footer a{color:#fff}
+footer p{margin:0 0 6px}
+.foot-base{border-top:1px solid rgba(255,255,255,.15);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* mobile call bar */
+.callbar{display:none}
+
+@media (max-width:1060px){
+  nav.main{display:none}
+  .head-call{margin-left:auto}
+}
+@media (max-width:900px){
+  section{padding:72px 0}
+  .faq-side{position:static}
+  .hero .wrap,.chooser,.rr,.picker,.area-grid,.quote-grid,.about-grid,.faq-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-copy{padding-bottom:8px}
+  .guide{position:static}
+  .spring .wrap{grid-template-columns:minmax(0,1fr)}
+  .spring svg.coil{width:140px}
+  .svc,.svc.feature{grid-template-columns:minmax(0,1fr);gap:16px}
+  .visit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .visit li:nth-child(2){border-right:0}
+  .visit li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .visit li::after{display:none}
+  .about-grid .photo{max-width:340px;aspect-ratio:1/1}
+  .foot{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  header.top .wrap{min-height:64px;gap:10px}
+  .brand svg{width:36px;height:34px}
+  .brand b{font-size:1.2rem}
+  .brand small{font-size:.62rem;letter-spacing:.18em}
+  .head-call{padding:8px 11px 8px 9px;gap:7px}
+  .head-call small{display:none}
+  .head-call b{font-size:1.08rem}
+  .head-call .icon{width:18px;height:18px}
+  .hero{padding-top:40px}
+  .hero .sub{font-size:1.2rem}
+  .btn-big{width:100%}
+  .row2,.towns,.parts{grid-template-columns:minmax(0,1fr)}
+  .towns{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guide,.rr-q,.rr-out,form.q,.svc.feature{padding:22px}
+  .reviews{grid-template-columns:minmax(0,1fr);padding:24px}
+  .visit{grid-template-columns:minmax(0,1fr)}
+  .visit li{border-right:0;border-bottom:1px solid var(--line)}
+  .visit li:last-child{border-bottom:0}
+  .faq summary{font-size:1.3rem}
+  .map .town text{font-size:30px;opacity:0;transition:opacity .2s}
+  .map .town.on text{opacity:1}
+  .callbar{display:grid;grid-template-columns:1.25fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(22,25,65,.12)}
+  .callbar .btn{min-height:50px;font-size:1rem;padding:10px 12px}
+  body{padding-bottom:76px}
+  .door-toggle{bottom:10px;right:8px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a1.7 1.7 0 0 1-1.8 1.7C10.6 20.2 3.8 13.4 3.3 5.3A1.7 1.7 0 0 1 5 3.5Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 4.5 4.5 10.5-11"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 2.8 19.5h18.4L12 3.5Z"/><path d="M12 9.5v4.5M12 17.2v.1"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><path d="M8.2 3h7.6L21 8.2v7.6L15.8 21H8.2L3 15.8V8.2Z"/><path d="M8.5 12h7"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.3V4.5a1 1 0 0 1 1-1h7.8l8.2 8.2-8.8 8.8-8.2-8.2Z"/><circle cx="8" cy="8" r="1.4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3.2L9 5h6l1.8 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M4 18v-4.5C4 9 6 6.5 9.5 5.5M4 13.5h4.5V18H4M13.5 18v-4.5c0-4.5 2-7 5.5-8M13.5 13.5H18V18h-4.5"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 4.2a4.8 4.8 0 0 0-5.7 6.4L3.6 15.8a2 2 0 0 0 2.8 2.8l5.2-5.2a4.8 4.8 0 0 0 6.4-5.7l-3 3-2.6-.6-.6-2.6 3-3Z"/></symbol>
+  <symbol id="i-remote" viewBox="0 0 24 24"><rect x="7" y="2.8" width="10" height="18.4" rx="3"/><circle cx="12" cy="8" r="2"/><path d="M10 13.5h4M10 16.5h4"/></symbol>
+  <symbol id="i-doorico" viewBox="0 0 24 24"><path d="M2.5 10 12 3.5 21.5 10v10.5h-19Z"/><path d="M6 20.5V11.5h12v9M6 14.5h12M6 17.5h12"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 16a8.5 8.5 0 0 1 17 0"/><path d="m12 16 4-5"/><path d="M3.5 16h17"/></symbol>
+  <symbol id="i-noise" viewBox="0 0 24 24"><path d="M3.5 9.5h3.5l4.5-4v13l-4.5-4H3.5Z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
+  <symbol id="i-track" viewBox="0 0 24 24"><path d="M5 21V8a4 4 0 0 1 4-4h11"/><circle cx="5" cy="13" r="2"/><path d="m14 15 5 5M19 15l-5 5"/></symbol>
+  <symbol id="i-spring" viewBox="0 0 24 24"><path d="M2.5 12h2M19.5 12h2M4.5 12c0-4 2-4 2 0s2 4 2 0 2-4 2 0 2 4 2 0 2-4 2 0 2 4 2 0"/></symbol>
+  <symbol id="i-new" viewBox="0 0 24 24"><path d="M3 20.5V8.5L12 4l9 4.5v12"/><path d="M6.5 20.5v-9h11v9"/><path d="M15 2.5v3M16.5 4h-3"/></symbol>
+</svg>
+
+<div class="concept">
+  <div class="wrap">
+    <span>Sample site · fictional business · built by Knox Site Factory</span>
+    <a href="../../index.html#samples">Back to Knox Site Factory</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Smoky Gap Garage Doors, home">
+      <svg viewBox="0 0 46 42" aria-hidden="true">
+        <path d="M2 18 13 6l6 7 4-4 21 9v22H2Z" fill="#33388A"/>
+        <path d="M13 6l6 7 4-4" fill="none" stroke="#F2A53A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="9" y="21" width="28" height="19" fill="#fff"/>
+        <path d="M9 25.75h28M9 30.5h28M9 35.25h28" stroke="#33388A" stroke-width="1.6"/>
+      </svg>
+      <span><b>Smoky Gap</b><small>Garage Doors</small></span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#repair-or-replace">Repair or replace</a>
+      <a href="#doors">New doors</a>
+      <a href="#about">About</a>
+      <a href="#area">Service area</a>
+      <a href="#quote">Get a quote</a>
+    </nav>
+    <a class="head-call" href="tel:+18655550103">
+      <svg class="icon"><use href="#i-phone"/></svg>
+      <span><small>Call or text</small><b class="phone-num">865-555-0103</b></span>
+    </a>
+  </div>
+</header>
+
+<main id="home">
+
+  <section class="hero dark" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="h-hero">Doors that <span>behave.</span></h1>
+        <p class="sub">Repair or replace? We'll help you decide.</p>
+        <div class="hero-actions">
+          <a class="btn btn-white btn-big" href="tel:+18655550103"><svg class="icon"><use href="#i-phone"/></svg><span>Call <span class="phone-num">865-555-0103</span></span></a>
+          <a class="text-link" href="#quote">Get a free quote <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="hero-facts">
+          <li><svg class="icon"><use href="#i-clock"/></svg><span><b>Mon–Fri 7am–6pm, Sat 8am–noon.</b> A real person answers.</span></li>
+          <li><svg class="icon"><use href="#i-pin"/></svg><span>Serving Knoxville, Powell, Farragut, Maryville and nearby towns.</span></li>
+          <li><svg class="icon"><use href="#i-tag"/></svg><span>We tell you the trip fee on the phone, before we come out.</span></li>
+        </ul>
+      </div>
+
+      <div class="scene-wrap">
+        <svg class="scene" id="scene" viewBox="0 0 560 470" role="img" aria-labelledby="scene-t">
+          <title id="scene-t">A garage door rolling up to show a warm-lit garage</title>
+          <defs>
+            <linearGradient id="lit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD58A"/><stop offset="1" stop-color="#E9963A"/></linearGradient>
+            <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC871" stop-opacity=".55"/><stop offset="1" stop-color="#FFC871" stop-opacity="0"/></linearGradient>
+            <radialGradient id="bulb" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4D6"/><stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/></radialGradient>
+            <clipPath id="opening"><rect x="108" y="176" width="344" height="250"/></clipPath>
+            <pattern id="siding" width="40" height="18" patternUnits="userSpaceOnUse"><rect width="40" height="18" fill="#2B3080"/><path d="M0 17.5h40" stroke="#242870" stroke-width="1.4"/></pattern>
+          </defs>
+          <!-- house -->
+          <path d="M40 470V150L280 30l240 120v320Z" fill="url(#siding)"/>
+          <path d="M28 156 280 26l252 130" fill="none" stroke="#E9EAF6" stroke-width="12" stroke-linejoin="round"/>
+          <!-- gable vent -->
+          <g transform="translate(250 82)"><path d="M0 34 30 10l30 24Z" fill="#242870"/><path d="M14 30h32M20 25h20" stroke="#4C52A8" stroke-width="2"/></g>
+          <!-- coach lights -->
+          <g><rect x="76" y="226" width="16" height="26" rx="3" fill="#161941"/><rect x="79" y="230" width="10" height="16" rx="2" fill="#FFD58A"/><circle cx="84" cy="238" r="30" fill="url(#bulb)" opacity=".45"/></g>
+          <g><rect x="468" y="226" width="16" height="26" rx="3" fill="#161941"/><rect x="471" y="230" width="10" height="16" rx="2" fill="#FFD58A"/><circle cx="476" cy="238" r="30" fill="url(#bulb)" opacity=".45"/></g>
+          <!-- interior -->
+          <g clip-path="url(#opening)">
+            <rect x="108" y="176" width="344" height="250" fill="url(#lit)"/>
+            <!-- pegboard -->
+            <rect x="140" y="214" width="150" height="92" rx="3" fill="#D98A33"/>
+            <g fill="#B4661E">
+              <path d="M160 228h6v40h-6Z"/><circle cx="163" cy="226" r="8"/>
+              <path d="M186 230h18v8h-6v30h-6v-30h-6Z"/>
+              <path d="M222 226c10 0 16 8 16 16h-8c0-4-3-8-8-8Z"/><path d="M220 240h6v32h-6Z"/>
+              <rect x="250" y="226" width="26" height="12" rx="3"/><rect x="258" y="238" width="10" height="34"/>
+            </g>
+            <!-- workbench -->
+            <rect x="130" y="318" width="190" height="12" fill="#8A4A14"/>
+            <path d="M140 330h10v66h-10ZM300 330h10v66h-10Z" fill="#8A4A14"/>
+            <rect x="160" y="300" width="40" height="18" rx="2" fill="#B4661E"/>
+            <rect x="230" y="296" width="60" height="22" rx="2" fill="#C47426"/>
+            <!-- shelf + bins -->
+            <rect x="350" y="230" width="80" height="6" fill="#8A4A14"/>
+            <rect x="350" y="300" width="80" height="6" fill="#8A4A14"/>
+            <rect x="356" y="200" width="30" height="30" rx="2" fill="#C47426"/><rect x="392" y="208" width="32" height="22" rx="2" fill="#B4661E"/>
+            <rect x="358" y="272" width="64" height="28" rx="2" fill="#C47426"/>
+            <!-- bike -->
+            <g fill="none" stroke="#7A3F10" stroke-width="5"><circle cx="370" cy="384" r="26"/><circle cx="430" cy="384" r="26"/><path d="M370 384l22-36h26l12 36M392 348l14 36M386 342h14"/></g>
+            <!-- ceiling bulb -->
+            <circle cx="280" cy="190" r="70" fill="url(#bulb)" class="glow"/>
+            <circle cx="280" cy="186" r="6" fill="#FFF7E2"/>
+            <!-- floor -->
+            <path d="M108 400h344v26H108Z" fill="#C98A48"/>
+            <!-- the door -->
+            <g class="door">
+              <g id="hero-door"></g>
+              <rect x="108" y="420" width="344" height="6" fill="#161941" opacity=".35"/>
+            </g>
+          </g>
+          <!-- trim -->
+          <path d="M100 430V168h360v262" fill="none" stroke="#E9EAF6" stroke-width="12"/>
+          <!-- driveway + light spill -->
+          <path d="M94 430h372l60 40H34Z" fill="#9EA2C7"/>
+          <path d="M108 430h344l90 40H18Z" fill="url(#spill)" class="glow"/>
+        </svg>
+        <button class="door-toggle" type="button" id="door-toggle" aria-pressed="true"><svg class="icon"><use href="#i-down"/></svg><span>Close the door</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="help" aria-labelledby="h-help">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-help">What's the door doing?</h2>
+        <p class="lead">Pick the closest match. You'll see what's safe to check yourself and when it's time to call.</p>
+      </div>
+      <div class="chooser">
+        <div class="choices" id="choices">
+          <button class="choice" type="button" data-k="open" aria-pressed="true"><svg class="icon lead-i"><use href="#i-doorico"/></svg>Won't open or close<svg class="icon chev"><use href="#i-chev"/></svg></button>
+          <button class="choice" type="button" data-k="spring" aria-pressed="false"><svg class="icon lead-i"><use href="#i-spring"/></svg>Broken spring<svg class="icon chev"><use href="#i-chev"/></svg></button>
+          <button class="choice" type="button" data-k="new" aria-pressed="false"><svg class="icon lead-i"><use href="#i-new"/></svg>I want a new door<svg class="icon chev"><use href="#i-chev"/></svg></button>
+          <button class="choice" type="button" data-k="noise" aria-pressed="false"><svg class="icon lead-i"><use href="#i-noise"/></svg>Noisy or shaky<svg class="icon chev"><use href="#i-chev"/></svg></button>
+          <button class="choice" type="button" data-k="track" aria-pressed="false"><svg class="icon lead-i"><use href="#i-track"/></svg>Off track or crooked<svg class="icon chev"><use href="#i-chev"/></svg></button>
+          <button class="choice" type="button" data-k="remote" aria-pressed="false"><svg class="icon lead-i"><use href="#i-remote"/></svg>Opener or remote<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        </div>
+        <div class="guide" id="guide" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spring dark" aria-labelledby="h-spring">
+    <div class="wrap">
+      <svg class="coil" viewBox="0 0 180 80" aria-hidden="true">
+        <rect x="0" y="36" width="180" height="8" rx="4" fill="#3B4096"/>
+        <g fill="none" stroke="#F2A53A" stroke-width="5" stroke-linecap="round">
+          <path d="M28 40c0-26 10-26 10 0s10 26 10 0 10-26 10 0 10 26 10 0 10-26 10 0"/>
+          <path d="M102 40c0-26 10-26 10 0s10 26 10 0 10-26 10 0 10 26 10 0 10-26 10 0" opacity=".55"/>
+        </g>
+        <rect x="84" y="20" width="12" height="40" rx="3" fill="#E4E6F7"/>
+      </svg>
+      <div>
+        <h2 id="h-spring">Leave the springs to us.</h2>
+        <p>The springs above your door hold enough tension to lift a 150-pound door. When one breaks, the door gets heavy fast. <b>Don't try to lift it, adjust it, or keep pressing the opener.</b> Leave the car where it is and call. It's a quick fix with the right tools.</p>
+      </div>
+      <a class="btn btn-amber" href="tel:+18655550103"><svg class="icon"><use href="#i-phone"/></svg><span class="phone-num">865-555-0103</span></a>
+    </div>
+  </section>
+
+  <section id="repair-or-replace" aria-labelledby="h-rr">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-rr">Repair or replace?</h2>
+        <p class="lead">Three quick questions. We'll tell you which way we'd lean, and why. Most doors just need a repair.</p>
+      </div>
+      <div class="rr">
+        <form class="rr-q" id="rr-form" onsubmit="return false">
+          <fieldset>
+            <legend>How old is the door?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="age" value="0"><span>Under 10 years</span></label>
+              <label class="chip"><input type="radio" name="age" value="1"><span>10 to 20 years</span></label>
+              <label class="chip"><input type="radio" name="age" value="2"><span>Over 20 years</span></label>
+              <label class="chip"><input type="radio" name="age" value="1"><span>Not sure</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Any dented or cracked panels?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="panels" value="0"><span>None</span></label>
+              <label class="chip"><input type="radio" name="panels" value="1"><span>One panel</span></label>
+              <label class="chip"><input type="radio" name="panels" value="2"><span>Two or more</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>What do you want most?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="want" value="0"><span>Just make it work</span></label>
+              <label class="chip"><input type="radio" name="want" value="2"><span>A new look</span></label>
+              <label class="chip"><input type="radio" name="want" value="2"><span>A warmer, quieter garage</span></label>
+            </div>
+          </fieldset>
+        </form>
+        <div class="rr-out dark" id="rr-out" aria-live="polite">
+          <div class="meter" aria-hidden="true">
+            <div class="track"></div>
+            <div class="marker" id="rr-marker"></div>
+            <div class="ticks"><span>Repair</span><span>Replace</span></div>
+          </div>
+          <div id="rr-text"><h3>Answer three questions</h3><p class="rr-empty">Your answer shows up here as you go.</p></div>
+          <button class="btn btn-amber" type="button" id="rr-send" hidden>Send this to Smoky Gap <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doors" style="padding-top:24px" aria-labelledby="h-doors">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-doors">Try a new door on.</h2>
+        <p class="lead">Pick a style and a color. We bring real samples to your driveway before you order anything.</p>
+      </div>
+      <div class="picker">
+        <div class="house"><svg viewBox="0 0 560 330" id="house" role="img" aria-labelledby="house-t"><title id="house-t">Preview of the chosen garage door</title></svg></div>
+        <div class="pick-panel">
+          <div>
+            <h3>Style</h3>
+            <div class="styles" id="styles">
+              <button class="style-btn" type="button" data-s="raised" aria-pressed="true"><svg viewBox="0 0 56 40" aria-hidden="true"></svg><span>Raised panel<small>Classic, fits most houses</small></span></button>
+              <button class="style-btn" type="button" data-s="carriage" aria-pressed="false"><svg viewBox="0 0 56 40" aria-hidden="true"></svg><span>Carriage house<small>Barn-door look, still rolls up</small></span></button>
+              <button class="style-btn" type="button" data-s="modern" aria-pressed="false"><svg viewBox="0 0 56 40" aria-hidden="true"></svg><span>Modern flush<small>Smooth face, row of windows</small></span></button>
+            </div>
+          </div>
+          <div>
+            <h3>Color</h3>
+            <div class="swatches" id="swatches">
+              <button class="swatch" type="button" data-c="#F4F4F1" data-n="White" style="background:#F4F4F1" aria-label="White" aria-pressed="true"></button>
+              <button class="swatch" type="button" data-c="#E2D4BA" data-n="Almond" style="background:#E2D4BA" aria-label="Almond" aria-pressed="false"></button>
+              <button class="swatch" type="button" data-c="#6B7682" data-n="Slate" style="background:#6B7682" aria-label="Slate" aria-pressed="false"></button>
+              <button class="swatch" type="button" data-c="#4A3A2C" data-n="Dark bronze" style="background:#4A3A2C" aria-label="Dark bronze" aria-pressed="false"></button>
+              <button class="swatch" type="button" data-c="#1E1F24" data-n="Black" style="background:#1E1F24" aria-label="Black" aria-pressed="false"></button>
+            </div>
+          </div>
+          <div>
+            <p class="pick-name" id="pick-name" aria-live="polite">Raised panel in White</p>
+            <p class="pick-note">Screen colors are close, not exact.</p>
+          </div>
+          <button class="btn" type="button" id="pick-send">Ask about this door <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="h-svc" style="background:var(--paper);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-svc">What we fix and install</h2>
+        <p class="lead">Every visit starts the same way. We look, we tell you the price, and nothing happens until you say yes.</p>
+      </div>
+
+      <div class="svc feature" style="background:var(--ground)">
+        <div>
+          <h3><svg class="icon"><use href="#i-wrench"/></svg>Repairs</h3>
+          <p style="margin-top:12px">Most calls are one of four parts. Here's where they live on your door.</p>
+          <div class="parts">
+            <div><b><i>A</i>Springs</b><p>Torsion springs above the door do the lifting. We replace them in pairs so they wear evenly.</p></div>
+            <div><b><i>B</i>Cables</b><p>A frayed or loose cable makes a door hang crooked. Stop using it and call.</p></div>
+            <div><b><i>C</i>Rollers</b><p>Worn rollers are the usual cause of a loud, rumbling door.</p></div>
+            <div><b><i>D</i>Tracks</b><p>Bent or loose tracks get straightened and tightened, or replaced.</p></div>
+          </div>
+        </div>
+        <svg class="diagram" viewBox="0 0 440 320" role="img" aria-labelledby="dia-t">
+          <title id="dia-t">Diagram of a garage door showing springs, cables, rollers and tracks</title>
+          <rect x="20" y="20" width="400" height="290" rx="6" fill="#fff" stroke="#D9DBE7"/>
+          <rect x="60" y="56" width="320" height="10" rx="5" fill="#B9BCD2"/>
+          <path d="M100 61c0-12 6-12 6 0s6 12 6 0 6-12 6 0 6 12 6 0 6-12 6 0 6 12 6 0 6-12 6 0M268 61c0-12 6-12 6 0s6 12 6 0 6-12 6 0 6 12 6 0 6-12 6 0 6 12 6 0 6-12 6 0" fill="none" stroke="#33388A" stroke-width="3.5"/>
+          <path d="M70 70v230M370 70v230" stroke="#474B68" stroke-width="6"/>
+          <g fill="#E6E8F2" stroke="#B9BCD2"><rect x="78" y="90" width="284" height="50"/><rect x="78" y="140" width="284" height="50"/><rect x="78" y="190" width="284" height="50"/><rect x="78" y="240" width="284" height="56"/></g>
+          <path d="M82 70v220" stroke="#F2A53A" stroke-width="2" stroke-dasharray="4 4"/>
+          <g fill="#33388A"><circle cx="72" cy="115" r="6"/><circle cx="72" cy="165" r="6"/><circle cx="72" cy="215" r="6"/><circle cx="368" cy="115" r="6"/><circle cx="368" cy="165" r="6"/><circle cx="368" cy="215" r="6"/></g>
+          <g font-family="Barlow" font-weight="700">
+            <circle cx="190" cy="38" r="12" fill="#33388A"/><text x="190" y="43" text-anchor="middle" fill="#fff" style="fill:#fff">A</text><path d="M190 50v6" stroke="#33388A" stroke-width="2"/>
+            <circle cx="110" cy="80" r="12" fill="#33388A"/><text x="110" y="85" text-anchor="middle" style="fill:#fff">B</text><path d="M98 80h-14" stroke="#33388A" stroke-width="2"/>
+            <circle cx="400" cy="165" r="12" fill="#33388A"/><text x="400" y="170" text-anchor="middle" style="fill:#fff">C</text><path d="M388 165h-14" stroke="#33388A" stroke-width="2"/>
+            <circle cx="40" cy="250" r="12" fill="#33388A"/><text x="40" y="255" text-anchor="middle" style="fill:#fff">D</text><path d="M52 250h14" stroke="#33388A" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="svc-list" style="margin-top:40px">
+        <div class="svc">
+          <h3><svg class="icon"><use href="#i-remote"/></svg>Openers and remotes</h3>
+          <div><p>Repair the one you have, or put in a quiet belt-drive opener with a phone app and battery backup.</p>
+            <ul><li>Opener repair</li><li>New openers</li><li>Remotes and keypads</li><li>Safety sensors</li></ul></div>
+          <a class="text-link" href="#quote" data-fill="Opener or remote">Ask about openers <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="svc">
+          <h3><svg class="icon"><use href="#i-new"/></svg>New doors</h3>
+          <div><p>Steel, insulated, carriage house and modern styles. We measure, order, haul away the old door and install the new one.</p>
+            <ul><li>Single and double doors</li><li>Insulated doors</li><li>Windows and trim</li><li>Old door removal</li></ul></div>
+          <a class="text-link" href="#doors">Try styles <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="svc">
+          <h3><svg class="icon"><use href="#i-gauge"/></svg>Tune-ups</h3>
+          <div><p>Once a year we balance the door, tighten the hardware, lube the moving parts and test the safety reverse. A tune-up catches worn parts before they break.</p>
+            <ul><li>Balance check</li><li>Hardware tightening</li><li>Lubrication</li><li>Safety test</li></ul></div>
+          <a class="text-link" href="#quote" data-fill="Tune-up">Book a tune-up <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="h-about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="photo"><svg class="icon"><use href="#i-camera"/></svg>Owner photo goes here<small>On a live site, this is a real photo of the owner or crew.</small></div>
+        <div>
+          <h2 id="h-about">Hi, I'm Tasha.</h2>
+          <p class="lead" style="color:var(--ink)">Smoky Gap is a small, local crew. When you call, you get me or someone who works with me, not a call center.</p>
+          <p>We keep it simple. We tell you the trip fee before we come out. We show you what's wrong, give you a price, and do the work only after you say yes. If a repair makes more sense than a new door, we'll say so.</p>
+          <p class="sig">Tasha, owner</p>
+    <ol class="visit" aria-label="How a visit works">
+        <li><b>You call</b><span>Tell us what the door is doing. We give you the trip fee.</span></li>
+        <li><b>We look</b><span>A tech checks the whole door, not just the broken part.</span></li>
+        <li><b>You get a price</b><span>Written down, before any work starts.</span></li>
+        <li><b>You decide</b><span>Say yes and we fix it, usually in the same visit.</span></li>
+      </ol>
+        </div>
+      </div>
+
+
+
+      <div class="reviews">
+        <svg class="icon"><use href="#i-quote"/></svg>
+        <div>
+          <b>Your real Google reviews appear here, quoted with permission.</b>
+          <p>On a live site, this shows a few recent reviews with the customer's first name and town. No made-up reviews, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="area" aria-labelledby="h-area">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-area">Where we work</h2>
+        <p class="lead">Knox County and the towns around it. Not sure if you're in range? Call and ask.</p>
+      </div>
+      <div class="area-grid">
+        <div class="map">
+          <svg viewBox="0 0 800 440" id="map" role="img" aria-labelledby="map-t">
+            <title id="map-t">Map of towns served around Knoxville</title>
+            <path d="M-10 300C90 280 140 330 220 300s140-120 210-110 120 60 190 40 120-70 200-60" fill="none" stroke="#3E4598" stroke-width="16" stroke-linecap="round" opacity=".8"/>
+            <path d="M-10 150C120 170 240 190 330 182S520 150 810 230" fill="none" stroke="#4A50A6" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+            <path d="M330 -10C340 80 350 140 352 182S350 330 340 450" fill="none" stroke="#4A50A6" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+            <text x="20" y="330" style="font:italic 600 13px Barlow;fill:#8F94D0">Tennessee River</text>
+          </svg>
+        </div>
+        <div>
+          <ul class="towns" id="towns"></ul>
+          <p class="area-note">Outside these towns? We'll tell you on the phone if we can make the trip.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="h-faq" style="padding-top:24px">
+    <div class="wrap">
+      <div class="faq-grid">
+      <div class="faq-side">
+        <h2 id="h-faq">Questions we hear a lot</h2>
+        <p>Don't see yours? Ask us. We'd rather answer a question on the phone than have you guess.</p>
+        <a class="btn" href="tel:+18655550103"><svg class="icon"><use href="#i-phone"/></svg><span class="phone-num">865-555-0103</span></a>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>How long do springs last?<span class="pm"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+          <div class="ans"><p>Most standard springs are rated for about 10,000 open-and-close cycles. For a family that uses the door four times a day, that's roughly seven years. Heavier use wears them out sooner. If one spring breaks, the other usually isn't far behind, so we replace both.</p></div>
+        </details>
+        <details>
+          <summary>Do you charge to come out?<span class="pm"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+          <div class="ans"><p>Yes, there's a trip fee, and we tell you what it is on the phone before we schedule anything. No surprises at the door. You get a price for the repair before we start, and you can say no.</p></div>
+        </details>
+        <details>
+          <summary>Can you match my neighbors' doors?<span class="pm"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+          <div class="ans"><p>Usually, yes. Send us a photo or the brand and model if your HOA has one on file. We'll find the same door or the closest match and bring a sample so you can compare it in daylight.</p></div>
+        </details>
+        <details>
+          <summary>How long does a new door take?<span class="pm"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+          <div class="ans"><p>It depends on the door and the maker. Some stock doors arrive quickly, while custom colors and windows take longer. We confirm the timing when you order. Installing is usually done in a single visit.</p></div>
+        </details>
+        <details>
+          <summary>Is it safe to use the door if it's making noise?<span class="pm"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+          <div class="ans"><p>A little squeak is normal wear. A grinding sound, a jerking door, or a door that stops halfway is a reason to stop using it and call. Those can mean a worn roller, a cable problem, or a spring that's about to go.</p></div>
+        </details>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote dark" id="quote" aria-labelledby="h-quote">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-quote">Get a free quote</h2>
+        <p class="lead">Tell us what's going on. We call or text you back during business hours.</p>
+      </div>
+      <div class="quote-grid">
+        <form class="q" id="qform" novalidate>
+          <div class="row2">
+            <div class="field" id="f-name"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name"><span class="err" id="e-name"></span></div>
+            <div class="field" id="f-phone"><label for="q-phone">Phone number <small>(we call or text this)</small></label><input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" class="tnum"><span class="err" id="e-phone"></span></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="q-issue">What do you need?</label>
+              <select id="q-issue" name="issue">
+                <option>Won't open or close</option><option>Broken spring</option><option>New door</option><option>Noisy or shaky</option><option>Off track or crooked</option><option>Opener or remote</option><option>Repair or replace?</option><option>Tune-up</option><option>Something else</option>
+              </select></div>
+            <div class="field"><label for="q-town">Town</label>
+              <select id="q-town" name="town"><option value="">Choose your town</option></select></div>
+          </div>
+          <div class="field"><label for="q-notes">Anything else? <small>(optional)</small></label><textarea id="q-notes" name="notes" placeholder="What the door is doing, when it started, the brand if you know it"></textarea></div>
+          <fieldset style="margin-bottom:18px">
+            <legend style="font:700 1rem/1.2 var(--body);text-transform:none;letter-spacing:0;color:var(--ink);margin-bottom:8px">How should we reach you?</legend>
+            <div class="radios">
+              <label class="chip"><input type="radio" name="via" value="Call" checked><span>Call me</span></label>
+              <label class="chip"><input type="radio" name="via" value="Text"><span>Text me</span></label>
+            </div>
+          </fieldset>
+          <button class="btn btn-big" type="submit" id="q-submit">Send my request <svg class="icon"><use href="#i-arrow"/></svg></button>
+          <div id="q-status" aria-live="polite"></div>
+        </form>
+        <aside class="call-card" aria-label="Call instead">
+          <p>Faster by phone</p>
+          <a class="big phone-num" href="tel:+18655550103" style="text-decoration:none"><b class="big">865-555-0103</b></a>
+          <dl class="hrs tnum">
+            <dt>Mon–Fri</dt><dd>7am – 6pm</dd>
+            <dt>Saturday</dt><dd>8am – noon</dd>
+            <dt>Sunday</dt><dd>Closed</dd>
+          </dl>
+          <p>We tell you the trip fee before we come out.</p>
+          <a class="btn btn-amber" href="tel:+18655550103"><svg class="icon"><use href="#i-phone"/></svg>Call now</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="dark">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#home" aria-label="Smoky Gap Garage Doors, back to top">
+          <svg viewBox="0 0 46 42" aria-hidden="true"><path d="M2 18 13 6l6 7 4-4 21 9v22H2Z" fill="#fff"/><path d="M13 6l6 7 4-4" fill="none" stroke="#F2A53A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><rect x="9" y="21" width="28" height="19" fill="#161941"/><path d="M9 25.75h28M9 30.5h28M9 35.25h28" stroke="#fff" stroke-width="1.6"/></svg>
+          <span><b>Smoky Gap</b><small>Garage Doors</small></span>
+        </a>
+        <p style="margin-top:16px"><a class="phone-num" href="tel:+18655550103">865-555-0103</a></p>
+        <p class="tnum">Mon–Fri 7am–6pm · Sat 8am–noon</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <p><a href="#services">Services</a></p><p><a href="#about">About</a></p><p><a href="#area">Service area</a></p><p><a href="#quote">Get a quote</a></p>
+      </div>
+      <div>
+        <h3>Towns</h3>
+        <p>Knoxville, Powell, Halls, Karns, Farragut, Maryville, Oak Ridge, Clinton, Sevierville and Lenoir City</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Fictional business. Sample by Knox Site Factory. The 555 number does not connect.</span>
+      <a href="../../index.html#samples">Back to Knox Site Factory</a>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar" aria-label="Quick contact">
+  <a class="btn" href="tel:+18655550103"><svg class="icon"><use href="#i-phone"/></svg>Call</a>
+  <a class="btn btn-ghost" href="#quote" style="background:#fff">Get a quote</a>
+</div>
+
+<script>
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+  function $(s,c){return (c||document).querySelector(s)}
+  function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
+  function icon(id){return '<svg class="icon"><use href="#'+id+'"/></svg>'}
+
+  /* ---------- door drawings ---------- */
+  // Draw a door in the box (x,y,w,h). Grooves and highlights use translucent black/white so every color works.
+  function door(style, x, y, w, h, fill){
+    var s = '', rows = 4, ph = h/rows;
+    s += '<rect class="door-fill" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+fill+'"/>';
+    if (style === 'raised'){
+      var cols = w > 200 ? 4 : 2, pad = w*0.03, cw = (w - pad*(cols+1))/cols;
+      for (var r=0;r<rows;r++){
+        var ry = y + r*ph;
+        s += '<path d="M'+x+' '+(ry+ph)+'h'+w+'" stroke="rgba(0,0,0,.22)" stroke-width="1.6"/>';
+        s += '<path d="M'+x+' '+(ry+ph+1.5)+'h'+w+'" stroke="rgba(255,255,255,.35)" stroke-width="1"/>';
+        for (var c=0;c<cols;c++){
+          var cx = x + pad + c*(cw+pad), cy = ry + ph*0.18, chh = ph*0.64;
+          s += '<rect x="'+cx+'" y="'+cy+'" width="'+cw+'" height="'+chh+'" rx="2" fill="'+fill+'" stroke="rgba(0,0,0,.18)" stroke-width="1.4"/>';
+          s += '<path d="M'+(cx+2)+' '+(cy+chh-2)+'V'+(cy+2)+'H'+(cx+cw-2)+'" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>';
+        }
+      }
+    } else if (style === 'carriage'){
+      var mid = x + w/2, boards = w > 200 ? 9 : 5;
+      for (var b=1;b<boards*2;b++){ var bx = x + b*(w/(boards*2)); s += '<path d="M'+bx+' '+(y+ph)+'V'+(y+h)+'" stroke="rgba(0,0,0,.14)" stroke-width="1.2"/>'; }
+      // window row
+      var wn = 4, wp = w*0.04, ww = (w - wp*(wn+1))/wn;
+      for (var i=0;i<wn;i++){
+        var wx = x + wp + i*(ww+wp), wy = y + ph*0.2, wh = ph*0.62;
+        s += '<rect x="'+wx+'" y="'+wy+'" width="'+ww+'" height="'+wh+'" fill="#2E3A4C" stroke="rgba(0,0,0,.25)"/>';
+        s += '<path d="M'+(wx+ww/2)+' '+wy+'v'+wh+'M'+wx+' '+(wy+wh/2)+'h'+ww+'" stroke="'+fill+'" stroke-width="'+(w>200?3:1.6)+'"/>';
+        s += '<path d="M'+(wx+3)+' '+(wy+wh-4)+'l'+(ww*0.3)+' '+(-wh*0.6)+'" stroke="rgba(255,255,255,.25)" stroke-width="2"/>';
+      }
+      s += '<path d="M'+x+' '+(y+ph)+'h'+w+'" stroke="rgba(0,0,0,.25)" stroke-width="1.6"/>';
+      s += '<path d="M'+mid+' '+(y+ph)+'V'+(y+h)+'" stroke="rgba(0,0,0,.35)" stroke-width="2.2"/>';
+      // strap hinges and handles
+      var hw = w*0.11, hy = [y+ph*1.6, y+ph*3.3];
+      hy.forEach(function(yy){
+        s += '<path d="M'+(x+w*0.03)+' '+yy+'h'+hw+'l'+(hw*0.25)+' '+(ph*0.08)+'l'+(-hw*0.25)+' '+(ph*0.08)+'h'+(-hw)+'Z" fill="#17181C"/>';
+        s += '<path d="M'+(x+w*0.97)+' '+yy+'h'+(-hw)+'l'+(-hw*0.25)+' '+(ph*0.08)+'l'+(hw*0.25)+' '+(ph*0.08)+'h'+hw+'Z" fill="#17181C"/>';
+      });
+      s += '<rect x="'+(mid-w*0.05)+'" y="'+(y+ph*2.4)+'" width="'+(w*0.025)+'" height="'+(ph*0.5)+'" rx="2" fill="#17181C"/>';
+      s += '<rect x="'+(mid+w*0.025)+'" y="'+(y+ph*2.4)+'" width="'+(w*0.025)+'" height="'+(ph*0.5)+'" rx="2" fill="#17181C"/>';
+    } else {
+      for (var m=1;m<rows;m++){ s += '<path d="M'+x+' '+(y+m*ph)+'h'+w+'" stroke="rgba(0,0,0,.2)" stroke-width="1.2"/>'; }
+      var gy = y + ph*1 + ph*0.28, gh = ph*0.44, gn = w > 200 ? 5 : 3, gp = w*0.025, gw = (w - gp*(gn+1))/gn;
+      for (var g=0;g<gn;g++){
+        var gx = x + gp + g*(gw+gp);
+        s += '<rect x="'+gx+'" y="'+gy+'" width="'+gw+'" height="'+gh+'" fill="#A9BCCB" stroke="rgba(0,0,0,.3)" stroke-width="1.4"/>';
+        s += '<path d="M'+(gx+gw*0.12)+' '+(gy+gh-3)+'l'+(gw*0.25)+' '+(-gh+6)+'" stroke="rgba(255,255,255,.55)" stroke-width="2"/>';
+      }
+      s += '<path d="M'+(x+w*0.02)+' '+(y+h-2)+'h'+(w*0.96)+'" stroke="rgba(0,0,0,.18)" stroke-width="2"/>';
+    }
+    s += '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="1.2"/>';
+    return s;
+  }
+
+  // hero door: raised panel, white
+  $('#hero-door').innerHTML = door('raised', 108, 176, 344, 250, '#F3F4F7');
+
+  /* ---------- the one motion moment ---------- */
+  var scene = $('#scene'), tog = $('#door-toggle');
+  function setDoor(open){
+    scene.classList.toggle('open', open);
+    tog.setAttribute('aria-pressed', open ? 'true' : 'false');
+    tog.innerHTML = icon(open ? 'i-down' : 'i-up') + '<span>' + (open ? 'Close the door' : 'Open the door') + '</span>';
+  }
+  if (reduced) { setDoor(true); }
+  else { setDoor(false); requestAnimationFrame(function(){ setTimeout(function(){ setDoor(true); }, 450); }); }
+  tog.addEventListener('click', function(){ setDoor(!scene.classList.contains('open')); });
+
+  /* ---------- form pre-fill ---------- */
+  var issueSel = $('#q-issue'), notes = $('#q-notes');
+  function fill(issue, note){
+    if (issue) { $$('option', issueSel).forEach(function(o){ if (o.textContent === issue) issueSel.value = o.value; }); }
+    if (note !== undefined) notes.value = note;
+    $('#quote').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
+    setTimeout(function(){ $('#q-name').focus({preventScroll:true}); }, reduced ? 0 : 600);
+  }
+  $$('[data-fill]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); fill(a.getAttribute('data-fill')); }); });
+
+  /* ---------- problem chooser ---------- */
+  var G = {
+    open: {t:"Won't open or close", u:['urg-check','i-alert','Check these first'], issue:"Won't open or close",
+      steps:["Look at the wall button. If it has a lock or vacation light on, turn it off.",
+             "Find the two small sensors near the floor. Wipe the lenses and make sure both lights are steady, not blinking.",
+             "Try the wall button. If it works but the remote doesn't, it's the remote. See “Opener or remote”."],
+      call:"Hear the opener hum but the door won't move? Stop pressing the button. That's often a broken spring."},
+    spring: {t:'Broken spring', u:['urg-stop','i-stop','Stop using the door'], issue:'Broken spring',
+      steps:["Signs: a loud bang from the garage, a gap in the coiled spring above the door, or a door that suddenly feels very heavy.",
+             "Don't lift the door by hand or keep running the opener. It can damage the opener or drop the door.",
+             "If your car is inside, leave it there until we've been out."],
+      call:"This one's a call. Springs are a quick, same-visit fix for a tech with the right tools."},
+    'new': {t:'I want a new door', u:['urg-plan','i-tag','Plan ahead'], issue:'New door',
+      steps:["Measure the opening: width and height, inside the frame.",
+             "Take a photo of the front of your house so we can suggest styles that fit.",
+             "Try a few looks in the door picker below, then ask us about the one you like."],
+      call:"We bring real samples out and give you a written price. No pressure to order."},
+    noise: {t:'Noisy or shaky', u:['urg-check','i-alert','Check these first'], issue:'Noisy or shaky',
+      steps:["With the door closed, check the hinge bolts. Tighten any that are loose.",
+             "Spray the hinges and rollers with garage-door lubricant. Skip the grease, it collects grit.",
+             "Watch the door go up. Rollers that wobble or skip are worn out."],
+      call:"Grinding, jerking, or stopping halfway means stop using it and call."},
+    track: {t:'Off track or crooked', u:['urg-stop','i-stop','Stop using the door'], issue:'Off track or crooked',
+      steps:["Don't run the opener. A door out of its track can fall.",
+             "Unplug the opener so nobody presses the button by accident.",
+             "Keep kids, pets and cars clear of the door."],
+      call:"Call us. We'll put it back on track and find out why it came off."},
+    remote: {t:'Opener or remote', u:['urg-check','i-alert','Check these first'], issue:'Opener or remote',
+      steps:["Put a fresh battery in the remote. It's the fix more often than not.",
+             "Make sure the opener is plugged in and the breaker hasn't tripped.",
+             "Still nothing? Most openers have a “learn” button to pair the remote again. It's in your manual."],
+      call:"If the wall button doesn't work either, the opener needs a look. We repair and replace openers."}
+  };
+  var guide = $('#guide');
+  function show(k, animate){
+    var d = G[k];
+    guide.innerHTML = '<div'+(animate && !reduced ? ' class="fade-in"' : '')+'>' +
+      '<h3>'+d.t+'</h3><span class="urgency '+d.u[0]+'">'+icon(d.u[1])+d.u[2]+'</span>' +
+      '<h4>What to do</h4><ul class="steps">'+d.steps.map(function(s){return '<li>'+icon('i-check')+'<span>'+s+'</span></li>'}).join('')+'</ul>' +
+      '<div class="call-line"><p>'+d.call+'</p>' +
+      '<a class="btn" href="tel:+18655550103">'+icon('i-phone')+'Call</a>' +
+      '<button class="btn btn-ghost" type="button" data-guide-fill="'+d.issue+'">Ask about this</button></div></div>';
+    $$('.choice').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-k') === k ? 'true' : 'false'); });
+  }
+  $('#choices').addEventListener('click', function(e){ var b = e.target.closest('.choice'); if (b) show(b.getAttribute('data-k'), true); });
+  guide.addEventListener('click', function(e){ var b = e.target.closest('[data-guide-fill]'); if (b) fill(b.getAttribute('data-guide-fill'), ''); });
+  show('open', false);
+
+  /* ---------- repair or replace ---------- */
+  var rrForm = $('#rr-form'), rrText = $('#rr-text'), rrSend = $('#rr-send'), marker = $('#rr-marker'), rrSummary = '';
+  function chosen(name){ var i = $('input[name="'+name+'"]:checked', rrForm); return i ? {v:+i.value, label:i.nextElementSibling.textContent} : null; }
+  function judge(){
+    var a = chosen('age'), p = chosen('panels'), w = chosen('want');
+    var answered = [a,p,w].filter(Boolean);
+    var score = answered.reduce(function(t,x){return t+x.v}, 0);
+    var max = answered.length * 2 || 1;
+    marker.style.left = (answered.length ? Math.max(6, Math.min(94, score/max*100)) : 50) + '%';
+    if (answered.length < 3){
+      rrText.innerHTML = '<h3>'+(3-answered.length)+' more to go</h3><p class="rr-empty">Your answer shows up here as you go.</p>';
+      rrSend.hidden = true; return;
+    }
+    var head, why = [];
+    if (score <= 1){ head = 'Probably a repair.'; }
+    else if (score <= 3){ head = 'Could go either way.'; }
+    else { head = 'Worth pricing a new door.'; }
+    if (a.v === 0) why.push('A door under 10 years old usually has plenty of life left.');
+    if (a.v === 2) why.push('Doors over 20 years old often lack insulation and newer safety features.');
+    if (p.v === 0) why.push('No damaged panels means the door itself is sound. Springs, rollers and cables are all fixable.');
+    if (p.v === 1) why.push('One damaged panel can often be replaced on its own, if the maker still sells it.');
+    if (p.v === 2) why.push('Replacing two or more panels can cost close to a new door.');
+    if (w.v === 0) why.push('If you just want it working, a repair is the cheaper way to get there.');
+    else why.push('A new look or better insulation only comes with a new door.');
+    if (score > 1 && score <= 3) why.push('We’ll give you both prices so you can compare.');
+    rrText.innerHTML = (reduced ? '<div>' : '<div class="fade-in">') + '<h3>'+head+'</h3><ul class="why" style="margin-top:12px">'+why.map(function(s){return '<li>'+icon('i-check')+'<span>'+s+'</span></li>'}).join('')+'</ul></div>';
+    rrSummary = 'Repair or replace helper: door age ' + a.label.toLowerCase() + ', damaged panels: ' + p.label.toLowerCase() + ', wants: ' + w.label.toLowerCase() + '. Leaning: ' + head;
+    rrSend.hidden = false;
+  }
+  rrForm.addEventListener('change', judge);
+  rrSend.addEventListener('click', function(){ fill('Repair or replace?', rrSummary); });
+
+  /* ---------- door style picker ---------- */
+  var house = $('#house'), state = {s:'raised', c:'#F4F4F1', n:'White'};
+  var names = {raised:'Raised panel', carriage:'Carriage house', modern:'Modern flush'};
+  function drawHouse(){
+    house.innerHTML = '<title id="house-t">'+names[state.s]+' garage door in '+state.n+'</title>' +
+      '<rect width="560" height="330" fill="#E9EBF3"/>' +
+      '<g stroke="#D6D9E6" stroke-width="1.2">' + Array.apply(null, Array(16)).map(function(_,i){return '<path d="M0 '+(i*18+14)+'h560"/>'}).join('') + '</g>' +
+      '<rect x="0" y="300" width="560" height="30" fill="#BFC2D6"/>' +
+      '<rect x="90" y="56" width="380" height="250" fill="#FFFFFF"/>' +
+      '<rect x="102" y="68" width="356" height="232" fill="#3A3D52"/>' +
+      door(state.s, 104, 70, 352, 230, state.c) +
+      '<rect x="40" y="128" width="16" height="26" rx="3" fill="#161941"/><rect x="43" y="132" width="10" height="16" rx="2" fill="#FFD58A"/>' +
+      '<rect x="504" y="128" width="16" height="26" rx="3" fill="#161941"/><rect x="507" y="132" width="10" height="16" rx="2" fill="#FFD58A"/>';
+    $('#pick-name').textContent = names[state.s] + ' in ' + state.n;
+  }
+  $$('.style-btn').forEach(function(b){
+    $('svg', b).innerHTML = door(b.getAttribute('data-s'), 2, 2, 52, 36, '#E9EBF3');
+    b.addEventListener('click', function(){
+      state.s = b.getAttribute('data-s');
+      $$('.style-btn').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      drawHouse();
+    });
+  });
+  $$('.swatch').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.c = b.getAttribute('data-c'); state.n = b.getAttribute('data-n');
+      $$('.swatch').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      // swap fills in place so the color change can transition
+      var fills = $$('.door-fill', house);
+      if (fills.length) { fills.forEach(function(f){ f.setAttribute('fill', state.c); }); drawHouseLater(); }
+      else drawHouse();
+    });
+  });
+  var t1; function drawHouseLater(){ clearTimeout(t1); t1 = setTimeout(drawHouse, reduced ? 0 : 340); }
+  drawHouse();
+  $('#pick-send').addEventListener('click', function(){ fill('New door', 'I like the ' + names[state.s].toLowerCase() + ' style in ' + state.n.toLowerCase() + '.'); });
+
+  /* ---------- service area ---------- */
+  var TOWNS = [
+    ['Knoxville',352,182,'r'],['Powell',264,110,'l'],['Halls',345,60,'r'],['Karns',190,160,'l'],['Farragut',153,262,'l'],
+    ['Maryville',318,380,'r'],['Oak Ridge',58,130,'r'],['Clinton',172,40,'r'],['Sevierville',690,272,'l'],['Lenoir City',68,340,'r']
+  ];
+  var map = $('#map'), list = $('#towns'), townSel = $('#q-town');
+  TOWNS.forEach(function(t, i){
+    var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'town' + (i === 0 ? ' on' : '')); g.setAttribute('data-i', i);
+    var tx = t[3] === 'r' ? t[1] + 14 : t[1] - 14, anchor = t[3] === 'r' ? 'start' : 'end';
+    g.innerHTML = '<circle class="ring" cx="'+t[1]+'" cy="'+t[2]+'" r="15"/><circle class="dot" cx="'+t[1]+'" cy="'+t[2]+'" r="6"/>' +
+      '<text x="'+tx+'" y="'+(t[2]+5)+'" text-anchor="'+anchor+'">'+t[0]+'</text>';
+    map.appendChild(g);
+    var li = document.createElement('li');
+    li.innerHTML = '<button type="button" data-i="'+i+'"'+(i===0?' class="on"':'')+'>'+icon('i-pin')+t[0]+'</button>';
+    list.appendChild(li);
+    var o = document.createElement('option'); o.textContent = t[0]; townSel.appendChild(o);
+  });
+  var other = document.createElement('option'); other.textContent = 'Somewhere else'; townSel.appendChild(other);
+  function hi(i){
+    $$('.town', map).forEach(function(g){ g.classList.toggle('on', g.getAttribute('data-i') == i); });
+    $$('button', list).forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-i') == i); });
+  }
+  list.addEventListener('mouseover', function(e){ var b = e.target.closest('button'); if (b) hi(b.getAttribute('data-i')); });
+  list.addEventListener('focusin', function(e){ var b = e.target.closest('button'); if (b) hi(b.getAttribute('data-i')); });
+  list.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b){ hi(b.getAttribute('data-i')); townSel.value = TOWNS[b.getAttribute('data-i')][0]; } });
+
+  /* ---------- quote form ---------- */
+  var form = $('#qform'), status = $('#q-status');
+  function setErr(id, msg){ $('#e-'+id).textContent = msg; $('#f-'+id).classList.toggle('bad', !!msg); $('#q-'+id).setAttribute('aria-invalid', msg ? 'true' : 'false'); if (msg) $('#q-'+id).setAttribute('aria-describedby','e-'+id); }
+  function check(){
+    var ok = true, name = $('#q-name').value.trim(), digits = $('#q-phone').value.replace(/\D/g,'');
+    if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
+    if (!name){ setErr('name','Enter your name so we know who to ask for.'); ok = false; } else setErr('name','');
+    if (!digits){ setErr('phone','Enter a phone number so we can call or text you back.'); ok = false; }
+    else if (digits.length !== 10){ setErr('phone','Enter a 10-digit phone number, like 865-555-0123.'); ok = false; }
+    else setErr('phone','');
+    return ok;
+  }
+  ['name','phone'].forEach(function(id){ $('#q-'+id).addEventListener('blur', function(){ if (form.dataset.tried) check(); }); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); form.dataset.tried = '1'; status.className = ''; status.textContent = '';
+    if (!check()){ var bad = $('.field.bad input', form); if (bad) bad.focus(); return; }
+    var btn = $('#q-submit'); btn.disabled = true; btn.innerHTML = 'Sending…';
+    setTimeout(function(){
+      btn.disabled = false; btn.innerHTML = 'Send my request ' + icon('i-arrow');
+      status.className = 'status ok';
+      status.innerHTML = icon('i-check') + '<span>Got it, ' + $('#q-name').value.trim().split(' ')[0] + '. This is a sample site, so nothing was sent. On a live site, this goes straight to Tasha’s phone and inbox.</span>';
+    }, reduced ? 0 : 700);
+  });
+})();
+</script>
+</body>
+</html>
