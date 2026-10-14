@@ -73,6 +73,70 @@ section{padding:112px 0 96px}
 .btn-ghost:hover{background:var(--ink);color:var(--ground)}
 .btn:active{transform:translateY(1px)}
 
+/* sample showcase */
+.work{padding-top:24px}
+.work .lede{margin:0 0 40px}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.tile{--c:#1F5FAE;position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:22px;background:var(--c);color:#fff;text-decoration:none;isolation:isolate;box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{color:#fff;transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.tile:active{transform:translateY(-1px)}
+.tile:focus-visible{outline-offset:4px;border-radius:22px}
+.tile.septic{--c:#2F5E3A}
+.tile.garage{--c:#33388A}
+.tile.big{grid-column:1 / span 8;grid-row:1 / span 2}
+.tile.septic{grid-column:9 / span 4;grid-row:1}
+.tile.garage{grid-column:9 / span 4;grid-row:2}
+.tile-copy{position:relative;z-index:2;padding:28px 28px 0}
+.tile h3{font-size:1.5rem;font-weight:800;font-variation-settings:"wdth" 116;margin-bottom:4px;color:#fff}
+.tile .trade{font-size:.875rem;color:rgba(255,255,255,.84);margin:0 0 14px}
+.tile .tool{font-size:.9375rem;line-height:1.5;color:rgba(255,255,255,.94);margin:0 0 16px;max-width:44ch}
+.tile .go{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9375rem;padding-bottom:2px;border-bottom:2px solid rgba(255,255,255,.55);transition:border-color .25s}
+.tile:hover .go{border-color:#fff}
+.tile .go svg{width:16px;height:16px;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .go svg{transform:translateX(4px)}
+.tile-art{position:relative;flex:1;min-height:250px;margin-top:24px}
+.browser{position:absolute;left:28px;right:-40px;top:0;bottom:-60px;border-radius:14px 14px 0 0;overflow:hidden;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.18),0 30px 60px -20px rgba(0,0,0,.5);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.browser .bar{height:30px;background:#EEF1F0;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid #DCE2DF}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:#C9D1CD}
+.browser .bar span{margin-left:10px;font-size:11px;color:#4A5E58;background:#fff;border-radius:6px;padding:2px 10px}
+.browser img{width:100%;height:auto}
+.tile.big:hover .browser{transform:translateY(-6px)}
+.handset{position:absolute;width:196px;border-radius:30px;padding:7px;background:#0B1512;box-shadow:0 2px 6px rgba(0,0,0,.25),0 30px 50px -16px rgba(0,0,0,.6);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.handset img{width:100%;height:auto;border-radius:23px}
+.tile.big .handset{right:36px;bottom:-150px;width:210px}
+.tile.big:hover .handset{transform:translateY(-14px) rotate(-1.5deg)}
+.tile.small{flex-direction:row}
+.tile.small .tile-copy{flex:1;padding:28px 8px 28px 28px}
+.tile.small .tile-art{flex:0 0 170px;margin:0;min-height:300px}
+.tile.small .handset{width:156px;left:0;top:34px;border-radius:24px;padding:6px}
+.tile.small .handset img{border-radius:19px}
+.tile.small:hover .handset{transform:translateY(-12px)}
+.included{display:flex;flex-wrap:wrap;gap:10px 28px;margin:28px 0 0;padding:0;list-style:none;font-size:.9375rem;color:var(--ink-2)}
+.included li{display:flex;align-items:center;gap:8px}
+.included svg{width:18px;height:18px;color:var(--ok)}
+@media (max-width:1020px){
+  .tile.big{grid-column:1 / -1;grid-row:auto}
+  .tile.septic,.tile.garage{grid-column:span 6;grid-row:auto}
+}
+@media (max-width:700px){
+  .bento{gap:16px}
+  .tile.septic,.tile.garage{grid-column:1 / -1}
+  .tile-copy{padding:24px 22px 0}
+  .tile.big .tile-art{min-height:300px}
+  .browser{left:22px;right:-120px}
+  .tile.big .handset{right:18px;bottom:-120px;width:150px;border-radius:24px;padding:6px}
+  .tile.big .handset img{border-radius:19px}
+  .tile.small .tile-copy{padding:24px 6px 24px 22px}
+  .tile.small .tile-art{flex-basis:132px;min-height:280px}
+  .tile.small .handset{width:128px;top:30px}
+}
+@media (max-width:420px){
+  .tile.small{flex-direction:column}
+  .tile.small .tile-copy{padding:24px 22px 0}
+  .tile.small .tile-art{flex:none;min-height:220px;margin-top:20px}
+  .tile.small .handset{left:auto;right:22px;top:0;width:150px}
+}
+
 /* staging + header */
 .staging{background:var(--ink);color:var(--on-spruce-muted);font-size:.8125rem;text-align:center;padding:7px 16px;line-height:1.4}
 .staging strong{color:var(--on-spruce);font-weight:650}
@@ -398,7 +462,7 @@ footer p{margin:10px 0 0;max-width:62ch}
       <img class="logo" src="logo/ksf-logo-horizontal.svg" width="314" height="36" alt="Knox Site Factory">
     </a>
     <nav class="main" aria-label="Main">
-      <a href="#samples">Sample sites</a>
+      <a href="#work">Sample sites</a>
       <a href="#what">What you get</a>
       <a href="#pricing">Pricing</a>
       <a href="#questions">Questions</a>
@@ -420,7 +484,7 @@ footer p{margin:10px 0 0;max-width:62ch}
       </ul>
       <div class="ctas">
         <a class="btn btn-primary" href="#review">Request a free 15-minute site review <svg class="icon"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="#samples">See sample sites</a>
+        <a class="btn btn-ghost" href="#work">See sample sites</a>
       </div>
     </div>
 
@@ -532,6 +596,52 @@ footer p{margin:10px 0 0;max-width:62ch}
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="work" id="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <h2 id="work-title">Sample sites you can click around.</h2>
+    <p class="lede">Made-up businesses, built the way yours would be: the five pages, a call button that stays on screen, and one tool that fits the trade.</p>
+    <div class="bento">
+      <a class="tile big" href="samples/valley-air/index.html">
+        <div class="tile-copy">
+          <h3>Valley Air Co.</h3>
+          <p class="trade">HVAC · sample site</p>
+          <p class="tool">Customers pick what's wrong (no cooling, no heat, a strange noise) and see what to check before they call. One tap carries it into the quote form.</p>
+          <span class="go">Open Valley Air Co. <svg class="icon"><use href="#i-arrow"/></svg></span>
+        </div>
+        <div class="tile-art" aria-hidden="true">
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span>valleyair.example</span></div><img src="samples/shots/valley-air-desktop.jpg" width="1440" height="900" alt="" loading="lazy" decoding="async"></div>
+          <div class="handset"><img src="samples/shots/valley-air-phone.jpg" width="780" height="1688" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </a>
+      <a class="tile small septic" href="samples/ridge-root-septic/index.html">
+        <div class="tile-copy">
+          <h3>Ridge &amp; Root Septic</h3>
+          <p class="trade">Septic · sample site</p>
+          <p class="tool">A pumping helper: household size and tank size give a rough schedule and a reminder button.</p>
+          <span class="go">Open it <svg class="icon"><use href="#i-arrow"/></svg></span>
+        </div>
+        <div class="tile-art" aria-hidden="true"><div class="handset"><img src="samples/shots/ridge-root-septic-phone.jpg" width="780" height="1688" alt="" loading="lazy" decoding="async"></div></div>
+      </a>
+      <a class="tile small garage" href="samples/smoky-gap-garage/index.html">
+        <div class="tile-copy">
+          <h3>Smoky Gap Garage Doors</h3>
+          <p class="trade">Garage doors · sample site</p>
+          <p class="tool">Try door styles and colors on a house, or answer three questions to see if repair or replacement makes sense.</p>
+          <span class="go">Open it <svg class="icon"><use href="#i-arrow"/></svg></span>
+        </div>
+        <div class="tile-art" aria-hidden="true"><div class="handset"><img src="samples/shots/smoky-gap-garage-phone.jpg" width="780" height="1688" alt="" loading="lazy" decoding="async"></div></div>
+      </a>
+    </div>
+    <ul class="included" aria-label="Every sample includes">
+      <li><svg class="icon"><use href="#i-check"/></svg>Phone number on screen the whole time</li>
+      <li><svg class="icon"><use href="#i-check"/></svg>Quote form that says what's missing</li>
+      <li><svg class="icon"><use href="#i-check"/></svg>The towns you serve</li>
+      <li><svg class="icon"><use href="#i-check"/></svg>Plain answers to common questions</li>
+      <li><svg class="icon"><use href="#i-check"/></svg>A spot for your real Google reviews</li>
+    </ul>
   </div>
 </section>
 
