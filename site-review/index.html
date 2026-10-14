@@ -102,7 +102,7 @@
 
         <div class="field">
           <label for="review-site">Current website</label>
-          <input id="review-site" name="website" type="url" inputmode="url" placeholder="https://example.com" required>
+          <input id="review-site" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://example.com" required>
           <span class="field-error" data-error-for="website" aria-live="polite"></span>
         </div>
 
@@ -127,6 +127,7 @@
         </div>
 
         <p class="consent-note">Requesting a review does not enroll you in a newsletter. Contact details would be used only to respond to this request unless you separately agree otherwise.</p>
+        <div hidden><label for="review-fax">Leave this empty</label> <input id="review-fax" name="company_fax" tabindex="-1" autocomplete="off"></div>
         <button class="button button-primary" type="submit">Request a 15-minute site review</button>
         <p class="form-status" data-form-status aria-live="polite"></p>
       </form>
@@ -138,6 +139,7 @@
     <a href="../#pricing">Review the launch package</a>
   </footer>
 
+  <script src="../assets/lead-form.js"></script>
   <script src="../assets/site.js"></script>
 </body>
 </html>

@@ -806,6 +806,7 @@ footer p{margin:10px 0 0;max-width:62ch}
       </div>
       <div class="field"><label for="f-goal">What should your website help a customer do?</label><textarea id="f-goal" name="goal" required placeholder="For example: call us for a same-week repair, or request a quote for a new system."></textarea><p class="err" id="e-goal">A sentence is plenty.</p></div>
       <p class="honest"><svg class="icon"><use href="#i-info"/></svg><span><strong>Early launch:</strong> this form isn't connected yet, so nothing leaves your browser. Email <a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a> to request a review today.</span></p>
+      <div hidden><label for="f-fax">Leave this empty</label> <input id="f-fax" name="company_fax" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-primary" type="submit" style="justify-self:start">Check my request <svg class="icon"><use href="#i-arrow"/></svg></button>
       <p class="result" id="result" role="status" data-form-status></p>
     </form>
@@ -826,6 +827,7 @@ footer p{margin:10px 0 0;max-width:62ch}
 
 <div class="sticky"><a class="btn btn-primary" href="#review">Request a site review <svg class="icon"><use href="#i-arrow"/></svg></a></div>
 
+<script src="assets/lead-form.js"></script>
 <script>
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -902,7 +904,7 @@ footer p{margin:10px 0 0;max-width:62ch}
     if(isBad){f.setAttribute('data-bad','');input.setAttribute('aria-invalid','true');input.setAttribute('aria-describedby','e-'+id.slice(2));}
     else{f.removeAttribute('data-bad');input.removeAttribute('aria-invalid');input.removeAttribute('aria-describedby');}
   }
-  form.addEventListener('submit', e=>{
+  form.addEventListener('submit', async e=>{
     e.preventDefault();
     const v = id => document.getElementById(id).value.trim();
     const site = v('f-site');
@@ -915,8 +917,24 @@ footer p{margin:10px 0 0;max-width:62ch}
     mark('f-goal', !v('f-goal'));
     const first = form.querySelector('[data-bad] input, [data-bad] select, [data-bad] textarea');
     if(first){ first.focus(); result.classList.remove('show'); return; }
-    result.textContent = 'Looks complete, ' + v('f-name').split(' ')[0] + '. This form isn’t connected yet, so nothing was sent. Please email hello@knoxsitefactory.com with your answers.';
+    const firstName = v('f-name').split(' ')[0];
+    if(!ksfFormLive()){
+      result.textContent = 'Looks complete, ' + firstName + '. This form isn’t connected yet, so nothing was sent. Please email hello@knoxsitefactory.com with your answers.';
+      result.classList.add('show');
+      return;
+    }
+    const button = form.querySelector('button[type=submit]');
+    button.disabled = true;
+    result.textContent = 'Sending…';
     result.classList.add('show');
+    const sent = await ksfSendLead(form);
+    button.disabled = false;
+    if(sent){
+      result.textContent = 'Thanks, ' + firstName + '. Josh has your request and will reply by email.';
+      form.reset();
+    } else {
+      result.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com instead, and sorry for the trouble.';
+    }
   });
 })();
 </script>
