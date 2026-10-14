@@ -344,7 +344,8 @@ nav.main .btn:hover{color:#fff}
 
 /* who */
 .who-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:center}
-.photo{aspect-ratio:4/5;border:2px dashed var(--line);border-radius:22px;display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;background:var(--ground-2)}
+.photo{width:100%;height:auto;object-fit:cover;box-shadow:var(--shadow);aspect-ratio:4/5;border:2px dashed var(--line);border-radius:22px;display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;background:var(--ground-2)}
+img.photo{border:0;background:var(--ground-2)}
 .photo svg{width:44px;height:44px;margin:0 auto 10px;color:#9AAAA4}
 .who-grid p{max-width:60ch;font-size:1.125rem;color:var(--ink-2)}
 .sig{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:8px;font-weight:650}
@@ -752,7 +753,7 @@ footer p{margin:10px 0 0;max-width:62ch}
 
 <section id="about" aria-labelledby="who-title">
   <div class="wrap who-grid">
-    <div class="photo" role="img" aria-label="Founder photo pending"><div><svg class="icon"><use href="#i-user"/></svg>Photo pending</div></div>
+    <img class="photo" src="assets/josh-stone.jpg" width="520" height="650" alt="Josh Stone, founder of Knox Site Factory" loading="lazy" decoding="async">
     <div>
       <h2 id="who-title">You talk to the person doing the work.</h2>
       <p>Knox Site Factory is Josh Stone, in Powell, Tennessee. No account managers, and no handoffs to a team you never meet. The person on your fit call is the person who builds your site, checks it on a phone, and answers when something needs fixing.</p>
