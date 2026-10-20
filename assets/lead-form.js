@@ -1,12 +1,14 @@
 'use strict';
 
-// Google Apps Script web app URL (forms/README.md). Empty means the forms stay
-// in staging: they check fields but send nothing.
-const KSF_FORM_ENDPOINT = '';
+// Google Apps Script web app URL (forms/README.md).
+// PLACEHOLDER: Josh replaces this with the Web app URL from Deploy > New deployment.
+// It looks like https://script.google.com/macros/s/.../exec
+// Until a real /exec URL is here, the forms stay in staging: they check fields but send nothing.
+const KSF_FORM_ENDPOINT = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
 const ksfPageLoadedAt = Date.now();
 
 function ksfFormLive() {
-  return KSF_FORM_ENDPOINT !== '';
+  return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(KSF_FORM_ENDPOINT);
 }
 
 // Sends a form to the lead sheet. Resolves true only when the script saved it.

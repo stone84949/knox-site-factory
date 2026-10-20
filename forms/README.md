@@ -16,7 +16,7 @@ There's no third-party form service and nothing to pay for.
    - **Execute as:** Me
    - **Who has access:** Anyone
 5. Click **Deploy**. Copy the **Web app URL**; it ends in `/exec`.
-6. Paste that URL into `KSF_FORM_ENDPOINT` in `assets/lead-form.js`. Also change the "not connected" notes on both form pages.
+6. In `assets/lead-form.js`, replace `PASTE_APPS_SCRIPT_WEB_APP_URL_HERE` (the value of `KSF_FORM_ENDPOINT`) with that URL. The forms only go live when the value is a real `https://script.google.com/macros/s/.../exec` URL. Then remove the "not connected" notes on both form pages (marked `GO-LIVE` in the HTML).
 
 If **Anyone** isn't offered in step 4, the Workspace admin console is blocking sharing outside your domain. Go to **Apps > Google Workspace > Drive and Docs > Sharing settings** and allow sharing outside the organization.
 

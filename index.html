@@ -765,7 +765,7 @@ footer p{margin:10px 0 0;max-width:62ch}
     <div>
       <h2 id="who-title">You talk to the person doing the work.</h2>
       <p>Knox Site Factory is Josh Stone, in Powell, Tennessee. No account managers, and no handoffs to a team you never meet. The person on your fit call is the person who builds your site, checks it on a phone, and answers when something needs fixing.</p>
-      <div class="sig"><span>Josh Stone · Powell, TN</span><a href="mailto:hello@knoxsitefactory.com"><svg class="icon"><use href="#i-mail"/></svg>hello@knoxsitefactory.com</a></div>
+      <div class="sig"><span>Josh Stone · Powell, TN</span><a href="mailto:hello@knoxsitefactory.com"><svg class="icon"><use href="#i-mail"/></svg>hello@knoxsitefactory.com</a><a href="tel:+18655519084"><svg class="icon"><use href="#i-phone"/></svg>865-551-9084</a></div>
     </div>
   </div>
 </section>
@@ -794,6 +794,7 @@ footer p{margin:10px 0 0;max-width:62ch}
         <li>whether the five-page launch is the right fit</li>
         <li>and if it isn't, what to do instead</li>
       </ul>
+      <p>Josh replies within one business day. Rather talk? Call or text <a href="tel:+18655519084">865-551-9084</a>.</p>
     </div>
     <form id="form" novalidate data-staged-form>
       <div class="row2">
@@ -805,7 +806,8 @@ footer p{margin:10px 0 0;max-width:62ch}
         <div class="field"><label for="f-type">Business type</label><select id="f-type" name="type" required><option value="">Choose one</option><option>HVAC or mechanical</option><option>Septic or excavation</option><option>Garage door</option><option>Plumbing</option><option>Another home service</option></select><p class="err" id="e-type">Pick the closest match.</p></div>
       </div>
       <div class="field"><label for="f-goal">What should your website help a customer do?</label><textarea id="f-goal" name="goal" required placeholder="For example: call us for a same-week repair, or request a quote for a new system."></textarea><p class="err" id="e-goal">A sentence is plenty.</p></div>
-      <p class="honest"><svg class="icon"><use href="#i-info"/></svg><span><strong>Early launch:</strong> this form isn't connected yet, so nothing leaves your browser. Email <a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a> to request a review today.</span></p>
+      <!-- GO-LIVE: remove this note once KSF_FORM_ENDPOINT in assets/lead-form.js holds the real Apps Script URL. -->
+      <p class="honest"><svg class="icon"><use href="#i-info"/></svg><span><strong>Early launch:</strong> this form isn't connected yet, so nothing leaves your browser. Email <a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a> or call <a href="tel:+18655519084">865-551-9084</a> to request a review today.</span></p>
       <div hidden><label for="f-fax">Leave this empty</label> <input id="f-fax" name="company_fax" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-primary" type="submit" style="justify-self:start">Check my request <svg class="icon"><use href="#i-arrow"/></svg></button>
       <p class="result" id="result" role="status" data-form-status></p>
@@ -821,7 +823,7 @@ footer p{margin:10px 0 0;max-width:62ch}
       <p>Five-page websites for Knoxville-area home-service businesses. Made by Josh Stone in Powell, Tennessee.</p>
       <p>Early launch. Sample sites show fictional businesses with 555 numbers; no client results are represented on this page.</p>
     </div>
-    <div><a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a></div>
+    <div><a href="mailto:hello@knoxsitefactory.com">hello@knoxsitefactory.com</a><br><a href="tel:+18655519084">865-551-9084</a></div>
   </div>
 </footer>
 
@@ -919,7 +921,7 @@ footer p{margin:10px 0 0;max-width:62ch}
     if(first){ first.focus(); result.classList.remove('show'); return; }
     const firstName = v('f-name').split(' ')[0];
     if(!ksfFormLive()){
-      result.textContent = 'Looks complete, ' + firstName + '. This form isn’t connected yet, so nothing was sent. Please email hello@knoxsitefactory.com with your answers.';
+      result.textContent = 'Looks complete, ' + firstName + '. This form isn’t connected yet, so nothing was sent. Please email hello@knoxsitefactory.com with your answers, or call 865-551-9084.';
       result.classList.add('show');
       return;
     }
@@ -930,10 +932,10 @@ footer p{margin:10px 0 0;max-width:62ch}
     const sent = await ksfSendLead(form);
     button.disabled = false;
     if(sent){
-      result.textContent = 'Thanks, ' + firstName + '. Josh has your request and will reply by email.';
+      result.textContent = 'Thanks, ' + firstName + '. Josh has your request and will reply within one business day.';
       form.reset();
     } else {
-      result.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com instead, and sorry for the trouble.';
+      result.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com or call 865-551-9084 instead, and sorry for the trouble.';
     }
   });
 })();

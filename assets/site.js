@@ -117,10 +117,10 @@ async function handleStagedForm(event) {
   const sent = await ksfSendLead(form);
   button.disabled = false;
   if (sent) {
-    status.textContent = 'Thanks. Josh has your request and will reply soon.';
+    status.textContent = 'Thanks. Josh has your request and will reply within one business day.';
     form.reset();
   } else {
-    status.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com instead.';
+    status.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com or call 865-551-9084 instead.';
   }
 }
 
