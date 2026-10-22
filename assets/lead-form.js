@@ -7,6 +7,43 @@
 const KSF_FORM_ENDPOINT = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
 const ksfPageLoadedAt = Date.now();
 
+// Lead source: links carry a channel tag such as ?src=gbp, ?src=fb, ?src=li or ?src=email
+// (utm_source is the fallback). The tag is kept in sessionStorage for the rest of the visit,
+// so someone who lands on one page and sends the form from another still keeps the tag.
+// A newer tag in the same visit replaces the older one.
+const KSF_SRC_KEY = 'ksf_lead_source';
+
+function ksfCleanSource(value) {
+  return String(value || '').trim().toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40);
+}
+
+function ksfSessionStore() {
+  try {
+    return window.sessionStorage;
+  } catch {
+    return null; // storage blocked (private mode, strict privacy settings)
+  }
+}
+
+// Reads the tag from this page's address, remembers it, and returns the visit's tag ('' if none).
+function ksfLeadSource(search, store) {
+  const params = new URLSearchParams(search || '');
+  const tag = ksfCleanSource(params.get('src')) || ksfCleanSource(params.get('utm_source'));
+  try {
+    if (tag) {
+      store.setItem(KSF_SRC_KEY, tag);
+      return tag;
+    }
+    return ksfCleanSource(store.getItem(KSF_SRC_KEY));
+  } catch {
+    return tag;
+  }
+}
+
+if (typeof location !== 'undefined') {
+  ksfLeadSource(location.search, ksfSessionStore());
+}
+
 function ksfFormLive() {
   return /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(KSF_FORM_ENDPOINT);
 }
@@ -22,6 +59,7 @@ async function ksfSendLead(form) {
     }
   });
   body.set('source', location.pathname);
+  body.set('lead_source', ksfLeadSource(location.search, ksfSessionStore()));
   body.set('elapsed_ms', String(Date.now() - ksfPageLoadedAt));
 
   try {

@@ -25,6 +25,18 @@ If **Anyone** isn't offered in step 4, the Workspace admin console is blocking s
 After you edit the script, go to **Deploy > Manage deployments**, edit the existing deployment, and set the version to **New version**.
 This keeps the same URL, so the site doesn't need to change.
 
+## Lead source (which link brought them)
+
+Links to the site carry a channel tag, for example `knoxsitefactory.com/?src=gbp` or `/site-review/?src=fb`.
+Tags in use: `gbp` (Google Business Profile), `fb` (Facebook), `li` (LinkedIn), `nd` (Nextdoor), `yt` (YouTube), `email`, `card` (business card / flyer).
+If a link has no `src` but has `utm_source`, that is used instead.
+
+- `assets/lead-form.js` keeps the tag for the rest of the visit (sessionStorage), so a person who lands on the homepage and sends the form from `/site-review/` keeps the tag. A newer tag in the same visit replaces the older one. `pricing.html` loads it too, because it redirects at once.
+- The script writes the tag in a **Lead source** column at the end of the Leads row, and adds `Lead source: ...` to the alert email. Tags are cut to 40 letters, numbers, dots, dashes and underscores.
+- **Sheet:** nothing to do by hand. A new Leads tab gets the header automatically. On an older Leads tab, the first new lead adds a `Lead source` header in the first empty column after the existing ones, so no existing column moves. Columns you add yourself after `Next step` are never written over.
+- **If the script was already deployed before this change:** paste the new `lead-form.gs` into the Apps Script editor, save, then **Deploy > Manage deployments > edit > Version: New version > Deploy**. The `/exec` URL stays the same. Until then, leads still save, just without the source.
+- Pages with no form script (the sample sites, `/intake/`, `404.html`) don't record a tag; send tagged links to the homepage or `/site-review/`.
+
 ## Spam protection
 
 - A hidden field that people never see. Bots fill it in, and those requests are dropped.
