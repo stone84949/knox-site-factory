@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(fonts/archivo-100-900.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root{
+  --ground:#F3F5F2;
+  --ground-2:#E7ECE8;
+  --paper:#FFFFFF;
+  --ink:#0F2A24;
+  --ink-2:#2C4540;
+  --muted:#4A5E58;
+  --line:#CBD5D0;
+  --line-soft:#DEE5E1;
+  --spruce:#0F2A24;
+  --spruce-2:#173A32;
+  --spruce-line:#2C5047;
+  --on-spruce:#EEF4F1;
+  --on-spruce-muted:#B5C9C1;
+  --ember:#C24E1C;
+  --ember-hi:#E2622B;
+  --ember-soft:#F7D9CB;
+  --ember-on-dark:#F2875A;
+  --ok:#1F6B4A;
+  --err:#A3261A;
+  --r:14px;
+  --display:"Archivo", "Segoe UI", system-ui, sans-serif;
+  --body:"Archivo", "Segoe UI", system-ui, sans-serif;
+  --wrap:1200px;
+  --shadow:0 1px 2px rgba(15,42,36,.06), 0 12px 32px -12px rgba(15,42,36,.22);
+  --shadow-lg:0 2px 4px rgba(15,42,36,.08), 0 40px 80px -28px rgba(15,42,36,.45);
+}
+:root { --accent:var(--ember); --sun:var(--ember); --sans:var(--body); --forest:var(--spruce); --forest-muted:var(--on-spruce-muted); }
+*, *::before, *::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:1rem; -webkit-text-size-adjust:100%; }
+body.resource-page { margin:0; background:var(--ground); color:var(--ink); font:400 1.0625rem/1.65 var(--body); caret-color:var(--ember); }
+a { color:inherit; }
+.resource-page img { max-width:100%; }
+.resource-page h1, .resource-page h2, .resource-page h3 { margin:0; font-family:var(--body); font-weight:700; text-wrap:balance; }
+.resource-page p { margin:0; }
+.resource-page :focus-visible { outline:3px solid var(--ember); outline-offset:4px; }
+.wrap { max-width:1200px; width:calc(100% - 3rem); margin-inline:auto; }
+.header-row { display:flex; justify-content:space-between; align-items:center; }
+.resource-logo { display:block; width:min(314px, 100%); height:auto; }
+.brand { display:block; max-width:100%; }
+.btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:1rem 1.5rem; border:2px solid transparent; border-radius:10px; font:600 1rem/1.3 var(--body); text-decoration:none; }
+.btn-primary { background:var(--ember); color:#fff; }
+.btn-primary:hover { background:#A8411A; color:#fff; }
+.skip-link { position:fixed; top:0; left:1rem; z-index:100; padding:.75rem 1rem; transform:translateY(-120%); background:var(--spruce); color:#fff; }
+.skip-link:focus { transform:none; }
+
+/* Knox resources: tokens/font copied from Opus v2 1d7458e; sawtooth SVG is the shared logo asset. */
+.resource-page { scrollbar-color: var(--forest-muted) var(--paper); }
+.resource-page ::selection { background: var(--sun); color: var(--ink); }
+.resource-page a:not(.brand):not(.btn) { text-underline-offset: .22em; text-decoration-thickness: 1px; }
+.resource-page a:not(.brand):not(.btn):not(.skip-link):hover { color: var(--accent); }
+.resource-preview { padding: .6rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+.resource-header { border-bottom: 1px solid var(--line); }
+.resource-header .header-row { min-height: 90px; gap: 1.5rem; }
+.resource-header nav { display: flex; flex-wrap: wrap; column-gap: 1.75rem; row-gap: .5rem; font-size: .92rem; }
+.resource-main { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; padding-block: clamp(2.75rem, 6vw, 5.5rem); }
+.resource-page .resource-main h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.1; letter-spacing: -.03em; max-width: 20ch; }
+.resource-page .resource-main h2 { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.3; letter-spacing: -.02em; }
+.resource-page .resource-main h3 { font-size: 1.05rem; line-height: 1.4; letter-spacing: -.01em; }
+.resource-main p { margin-top: 1rem; max-width: 70ch; }
+.resource-main .btn { margin-top: 1.5rem; white-space: normal; text-align: center; box-shadow: none; }
+.resource-main .btn:hover { transform: none; }
+.worksheet { max-width: 740px; }
+.worksheet-intro { padding-bottom: 2.25rem; }
+.worksheet-intro > p:first-of-type { font-size: 1.16rem; line-height: 1.6; }
+.worksheet-note { color: var(--muted); font-size: .94rem; }
+.worksheet-intro > a { display: inline-block; margin-top: 1rem; font-weight: 600; }
+.worksheet > section { width: 100%; padding-block: 2.25rem; border-top: 1px solid var(--line); }
+.checklist-items { list-style: none; margin: 1.2rem 0; padding: 0; }
+.checklist-items li { margin-block: .25rem; }
+.checklist-items label { display: flex; align-items: flex-start; gap: .85rem; padding-block: .55rem; cursor: pointer; font: 400 1rem/1.6 var(--sans); }
+.checklist-items input { flex: none; width: 1.2rem; height: 1.2rem; margin: .22rem 0 0; accent-color: var(--accent); }
+.checklist-items label:has(input:checked) span { color: var(--muted); }
+.checklist-items input:focus-visible { outline-offset: 4px; }
+.worksheet .observation { display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline; color: var(--muted); font-size: .9rem; }
+.observation span { flex: 1; min-width: 100px; border-bottom: 1px solid var(--line); }
+.worksheet-next { padding-top: 2.25rem; border-top: 1px solid var(--line); }
+.worksheet article > p { font-size: 1.08rem; line-height: 1.8; }
+.worksheet article > h2 { margin-top: 2.5rem; }
+.worksheet article { margin-bottom: 2.75rem; }
+.resource-footer { padding-block: 2rem; border-top: 1px solid var(--line); background: var(--ground); color: var(--muted); font-size: .88rem; }
+.resource-footer .wrap { display: flex; flex-wrap: wrap; gap: 1.25rem 3rem; align-items: baseline; justify-content: space-between; }
+.resource-footer p { max-width: 65ch; }
+.resource-footer a { color: var(--ink); }
+.review-opening { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(2rem, 7vw, 6rem); align-items: start; padding-bottom: clamp(3rem, 6vw, 5rem); }
+.review-opening .review-summary { margin-top: 1.4rem; font-size: 1.16rem; color: var(--muted); }
+.review-scope { padding-top: .25rem; }
+.review-scope dl { margin: 1.25rem 0 0; }
+.review-scope dt { font-weight: 600; margin-top: 1.25rem; }
+.review-scope dd { color: var(--muted); margin: .25rem 0 0; font-size: .98rem; }
+.review-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(1.5rem, 6vw, 5rem); padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); }
+.review-process { margin: 0; padding-left: 1.25rem; }
+.review-process li { padding-left: .5rem; margin-bottom: 1.5rem; }
+.review-process li::marker { font-weight: 600; color: var(--accent); }
+.review-process strong { font-weight: 600; }
+.review-process p { margin-top: .3rem; color: var(--muted); }
+.review-examples { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.review-examples a { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.review-examples span { color: var(--muted); text-decoration: none; }
+.email-request { padding: 1.5rem 0 0; border-top: 1px solid var(--ink); }
+.email-request p { font-size: 1rem; }
+.request-address { display: inline-block; margin-top: .75rem; font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.email-request .request-instructions { color: var(--muted); font-size: .92rem; }
+@media (max-width: 760px) {
+  .review-opening, .review-section { grid-template-columns: minmax(0, 1fr); }
+  .review-scope { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .resource-header .header-row { flex-wrap: wrap; padding-block: 1.25rem; }
+  .resource-header nav { font-size: .88rem; }
+  .resource-main { width: calc(100% - 2.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .resource-page *, .resource-page *::before, .resource-page *::after { transition: none; }
+}
+@media print {
+  @page { margin: 16mm; }
+  .resource-preview, .skip-link, .resource-header, .worksheet-next, .worksheet-intro > a { display: none; }
+  body.resource-page { background: #fff; color: #000; font-size: 10pt; line-height: 1.4; }
+  .worksheet { width: 100%; max-width: none; padding: 0; }
+  .resource-page .resource-main h1 { font-size: 25pt; max-width: none; }
+  .resource-page .resource-main h2 { font-size: 12pt; break-after: avoid; }
+  .worksheet-intro { padding-bottom: 12pt; }
+  .worksheet > section { padding-block: 10pt; break-inside: avoid; }
+  .worksheet-intro > p:first-of-type, .checklist-items label { font-size: 10pt; }
+  .checklist-items { margin-block: 8pt; }
+  .checklist-items label { padding-block: 3pt; }
+  .checklist-items input { width: 10pt; height: 10pt; margin-top: 2pt; print-color-adjust: exact; }
+  .resource-main p { margin-top: 7pt; }
+  .resource-footer { background: #fff; color: #000; padding-block: 10pt; }
+  .resource-footer .wrap { width: 100%; }
+  .worksheet-note, .worksheet .observation, .checklist-items label:has(input:checked) span { color: #000; }
+}

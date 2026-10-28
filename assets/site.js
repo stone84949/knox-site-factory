@@ -80,7 +80,7 @@ function handleFormChoice(event) {
   requestAnimationFrame(() => control.focus({ preventScroll: true }));
 }
 
-function handleStagedForm(event) {
+async function handleStagedForm(event) {
   event.preventDefault();
   const form = event.currentTarget;
   const data = new FormData(form);
@@ -104,8 +104,24 @@ function handleStagedForm(event) {
     return;
   }
 
-  status.textContent = stagedResponse(form.dataset.formKind || 'sales');
-  form.reset();
+  const kind = form.dataset.formKind || 'sales';
+  if (kind === 'demo' || typeof ksfFormLive !== 'function' || !ksfFormLive()) {
+    status.textContent = stagedResponse(kind);
+    form.reset();
+    return;
+  }
+
+  const button = form.querySelector('[type="submit"]');
+  button.disabled = true;
+  status.textContent = 'Sending…';
+  const sent = await ksfSendLead(form);
+  button.disabled = false;
+  if (sent) {
+    status.textContent = 'Thanks. Josh has your request and will reply within one business day.';
+    form.reset();
+  } else {
+    status.textContent = 'That didn’t go through. Please email hello@knoxsitefactory.com or call 865-551-9084 instead.';
+  }
 }
 
 function initReveal() {
