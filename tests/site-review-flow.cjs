@@ -25,7 +25,7 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
         assert.equal(response.status(), 200);
         await page.evaluate(() => document.fonts.ready);
         assert.equal(await page.locator('h1').count(), 1);
-        assert.equal(new URL(await page.locator('header img[alt="Knox Site Factory"]').getAttribute('src'), base + route).pathname, '/assets/logo/ksf-logo-horizontal.svg', 'Use Opus sawtooth logo asset');
+        assert.equal(new URL(await page.locator('header img[alt="Knox Site Factory"]').getAttribute('src'), base + route).pathname, '/assets/logo/ksf-logo-horizontal.svg', 'Use reference sawtooth logo asset');
         assert.equal(await page.locator('.brand-mark').count(), 0, 'Do not reintroduce the obsolete square K logo');
         assert.match(await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily), /Archivo/, 'Use the facelift typeface');
         assert.equal(await page.locator('h1').evaluate(el => getComputedStyle(el).textTransform), 'none', 'Reading headings use normal case');
@@ -51,7 +51,7 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
           }
         }
         if (output) await page.screenshot({ path: path.join(output, `${route.split('/').filter(Boolean).join('-')}-${width}.png`), fullPage: true });
-        results.push({ route, width, status: 'PASS', checks: 'HTTP, Opus sawtooth logo, Archivo type, normal-case heading, no old stylesheet, noindex, overflow, local links and anchors' });
+        results.push({ route, width, status: 'PASS', checks: 'HTTP, reference sawtooth logo, Archivo type, normal-case heading, no old stylesheet, noindex, overflow, local links and anchors' });
       }
     }
 
@@ -60,7 +60,7 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
     const checkbox = page.getByRole('checkbox').first();
     assert.ok(await checkbox.evaluate(el => el.getBoundingClientRect().height <= 30), 'Checklist controls must not inherit the 50px web-form input height');
     assert.ok(await page.locator('.checklist-items label').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize) >= 16), 'Checklist text must remain readable');
-    assert.equal(await page.locator('.worksheet-footer').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(243, 245, 242)', 'Worksheet footer uses the Opus v2 ground token');
+    assert.equal(await page.locator('.worksheet-footer').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(243, 245, 242)', 'Worksheet footer uses the reference ground token');
     await checkbox.focus();
     await page.keyboard.press('Space');
     assert.ok(await checkbox.isChecked(), 'Checkbox must work by keyboard');
@@ -96,7 +96,7 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
     const download = await page.request.get(base + '/content/website-self-check.md');
     assert.equal(download.status(), 200);
     assert.ok((await download.text()).includes('## Pick one fix'));
-    // Preserve Opus's latest homepage interaction and add our useful resource path.
+    // Preserve the reference homepage interaction and add our useful resource path.
     await page.setViewportSize({ width: 375, height: 900 });
     await page.goto(base + '/index.html');
     assert.equal(await page.locator('#review form').count(), 0, 'Homepage must use the owner-selected email fallback instead of a form that sends nothing');
@@ -128,10 +128,10 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
       await page.goto(base + '/site-review/index.html');
       await page.screenshot({ path: path.join(output, 'site-review-preview.png') });
       await page.goto(base + '/index.html');
-      await page.screenshot({ path: path.join(output, 'opus-combined-home-preview.png') });
+      await page.screenshot({ path: path.join(output, 'combined-home-preview.png') });
     }
     assert.equal(errors.length, 0, errors.join('\n'));
-    results.push({ status: 'PASS', checks: '20 checkboxes, keyboard toggle and skip link, print visibility, mailto recipient/subject/body, keyboard email activation, no web form, downloadable source, Opus homepage logo/trade tabs/simulated call/checklist path, no page errors' });
+    results.push({ status: 'PASS', checks: '20 checkboxes, keyboard toggle and skip link, print visibility, mailto recipient/subject/body, keyboard email activation, no web form, downloadable source, reference homepage logo/trade tabs/simulated call/checklist path, no page errors' });
     if (output) fs.writeFileSync(path.join(output, 'browser-results.json'), JSON.stringify(results, null, 2) + '\n');
     console.log(JSON.stringify(results, null, 2));
   } finally {
