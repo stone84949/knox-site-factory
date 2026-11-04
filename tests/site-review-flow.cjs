@@ -117,7 +117,7 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
     await page.locator('.launch-check a[href="website-self-check/index.html"]').click();
     assert.ok(page.url().endsWith('/website-self-check/index.html'));
     await page.goto(base + '/privacy.html');
-    assert.ok((await page.locator('main').innerText()).includes('analytics integration is disabled'));
+    assert.ok((await page.locator('main').innerText()).includes('does not currently run analytics or advertising tracking scripts'));
     await page.goto(base + '/service-details.html');
     const details = await page.locator('main').innerText();
     assert.ok(details.includes('$750 to schedule'));
