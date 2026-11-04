@@ -35,7 +35,8 @@ const pages = ['/website-self-check/index.html', '/website-self-check/before-a-r
           assert.equal(await page.locator('main .btn-primary').first().evaluate(el => getComputedStyle(el).boxShadow), 'none', 'Resource buttons do not inherit decorative glow');
         }
         assert.equal(await page.locator('link[href$="/site.css"]').count(), 0, 'Resource pages must not load the old visual system');
-        assert.match(await page.locator('meta[name="robots"]').getAttribute('content'), /noindex/);
+        assert.equal(await page.locator('meta[name="robots"][content*="noindex"]').count(), 0, 'Published pages are indexable');
+        assert.equal(await page.locator('.resource-preview').count(), 0, 'Published pages carry no preview banner');
         const overflow = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth,
           elements: [...document.querySelectorAll('main *, header *')].filter(el => el.getBoundingClientRect().right > innerWidth + 1).map(el => el.tagName + '.' + el.className) }));
         assert.ok(overflow.document <= width + 1 && overflow.elements.length === 0, JSON.stringify({ route, width, overflow }));
